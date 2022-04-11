@@ -1,0 +1,32 @@
+//< Majic number for ASSERT's in Compare and Convert
+
+#define BIGINTEGER_MAJIC 721		//< Majic number for ASSERT's in Compare and Convert
+
+#define CHAR_MAJIC 0x0015		//< Majic number for ASSERT's in Compare and Convert
+
+DATE_MAJIC 0xA011
+
+#define DATETIME_MAJIC 0x41FA		//< Majic number for ASSERT's in Compare and Convert
+
+#define DECIMAL_MAJIC 0x1234		//< Majic number for ASSERT's in Compare and Convert
+
+#define DOUBLE_MAJIC 0x0014		//< Majic number for ASSERT's in Compare and Convert
+
+#define FLOAT_MAJIC 0x1000		//< Majic number for ASSERT's in Compare and Convert
+
+#define INT32_MAJIC 0x0010		//< Majic number for ASSERT's in Compare and Convert
+
+#define INT64_MAJIC 0x0011		//< Majic number for ASSERT's in Compare and Convert
+
+#define NULL_MAJIC 0		//< Majic number for ASSERT's in Compare and Convert
+
+#define STRING_MAJIC 0x0001		//< Majic number for ASSERT's in Compare and Convert
+
+#define UINT32_MAJIC 0x0012		//< Majic number for ASSERT's in Compare and Convert
+
+#define UINT64_MAJIC 0x013		//< Majic number for ASSERT's in Compare and Convert
+
+UNDEFINED_MAJIC 404		//< Majic number for ASSERT's in Compare and Convert
+
+
+

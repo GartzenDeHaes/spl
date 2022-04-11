@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0078)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capability%2520Format -->
+<HTML><HEAD><TITLE>Info: (termcap) Capability Format</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Capability Format</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_capability_format_files/ball.red.gif" width=20 border=1> Info 
+Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Format"><IMG 
+height=22 src="termcap_capability_format_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Format</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_capability_format_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Naming"><IMG 
+height=22 src="termcap_capability_format_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Naming</STRONG> </A><PRE> 
+ Writing the Capabilities
+ ========================
+ 
+ There are three kinds of capabilities: flags, numbers, and strings.
+ Each kind has its own way of being written in the description.  Each
+ defined capability has by convention a particular kind of value; for
+ example, `li' always has a numeric value and `cm' always a string value.
+ 
+    A flag capability is thought of as having a boolean value: the value
+ is true if the capability is present, false if not.  When the
+ capability is present, just write its name between two colons.
+ 
+    A numeric capability has a value which is a nonnegative number.
+ Write the capability name, a `#', and the number, between two colons.
+ For example, `...:li#48:...' is how you specify the `li' capability for
+ 48 lines.
+ 
+    A string-valued capability has a value which is a sequence of
+ characters.  Usually these are the characters used to perform some
+ display operation.  Write the capability name, a `=', and the
+ characters of the value, between two colons.  For example,
+ `...:cm=\E[%i%d;%dH:...' is how the cursor motion command for a
+ standard ANSI terminal would be specified.
+ 
+    Special characters in the string value can be expressed using
+ `\'-escape sequences as in C; in addition, `\E' stands for &lt;ESC&gt;.  `^'
+ is also a kind of escape character; `^' followed by CHAR stands for the
+ control-equivalent of CHAR.  Thus, `^a' stands for the character
+ control-a, just like `\001'.  `\' and `^' themselves can be represented
+ as `\\' and `\^'.
+ 
+    To include a colon in the string, you must write `\072'.  You might
+ ask, "Why can't `\:' be used to represent a colon?"  The reason is that
+ the interrogation functions do not count slashes while looking for a
+ capability.  Even if `:ce=ab\:cd:' were interpreted as giving the `ce'
+ capability the value `ab:cd', it would also appear to define `cd' as a
+ flag.
+ 
+    The string value will often contain digits at the front to specify
+ padding (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Padding"> Padding</A>) and/or `%'-sequences within to specify how to
+ encode parameters (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Parameters"> Parameters</A>).  Although these things are not
+ to be output literally to the terminal, they are considered part of the
+ value of the capability.  They are special only when the string value
+ is processed by `tputs', `tparam' or `tgoto'.  By contrast, `\' and `^'
+ are considered part of the syntax for specifying the characters in the
+ string.
+ 
+    Let's look at the VT52 example again:
+ 
+      dw|vt52|DEC vt52:\
+              :cr=^M:do=^J:nl=^J:bl=^G:\
+              :le=^H:bs:cd=\EJ:ce=\EK:cl=\EH\EJ:\
+              :cm=\EY%+ %+ :co#80:li#24:\
+              :nd=\EC:ta=^I:pt:sr=\EI:up=\EA:\
+              :ku=\EA:kd=\EB:kr=\EC:kl=\ED:kb=^H:
+ 
+    Here we see the numeric-valued capabilities `co' and `li', the flags
+ `bs' and `pt', and many string-valued capabilities.  Most of the
+ strings start with &lt;ESC&gt; represented as `\E'.  The rest contain control
+ characters represented using `^'.  The meanings of the individual
+ capabilities are defined elsewhere (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"> Capabilities</A>).
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_capability_format_files/ball.red.gif" width=20 border=1> Info 
+Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Format"><IMG 
+height=22 src="termcap_capability_format_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Format</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_capability_format_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Naming"><IMG 
+height=22 src="termcap_capability_format_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Naming</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

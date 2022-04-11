@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0063)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Naming -->
+<HTML><HEAD><TITLE>Info: (termcap) Naming</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Naming</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_naming_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capability%2520Format"><IMG 
+height=22 src="termcap_naming_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capability Format</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_naming_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Inheriting"><IMG 
+height=22 src="termcap_naming_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Inheriting</STRONG> </A><PRE> 
+ Terminal Type Name Conventions
+ ==============================
+ 
+ There are conventions for choosing names of terminal types.  For one
+ thing, all letters should be in lower case.  The terminal type for a
+ terminal in its most usual or most fundamental mode of operation should
+ not have a hyphen in it.
+ 
+    If the same terminal has other modes of operation which require
+ different terminal descriptions, these variant descriptions are given
+ names made by adding suffixes with hyphens.  Such alternate descriptions
+ are used for two reasons:
+ 
+    * When the terminal has a switch that changes its behavior.  Since
+      the computer cannot tell how the switch is set, the user must tell
+      the computer by choosing the appropriate terminal type name.
+ 
+      For example, the VT-100 has a setup flag that controls whether the
+      cursor wraps at the right margin.  If this flag is set to "wrap",
+      you must use the terminal type `vt100-am'.  Otherwise you must use
+      `vt100-nam'.  Plain `vt100' is defined as a synonym for either
+      `vt100-am' or `vt100-nam' depending on the preferences of the
+      local site.
+ 
+      The standard suffix `-am' stands for "automatic margins".
+ 
+    * To give the user a choice in how to use the terminal.  This is done
+      when the terminal has a switch that the computer normally controls.
+ 
+      For example, the Ann Arbor Ambassador can be configured with many
+      screen sizes ranging from 20 to 60 lines.  Fewer lines make bigger
+      characters but more lines let you see more of what you are editing.
+      As a result, users have different preferences.  Therefore, termcap
+      provides terminal types for many screen sizes.  If you choose type
+      `aaa-30', the terminal will be configured to use 30 lines; if you
+      choose `aaa-48', 48 lines will be used, and so on.
+ 
+    Here is a list of standard suffixes and their conventional meanings:
+ 
+ `-w'
+      Short for "wide".  This is a mode that gives the terminal more
+      columns than usual.  This is normally a user option.
+ 
+ `-am'
+      "Automatic margins".  This is an alternate description for use when
+      the terminal's margin-wrap switch is on; it contains the `am'
+      flag.  The implication is that normally the switch is off and the
+      usual description for the terminal says that the switch is off.
+ 
+ `-nam'
+      "No automatic margins".  The opposite of `-am', this names an
+      alternative description which lacks the `am' flag.  This implies
+      that the terminal is normally operated with the margin-wrap switch
+      turned on, and the normal description of the terminal says so.
+ 
+ `-na'
+      "No arrows".  This terminal description initializes the terminal to
+      keep its arrow keys in local mode.  This is a user option.
+ 
+ `-rv'
+      "Reverse video".  This terminal description causes text output for
+      normal video to appear as reverse, and text output for reverse
+      video to come out as normal.  Often this description differs from
+      the usual one by interchanging the two strings which turn reverse
+      video on and off.
+ 
+      This is a user option; you can choose either the "reverse video"
+      variant terminal type or the normal terminal type, and termcap will
+      obey.
+ 
+ `-s'
+      "Status".  Says to enable use of a status line which ordinary
+      output does not touch (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Status%2520Line"> Status Line</A>).
+ 
+      Some terminals have a special line that is used only as a status
+      line.  For these terminals, there is no need for an `-s' variant;
+      the status line commands should be defined by default.  On other
+      terminals, enabling a status line means removing one screen line
+      from ordinary use and reducing the effective screen height.  For
+      these terminals, the user can choose the `-s' variant type to
+      request use of a status line.
+ 
+ `-NLINES'
+      Says to operate with NLINES lines on the screen, for terminals
+      such as the Ambassador which provide this as an option.  Normally
+      this is a user option; by choosing the terminal type, you control
+      how many lines termcap will use.
+ 
+ `-NPAGESp'
+      Says that the terminal has NPAGES pages worth of screen memory,
+      for terminals where this is a hardware option.
+ 
+ `-unk'
+      Says that description is not for direct use, but only for
+      reference in `tc' capabilities.  Such a description is a kind of
+      subroutine, because it describes the common characteristics of
+      several variant descriptions that would use other suffixes in
+      place of `-unk'.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_naming_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capability%2520Format"><IMG 
+height=22 src="termcap_naming_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capability Format</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_naming_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Inheriting"><IMG 
+height=22 src="termcap_naming_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Inheriting</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

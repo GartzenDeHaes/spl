@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Standout -->
+<HTML><HEAD><TITLE>Info: (termcap) Standout</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Standout</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_standout_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char"><IMG 
+height=22 src="termcap_standout_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Char</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_standout_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Underlining"><IMG 
+height=22 src="termcap_standout_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Underlining</STRONG> </A><PRE> 
+ Standout and Appearance Modes
+ =============================
+ 
+ "Appearance modes" are modifications to the ways characters are
+ displayed.  Typical appearance modes include reverse video, dim, bright,
+ blinking, underlined, invisible, and alternate character set.  Each
+ kind of terminal supports various among these, or perhaps none.
+ 
+    For each type of terminal, one appearance mode or combination of
+ them that looks good for highlighted text is chosen as the "standout
+ mode".  The capabilities `so' and `se' say how to enter and leave
+ standout mode.  Programs that use appearance modes only to highlight
+ some text generally use the standout mode so that they can work on as
+ many terminals as possible.  Use of specific appearance modes other
+ than "underlined" and "alternate character set" is rare.
+ 
+    Terminals that implement appearance modes fall into two general
+ classes as to how they do it.
+ 
+    In some terminals, the presence or absence of any appearance mode is
+ recorded separately for each character position.  In these terminals,
+ each graphic character written is given the appearance modes current at
+ the time it is written, and keeps those modes until it is erased or
+ overwritten.  There are special commands to turn the appearance modes
+ on or off for characters to be written in the future.
+ 
+    In other terminals, the change of appearance modes is represented by
+ a marker that belongs to a certain screen position but affects all
+ following screen positions until the next marker.  These markers are
+ traditionally called "magic cookies".
+ 
+    The same capabilities (`so', `se', `mb' and so on) for turning
+ appearance modes on and off are used for both magic-cookie terminals
+ and per-character terminals.  On magic cookie terminals, these give the
+ commands to write the magic cookies.  On per-character terminals, they
+ change the current modes that affect future output and erasure.  Some
+ simple applications can use these commands without knowing whether or
+ not they work by means of cookies.
+ 
+    However, a program that maintains and updates a display needs to know
+ whether the terminal uses magic cookies, and exactly what their effect
+ is.  This information comes from the `sg' capability.
+ 
+    The `sg' capability is a numeric capability whose presence indicates
+ that the terminal uses magic cookies for appearance modes.  Its value is
+ the number of character positions that a magic cookie occupies.  Usually
+ the cookie occupies one or more character positions on the screen, and
+ these character positions are displayed as blank, but in some terminals
+ the cookie has zero width.
+ 
+    The `sg' capability describes both the magic cookie to turn standout
+ on and the cookie to turn it off.  This makes the assumption that both
+ kinds of cookie have the same width on the screen.  If that is not true,
+ the narrower cookie must be "widened" with spaces until it has the same
+ width as the other.
+ 
+    On some magic cookie terminals, each line always starts with normal
+ display; in other words, the scope of a magic cookie never extends over
+ more than one line.  But on other terminals, one magic cookie affects
+ all the lines below it unless explicitly canceled.  Termcap does not
+ define any way to distinguish these two ways magic cookies can work.
+ To be safe, it is best to put a cookie at the beginning of each line.
+ 
+    On some per-character terminals, standout mode or other appearance
+ modes may be canceled by moving the cursor.  On others, moving the
+ cursor has no effect on the state of the appearance modes.  The latter
+ class of terminals are given the flag capability `ms' ("can move in
+ standout").  All programs that might have occasion to move the cursor
+ while appearance modes are turned on must check for this flag; if it is
+ not present, they should reset appearance modes to normal before doing
+ cursor motion.
+ 
+    A program that has turned on only standout mode should use `se' to
+ reset the standout mode to normal.  A program that has turned on only
+ alternate character set mode should use `ae' to return it to normal.
+ If it is possible that any other appearance modes are turned on, use the
+ `me' capability to return them to normal.
+ 
+    Note that the commands to turn on one appearance mode, including `so'
+ and `mb' ... `mr', if used while some other appearance modes are turned
+ on, may combine the two modes on some terminals but may turn off the
+ mode previously enabled on other terminals.  This is because some
+ terminals do not have a command to set or clear one appearance mode
+ without changing the others.  Programs should not attempt to use
+ appearance modes in combination except with `sa', and when switching
+ from one single mode to another should always turn off the previously
+ enabled mode and then turn on the new desired mode.
+ 
+    On some old terminals, the `so' and `se' commands may be the same
+ command, which has the effect of turning standout on if it is off, or
+ off it is on.  It is therefore risky for a program to output extra `se'
+ commands for good measure.  Fortunately, all these terminals are
+ obsolete.
+ 
+    Programs that update displays in which standout-text may be replaced
+ with non-standout text must check for the `xs' flag.  In a per-character
+ terminal, this flag says that the only way to remove standout once
+ written is to clear that portion of the line with the `ce' string or
+ something even more powerful (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Clearing"> Clearing</A>); just writing new
+ characters at those screen positions will not change the modes in
+ effect there.  In a magic cookie terminal, `xs' says that the only way
+ to remove a cookie is to clear a portion of the line that includes the
+ cookie; writing a different cookie at the same position does not work.
+ 
+    Such programs must also check for the `xt' flag, which means that the
+ terminal is a Teleray 1061.  On this terminal it is impossible to
+ position the cursor at the front of a magic cookie, so the only two
+ ways to remove a cookie are (1) to delete the line it is on or (2) to
+ position the cursor at least one character before it (possibly on a
+ previous line) and output the `se' string, which on these terminals
+ finds and removes the next `so' magic cookie on the screen.  (It may
+ also be possible to remove a cookie which is not at the beginning of a
+ line by clearing that line.)  The `xt' capability also has implications
+ for the use of tab characters, but in that regard it is obsolete (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Motion">
+ Cursor Motion</A>. ).
+ 
+ `so'
+      String of commands to enter standout mode.
+ 
+ `se'
+      String of commands to leave standout mode.
+ 
+ `sg'
+      Numeric capability, the width on the screen of the magic cookie.
+      This capability is absent in terminals that record appearance modes
+      character by character.
+ 
+ `ms'
+      Flag whose presence means that it is safe to move the cursor while
+      the appearance modes are not in the normal state.  If this flag is
+      absent, programs should always reset the appearance modes to
+      normal before moving the cursor.
+ 
+ `xs'
+      Flag whose presence means that the only way to reset appearance
+      modes already on the screen is to clear to end of line.  On a
+      per-character terminal, you must clear the area where the modes
+      are set.  On a magic cookie terminal, you must clear an area
+      containing the cookie.  See the discussion above.
+ 
+ `xt'
+      Flag whose presence means that the cursor cannot be positioned
+      right in front of a magic cookie, and that `se' is a command to
+      delete the next magic cookie following the cursor.  See discussion
+      above.
+ 
+ `mb'
+      String of commands to enter blinking mode.
+ 
+ `md'
+      String of commands to enter double-bright mode.
+ 
+ `mh'
+      String of commands to enter half-bright mode.
+ 
+ `mk'
+      String of commands to enter invisible mode.
+ 
+ `mp'
+      String of commands to enter protected mode.
+ 
+ `mr'
+      String of commands to enter reverse-video mode.
+ 
+ `me'
+      String of commands to turn off all appearance modes, including
+      standout mode and underline mode.  On some terminals it also turns
+      off alternate character set mode; on others, it may not.  This
+      capability must be present if any of `mb' ... `mr' is present.
+ 
+ `as'
+      String of commands to turn on alternate character set mode.  This
+      mode assigns some or all graphic characters an alternate picture
+      on the screen.  There is no standard as to what the alternate
+      pictures look like.
+ 
+ `ae'
+      String of commands to turn off alternate character set mode.
+ 
+ `sa'
+      String of commands to turn on an arbitrary combination of
+      appearance modes.  It accepts 9 parameters, each of which controls
+      a particular kind of appearance mode.  A parameter should be 1 to
+      turn its appearance mode on, or zero to turn that mode off.  Most
+      terminals do not support the `sa' capability, even among those
+      that do have various appearance modes.
+ 
+      The nine parameters are, in order, STANDOUT, UNDERLINE, REVERSE,
+      BLINK, HALF-BRIGHT, DOUBLE-BRIGHT, BLANK, PROTECT, ALT CHAR SET.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_standout_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char"><IMG 
+height=22 src="termcap_standout_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Char</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_standout_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Underlining"><IMG 
+height=22 src="termcap_standout_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Underlining</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

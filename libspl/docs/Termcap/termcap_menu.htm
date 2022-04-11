@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0069)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities -->
+<HTML><HEAD><TITLE>Info: (termcap) Capabilities</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Capabilities</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_menu_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_menu_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Top"><IMG 
+height=22 src="termcap_menu_files/up.gif" width=20 border=1> <EM>(termcap)</EM> 
+<STRONG>Top</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Summary"><IMG 
+height=22 src="termcap_menu_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Summary</STRONG> </A><PRE> 
+ Definitions of the Terminal Capabilities
+ ****************************************
+ 
+ This section is divided into many subsections, each for one aspect of
+ use of display terminals.  For writing a display program, you usually
+ need only check the subsections for the operations you want to use.
+ For writing a terminal description, you must read each subsection and
+ fill in the capabilities described there.
+ 
+    String capabilities that are display commands may require numeric
+ parameters (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Parameters"> Parameters</A>).  Most such capabilities do not use
+ parameters.  When a capability requires parameters, this is explicitly
+ stated at the beginning of its definition.  In simple cases, the first
+ or second sentence of the definition mentions all the parameters, in
+ the order they should be given, using a name in upper case for each
+ one.  For example, the `rp' capability is a command that requires two
+ parameters; its definition begins as follows:
+ 
+      String of commands to output a graphic character C, repeated N
+      times.
+ 
+    In complex cases or when there are many parameters, they are
+ described explicitly.
+ 
+    When a capability is described as obsolete, this means that programs
+ should not be written to look for it, but terminal descriptions should
+ still be written to provide it.
+ 
+    When a capability is described as very obsolete, this means that it
+ should be omitted from terminal descriptions as well.
+ 
+</PRE>
+<H3>Menu</H3><PRE> 
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Basic">Basic</A>       Basic characteristics.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Screen%2520Size">Screen Size</A>  Screen size, and what happens when it changes.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Motion">Cursor Motion</A>  Various ways to move the cursor.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping">Wrapping</A>    What happens if you write a character in the last column.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling">Scrolling</A>   Pushing text up and down on the screen.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Windows">Windows</A>     Limiting the part of the window that output affects.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Clearing">Clearing</A>    Erasing one or many lines.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Line">Insdel Line</A>  Making new blank lines in mid-screen; deleting lines.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char">Insdel Char</A>  Inserting and deleting characters within a line.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Standout">Standout</A>    Highlighting some of the text.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Underlining">Underlining</A>  Underlining some of the text.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Visibility">Cursor Visibility</A>  Making the cursor more or less easy to spot.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Bell">Bell</A>        Attracts user's attention; not localized on the screen.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Keypad">Keypad</A>      Recognizing when function keys or arrows are typed.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Meta%2520Key">Meta Key</A>    &lt;META&gt; acts like an extra shift key.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Initialization">Initialization</A>  Commands used to initialize or reset the terminal.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Pad%2520Specs">Pad Specs</A>   Info for the kernel on how much padding is needed.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Status%2520Line">Status Line</A>  A status line displays ``background'' information.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Half-Line">Half-Line</A>   Moving by half-lines, for superscripts and subscripts.
+* <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Printer">Printer</A>     Controlling auxiliary printers of display terminals.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_menu_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Data%2520Base"><IMG 
+height=22 src="termcap_menu_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Data Base</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Top"><IMG 
+height=22 src="termcap_menu_files/up.gif" width=20 border=1> <EM>(termcap)</EM> 
+<STRONG>Top</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Summary"><IMG 
+height=22 src="termcap_menu_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Summary</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

@@ -1,0 +1,21 @@
+###                                                                        ### 
+### This is a completely useless file in 2020, but at least no one will    ###
+### will have to fix the original problems autotools were trying to solve. ###
+
+set -e
+
+if test -f "Makefile"; then
+    rm Makefile
+fi
+
+if [ -d "debian" ]; then
+  ###  ###
+  echo "Configuring build for debian package."
+  cp Makefile.indeb Makefile
+else
+  ###   ###
+  echo "Normal build."
+  cp Makefile.in Makefile
+fi
+
+echo "Ready for you to run GNU make."

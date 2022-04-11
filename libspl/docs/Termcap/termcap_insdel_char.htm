@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char -->
+<HTML><HEAD><TITLE>Info: (termcap) Insdel Char</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Insdel Char</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_insdel_char_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Line"><IMG 
+height=22 src="termcap_insdel_char_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Line</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_insdel_char_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Standout"><IMG 
+height=22 src="termcap_insdel_char_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Standout</STRONG> </A><PRE> 
+ Insert/Delete Character
+ =======================
+ 
+ "Inserting a character" means creating a blank space in the middle of a
+ line, and pushing the rest of the line rightward.  The character in the
+ rightmost column is lost.
+ 
+    "Deleting a character" means causing the character to disappear from
+ the screen, closing up the gap by moving the rest of the line leftward.
+ A blank space appears in the rightmost column.
+ 
+    Insertion and deletion of characters is useful in programs that
+ maintain an updating display some parts of which may get longer or
+ shorter.  It is also useful in editors for redisplaying the results of
+ editing within a line.
+ 
+    Many terminals provide commands to insert or delete a single
+ character at the cursor position.  Some provide the ability to insert
+ or delete several characters with one command, using the number of
+ characters to insert or delete as a parameter.
+ 
+    Many terminals provide an insert mode in which outputting a graphic
+ character has the added effect of inserting a position for that
+ character.  A special command string is used to enter insert mode and
+ another is used to exit it.  The reason for designing a terminal with
+ an insert mode rather than an insert command is that inserting
+ character positions is usually followed by writing characters into
+ them.  With insert mode, this is as fast as simply writing the
+ characters, except for the fixed overhead of entering and leaving
+ insert mode.  However, when the line speed is great enough, padding may
+ be required for the graphic characters output in insert mode.
+ 
+    Some terminals require you to enter insert mode and then output a
+ special command for each position to be inserted.  Or they may require
+ special commands to be output before or after each graphic character to
+ be inserted.
+ 
+    Deletion of characters is usually accomplished by a straightforward
+ command to delete one or several positions; but on some terminals, it
+ is necessary to enter a special delete mode before using the delete
+ command, and leave delete mode afterward.  Sometimes delete mode and
+ insert mode are the same mode.
+ 
+    Some terminals make a distinction between character positions in
+ which a space character has been output and positions which have been
+ cleared.  On these terminals, the effect of insert or delete character
+ runs to the first cleared position rather than to the end of the line.
+ In fact, the effect may run to more than one line if there is no
+ cleared position to stop the shift on the first line.  These terminals
+ are identified by the `in' flag capability.
+ 
+    On terminals with the `in' flag, the technique of skipping over
+ characters that you know were cleared, and then outputting text later
+ on in the same line, causes later insert and delete character
+ operations on that line to do nonstandard things.  A program that has
+ any chance of doing this must check for the `in' flag and must be
+ careful to write explicit space characters into the intermediate
+ columns when `in' is present.
+ 
+    A plethora of terminal capabilities are needed to describe all of
+ this complexity.  Here is a list of them all.  Following the list, we
+ present an algorithm for programs to use to take proper account of all
+ of these capabilities.
+ 
+ `im'
+      String of commands to enter insert mode.
+ 
+      If the terminal has no special insert mode, but it can insert
+      characters with a special command, `im' should be defined with a
+      null value, because the `vi' editor assumes that insertion of a
+      character is impossible if `im' is not provided.
+ 
+      New programs should not act like `vi'.  They should pay attention
+      to `im' only if it is defined.
+ 
+ `ei'
+      String of commands to leave insert mode.  This capability must be
+      present if `im' is.
+ 
+      On a few old terminals the same string is used to enter and exit
+      insert mode.  This string turns insert mode on if it was off, and
+      off it it was on.  You can tell these terminals because the `ei'
+      string equals the `im' string.  If you want to support these
+      terminals, you must always remember accurately whether insert mode
+      is in effect.  However, these terminals are obsolete, and it is
+      reasonable to refuse to support them.  On all modern terminals, you
+      can safely output `ei' at any time to ensure that insert mode is
+      turned off.
+ 
+ `ic'
+      String of commands to insert one character position at the cursor.
+      The cursor does not move.
+ 
+      If outputting a graphic character while in insert mode is
+      sufficient to insert the character, then the `ic' capability
+      should be defined with a null value.
+ 
+      If your terminal offers a choice of ways to insert--either use
+      insert mode or use a special command--then define `im' and do not
+      define `ic', since this gives the most efficient operation when
+      several characters are to be inserted.  _Do not_ define both
+      strings, for that means that _both_ must be used each time
+      insertion is done.
+ 
+ `ip'
+      String of commands to output following an inserted graphic
+      character in insert mode.  Often it is used just for a padding
+      spec, when padding is needed after an inserted character (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Padding">
+      Padding</A>).
+ 
+ `IC'
+      String of commands to insert N character positions at and after
+      the cursor.  It has the same effect as repeating the `ic' string
+      and a space, N times.
+ 
+      If `IC' is provided, application programs may use it without first
+      entering insert mode.
+ 
+ `mi'
+      Flag whose presence means it is safe to move the cursor while in
+      insert mode and assume the terminal remains in insert mode.
+ 
+ `in'
+      Flag whose presence means that the terminal distinguishes between
+      character positions in which space characters have been output and
+      positions which have been cleared.
+ 
+    An application program can assume that the terminal can do character
+ insertion if _any one of_ the capabilities `IC', `im', `ic' or `ip' is
+ provided.
+ 
+    To insert N blank character positions, move the cursor to the place
+ to insert them and follow this algorithm:
+ 
+   1. If an `IC' string is provided, output it with parameter N and you
+      are finished.  Otherwise (or if you don't want to bother to look
+      for an `IC' string) follow the remaining steps.
+ 
+   2. Output the `im' string, if there is one, unless the terminal is
+      already in insert mode.
+ 
+   3. Repeat steps 4 through 6, N times.
+ 
+   4. Output the `ic' string if any.
+ 
+   5. Output a space.
+ 
+   6. Output the `ip' string if any.
+ 
+   7. Output the `ei' string, eventually, to exit insert mode.  There is
+      no need to do this right away.  If the `mi' flag is present, you
+      can move the cursor and the cursor will remain in insert mode;
+      then you can do more insertion elsewhere without reentering insert
+      mode.
+ 
+    To insert N graphic characters, position the cursor and follow this
+ algorithm:
+ 
+   1. If an `IC' string is provided, output it with parameter N, then
+      output the graphic characters, and you are finished.  Otherwise
+      (or if you don't want to bother to look for an `IC' string) follow
+      the remaining steps.
+ 
+   2. Output the `im' string, if there is one, unless the terminal is
+      already in insert mode.
+ 
+   3. For each character to be output, repeat steps 4 through 6.
+ 
+   4. Output the `ic' string if any.
+ 
+   5. Output the next graphic character.
+ 
+   6. Output the `ip' string if any.
+ 
+   7. Output the `ei' string, eventually, to exit insert mode.  There is
+      no need to do this right away.  If the `mi' flag is present, you
+      can move the cursor and the cursor will remain in insert mode;
+      then you can do more insertion elsewhere without reentering insert
+      mode.
+ 
+    Note that this is not the same as the original Unix termcap
+ specifications in one respect: it assumes that the `IC' string can be
+ used without entering insert mode.  This is true as far as I know, and
+ it allows you be able to avoid entering and leaving insert mode, and
+ also to be able to avoid the inserted-character padding after the
+ characters that go into the inserted positions.
+ 
+    Deletion of characters is less complicated; deleting one column is
+ done by outputting the `dc' string.  However, there may be a delete
+ mode that must be entered with `dm' in order to make `dc' work.
+ 
+ `dc'
+      String of commands to delete one character position at the cursor.
+      If `dc' is not present, the terminal cannot delete characters.
+ 
+ `DC'
+      String of commands to delete N characters starting at the cursor.
+      It has the same effect as repeating the `dc' string N times.  Any
+      terminal description that has `DC' also has `dc'.
+ 
+ `dm'
+      String of commands to enter delete mode.  If not present, there is
+      no delete mode, and `dc' can be used at any time (assuming there is
+      a `dc').
+ 
+ `ed'
+      String of commands to exit delete mode.  This must be present if
+      `dm' is.
+ 
+    To delete N character positions, position the cursor and follow these
+ steps:
+ 
+   1. If the `DC' string is present, output it with parameter N and you
+      are finished.  Otherwise, follow the remaining steps.
+ 
+   2. Output the `dm' string, unless you know the terminal is already in
+      delete mode.
+ 
+   3. Output the `dc' string N times.
+ 
+   4. Output the `ed' string eventually.  If the flag capability `mi' is
+      present, you can move the cursor and do more deletion without
+      leaving and reentering delete mode.
+ 
+    As with the `IC' string, we have departed from the original termcap
+ specifications by assuming that `DC' works without entering delete mode
+ even though `dc' would not.
+ 
+    If the `dm' and `im' capabilities are both present and have the same
+ value, it means that the terminal has one mode for both insertion and
+ deletion.  It is useful for a program to know this, because then it can
+ do insertions after deletions, or vice versa, without leaving
+ insert/delete mode and reentering it.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_insdel_char_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Line"><IMG 
+height=22 src="termcap_insdel_char_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Line</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_insdel_char_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Standout"><IMG 
+height=22 src="termcap_insdel_char_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Standout</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

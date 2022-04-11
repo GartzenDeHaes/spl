@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EAB68A8-1885-4A81-99DA-30A2927107D0}</ProjectGuid>
+    <Target>Bin</Target>
+    <Language>CPP</Language>
+    <Compiler>
+      <Compiler ctype="GppCompiler" />
+    </Compiler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineSymbols>DEBUG MONODEVELOP</DefineSymbols>
+    <SourceDirectory>.</SourceDirectory>
+    <CompileTarget>Bin</CompileTarget>
+    <Externalconsole>true</Externalconsole>
+    <OutputName>xsql</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <OptimizationLevel>3</OptimizationLevel>
+    <DefineSymbols>MONODEVELOP</DefineSymbols>
+    <SourceDirectory>.</SourceDirectory>
+    <Externalconsole>true</Externalconsole>
+    <OutputName>xsql</OutputName>
+    <CompileTarget>Bin</CompileTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="xsql.ini" />
+    <None Include="XSqlMessage.h" />
+    <None Include="XSqlMessageListener.h" />
+    <None Include="XSqlServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XSqlMessage.cpp" />
+    <Compile Include="XSqlMessageListener.cpp" />
+    <Compile Include="XSqlServer.cpp" />
+    <Compile Include="xsqlmain.cpp" />
+    <Compile Include="XSqlUnitTests.cpp" />
+  </ItemGroup>
+</Project>

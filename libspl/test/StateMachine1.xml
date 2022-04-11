@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<statemachine>
+	<state name="start" enteraction="SmTest" exitaction="SmTest">
+		<transition input="one" to="end" action="SmTest" />
+	</state>
+	<state name="end" enteraction="SmTest" exitaction="SmTest">
+		<transition input="*" to="start" action="SmTest" />
+	</state>
+</statemachine>
+

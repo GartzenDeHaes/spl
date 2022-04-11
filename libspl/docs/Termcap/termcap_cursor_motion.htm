@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0074)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Motion -->
+<HTML><HEAD><TITLE>Info: (termcap) Cursor Motion</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Cursor Motion</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_cursor_motion_files/ball.red.gif" width=20 border=1> Info 
+Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Screen%2520Size"><IMG 
+height=22 src="termcap_cursor_motion_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Screen Size</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_cursor_motion_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping"><IMG 
+height=22 src="termcap_cursor_motion_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Wrapping</STRONG> </A><PRE> 
+ Cursor Motion
+ =============
+ 
+ Termcap assumes that the terminal has a "cursor", a spot on the screen
+ where a visible mark is displayed, and that most display commands take
+ effect at the position of the cursor.  It follows that moving the cursor
+ to a specified location is very important.
+ 
+    There are many terminal capabilities for different cursor motion
+ operations.  A terminal description should define as many as possible,
+ but most programs do not need to use most of them.  One capability,
+ `cm', moves the cursor to an arbitrary place on the screen; this by
+ itself is sufficient for any application as long as there is no need to
+ support hardcopy terminals or certain old, weak displays that have only
+ relative motion commands.  Use of other cursor motion capabilities is an
+ optimization, enabling the program to output fewer characters in some
+ common cases.
+ 
+    If you plan to use the relative cursor motion commands in an
+ application program, you must know what the starting cursor position
+ is.  To do this, you must keep track of the cursor position and update
+ the records each time anything is output to the terminal, including
+ graphic characters.  In addition, it is necessary to know whether the
+ terminal wraps after writing in the rightmost column.  <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping"> Wrapping</A>.
+ 
+    One other motion capability needs special mention: `nw' moves the
+ cursor to the beginning of the following line, perhaps clearing all the
+ starting line after the cursor, or perhaps not clearing at all.  This
+ capability is a least common denominator that is probably supported
+ even by terminals that cannot do most other things such as `cm' or `do'.
+ Even hardcopy terminals can support `nw'.
+ 
+ `cm'
+      String of commands to position the cursor at line L, column C.
+      Both parameters are origin-zero, and are defined relative to the
+      screen, not relative to display memory.
+ 
+      All display terminals except a few very obsolete ones support `cm',
+      so it is acceptable for an application program to refuse to
+      operate on terminals lacking `cm'.
+ 
+ `ho'
+      String of commands to move the cursor to the upper left corner of
+      the screen (this position is called the "home position").  In
+      terminals where the upper left corner of the screen is not the
+      same as the beginning of display memory, this command must go to
+      the upper left corner of the screen, not the beginning of display
+      memory.
+ 
+      Every display terminal supports this capability, and many
+      application programs refuse to operate if the `ho' capability is
+      missing.
+ 
+ `ll'
+      String of commands to move the cursor to the lower left corner of
+      the screen.  On some terminals, moving up from home position does
+      this, but programs should never assume that will work.  Just
+      output the `ll' string (if it is provided); if moving to home
+      position and then moving up is the best way to get there, the `ll'
+      command will do that.
+ 
+ `cr'
+      String of commands to move the cursor to the beginning of the line
+      it is on.  If this capability is not specified, many programs
+      assume they can use the ASCII carriage return character for this.
+ 
+ `le'
+      String of commands to move the cursor left one column.  Unless the
+      `bw' flag capability is specified, the effect is undefined if the
+      cursor is at the left margin; do not use this command there.  If
+      `bw' is present, this command may be used at the left margin, and
+      it wraps the cursor to the last column of the preceding line.
+ 
+ `nd'
+      String of commands to move the cursor right one column.  The
+      effect is undefined if the cursor is at the right margin; do not
+      use this command there, not even if `am' is present.
+ 
+ `up'
+      String of commands to move the cursor vertically up one line.  The
+      effect of sending this string when on the top line is undefined;
+      programs should never use it that way.
+ 
+ `do'
+      String of commands to move the cursor vertically down one line.
+      The effect of sending this string when on the bottom line is
+      undefined; programs should never use it that way.
+ 
+      Some programs do use `do' to scroll up one line if used at the
+      bottom line, if `sf' is not defined but `sr' is.  This is only to
+      compensate for certain old, incorrect terminal descriptions.  (In
+      principle this might actually lead to incorrect behavior on other
+      terminals, but that seems to happen rarely if ever.)  But the
+      proper solution is that the terminal description should define
+      `sf' as well as `do' if the command is suitable for scrolling.
+ 
+      The original idea was that this string would not contain a newline
+      character and therefore could be used without disabling the
+      kernel's usual habit of converting of newline into a
+      carriage-return newline sequence.  But many terminal descriptions
+      do use newline in the `do' string, so this is not possible; a
+      program which sends the `do' string must disable output conversion
+      in the kernel (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Initialize"> Initialize</A>).
+ 
+ `bw'
+      Flag whose presence says that `le' may be used in column zero to
+      move to the last column of the preceding line.  If this flag is
+      not present, `le' should not be used in column zero.
+ 
+ `nw'
+      String of commands to move the cursor to start of next line,
+      possibly clearing rest of line (following the cursor) before
+      moving.
+ 
+ `DO', `UP', `LE', `RI'
+      Strings of commands to move the cursor N lines down vertically, up
+      vertically, or N columns left or right.  Do not attempt to move
+      past any edge of the screen with these commands; the effect of
+      trying that is undefined.  Only a few terminal descriptions provide
+      these commands, and most programs do not use them.
+ 
+ `CM'
+      String of commands to position the cursor at line L, column C,
+      relative to display memory.  Both parameters are origin-zero.
+      This capability is present only in terminals where there is a
+      difference between screen-relative and memory-relative addressing,
+      and not even in all such terminals.
+ 
+ `ch'
+      String of commands to position the cursor at column C in the same
+      line it is on.  This is a special case of `cm' in which the
+      vertical position is not changed.  The `ch' capability is provided
+      only when it is faster to output than `cm' would be in this
+      special case.  Programs should not assume most display terminals
+      have `ch'.
+ 
+ `cv'
+      String of commands to position the cursor at line L in the same
+      column.  This is a special case of `cm' in which the horizontal
+      position is not changed.  The `cv' capability is provided only
+      when it is faster to output than `cm' would be in this special
+      case.  Programs should not assume most display terminals have `cv'.
+ 
+ `sc'
+      String of commands to make the terminal save the current cursor
+      position.  Only the last saved position can be used.  If this
+      capability is present, `rc' should be provided also.  Most
+      terminals have neither.
+ 
+ `rc'
+      String of commands to make the terminal restore the last saved
+      cursor position.  If this capability is present, `sc' should be
+      provided also.  Most terminals have neither.
+ 
+ `ff'
+      String of commands to advance to the next page, for a hardcopy
+      terminal.
+ 
+ `ta'
+      String of commands to move the cursor right to the next hardware
+      tab stop column.  Missing if the terminal does not have any kind of
+      hardware tabs.  Do not send this command if the kernel's terminal
+      modes say that the kernel is expanding tabs into spaces.
+ 
+ `bt'
+      String of commands to move the cursor left to the previous hardware
+      tab stop column.  Missing if the terminal has no such ability; many
+      terminals do not.  Do not send this command if the kernel's
+      terminal modes say that the kernel is expanding tabs into spaces.
+ 
+    The following obsolete capabilities should be included in terminal
+ descriptions when appropriate, but should not be looked at by new
+ programs.
+ 
+ `nc'
+      Flag whose presence means the terminal does not support the ASCII
+      carriage return character as `cr'.  This flag is needed because
+      old programs assume, when the `cr' capability is missing, that
+      ASCII carriage return can be used for the purpose.  We use `nc' to
+      tell the old programs that carriage return may not be used.
+ 
+      New programs should not assume any default for `cr', so they need
+      not look at `nc'.  However, descriptions should contain `nc'
+      whenever they do not contain `cr'.
+ 
+ `xt'
+      Flag whose presence means that the ASCII tab character may not be
+      used for cursor motion.  This flag exists because old programs
+      assume, when the `ta' capability is missing, that ASCII tab can be
+      used for the purpose.  We use `xt' to tell the old programs not to
+      use tab.
+ 
+      New programs should not assume any default for `ta', so they need
+      not look at `xt' in connection with cursor motion.  Note that `xt'
+      also has implications for standout mode (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Standout"> Standout</A>).  It is
+      obsolete in regard to cursor motion but not in regard to standout.
+ 
+      In fact, `xt' means that the terminal is a Teleray 1061.
+ 
+ `bc'
+      Very obsolete alternative name for the `le' capability.
+ 
+ `bs'
+      Flag whose presence means that the ASCII character backspace may be
+      used to move the cursor left.  Obsolete; look at `le' instead.
+ 
+ `nl'
+      Obsolete capability which is a string that can either be used to
+      move the cursor down or to scroll.  The same string must scroll
+      when used on the bottom line and move the cursor when used on any
+      other line.  New programs should use `do' or `sf', and ignore `nl'.
+ 
+      If there is no `nl' capability, some old programs assume they can
+      use the newline character for this purpose.  These programs follow
+      a bad practice, but because they exist, it is still desirable to
+      define the `nl' capability in a terminal description if the best
+      way to move down is _not_ a newline.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_cursor_motion_files/ball.red.gif" width=20 border=1> Info 
+Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Screen%2520Size"><IMG 
+height=22 src="termcap_cursor_motion_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Screen Size</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_cursor_motion_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping"><IMG 
+height=22 src="termcap_cursor_motion_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Wrapping</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

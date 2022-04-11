@@ -1,0 +1,628 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0040)http://vt100.net/charsets/technical.html -->
+<HTML lang=EN><HEAD><TITLE>VT100.net: DEC Technical Character Set</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="VT100_net DEC Technical Character Set_files/terminal.css" type=text/css 
+rel=stylesheet><LINK href="/favicon.ico" type=image/x-icon rel="shortcut icon">
+<META content=2000-06-04 name=DATE>
+<STYLE type=text/css>#DISP {
+	MARGIN-BOTTOM: 2em; MARGIN-LEFT: 2em
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<DIV class=navbar><A href="http://vt100.net/"><IMG class=button height=16 
+alt=VT100.net 
+src="VT100_net DEC Technical Character Set_files/vt100.net-logo.png" 
+width=102></A></DIV>
+<H1>DEC Technical Character Set (TCS)</H1><IMG id=DISP height=254 
+alt="Screenshot of the Technical Character Set on a VT420" 
+src="VT100_net DEC Technical Character Set_files/dec-technical-vt420-green.png" 
+width=214 align=right> 
+<P>The Technical Character Set appears on Digital terminals from the VT330 and 
+VT420 onwards. It is a 94-character set containing mathematical symbols and 
+Greek letters. You can see how a VT420 terminal displays the set in the picture 
+on the right. The sigma and larger brackets are made up from smaller joining 
+characters.</P>
+<P>In Digital's terminal and printer manuals, this set is only documented by 
+pictures of the characters ("glyphs"). These glyphs often don't provide enough 
+information as to the purpose of the characters and there are places where the 
+manuals disagree with each other. I have examined the VT3XX and VT420 manuals 
+and the shapes of the characters as displayed by the VT330, VT420 and VT520 
+terminals, and an LN03 laser printer. I'll cover the mistakes in the manuals <A 
+href="http://vt100.net/charsets/technical.html#MANUALS">later</A>.</P>
+<P>The main impetus for this page came from discussions with Frank da&nbsp;Cruz 
+of the <A href="http://www.columbia.edu/kermit/">Kermit Project</A>, who 
+proposed a set of <A 
+href="ftp://kermit.columbia.edu/kermit/ucsterminal/ucsterminal.txt">terminal 
+graphics</A> for inclusion in <A href="http://www.unicode.org/">Unicode</A>, 
+including some from the Technical Set. Some of the TCS characters were already 
+in Unicode and some others were covered by another proposal called STIX. In 
+order to be sure that a small but sufficient set of characters was proposed, we 
+needed to be sure what all the characters in TCS meant. Most of the proposed 
+characters made it into Unicode 3.2.</P>
+<H2>Character set</H2>
+<P><IMG height=550 alt="" 
+src="VT100_net DEC Technical Character Set_files/dec-technical.png" width=214 
+align=left>These characters were scanned from a printout obtained from an LN03 
+laser printer. The characters 02/01 to 03/07 join to adjacent character 
+positions to make large symbols (as illustrated in the VT420 screenshot, above). 
+I have placed a light line around them to show how they join.</P>
+<P>There are actually no blanks (spaces) in this set; all undefined positions 
+will cause the substitute character (a reversed question mark) to be displayed. 
+This reversed question mark has now made it into Unicode&nbsp;3.0 as U+2426, 
+SYMBOL FOR SUBSTITUTE FORM TWO.<BR clear=all></P>
+<H2>Column by column</H2>
+<P>The following tables describe all the characters in the TCS. Some of the 
+characters have equivalents in Unicode, so the table shows the Unicode reference 
+(number and name) for these. I have guessed at some of the associations between 
+TCS and Unicode characters because I'm not sure what the joining properties of 
+the Unicode characters are; I've placed the Unicode reference for these in 
+parentheses.</P>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>02/01</TD>
+    <TD>U+23B7</TD>
+    <TD>RADICAL SYMBOL BOTTOM</TD>
+    <TD>Centred left to right, so that it joins up with 02/02</TD></TR>
+  <TR vAlign=top>
+    <TD>02/02</TD>
+    <TD>U+250C</TD>
+    <TD>BOX DRAWINGS LIGHT DOWN AND RIGHT</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>02/03</TD>
+    <TD>U+2500</TD>
+    <TD>BOX DRAWINGS LIGHT HORIZONTAL</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>02/04</TD>
+    <TD>U+2320</TD>
+    <TD>TOP HALF INTEGRAL</TD>
+    <TD>with the proviso that the stem is vertical, to join with 02/06</TD></TR>
+  <TR vAlign=top>
+    <TD>02/05</TD>
+    <TD>U+2321</TD>
+    <TD>BOTTOM HALF INTEGRAL</TD>
+    <TD>with the proviso above.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/06</TD>
+    <TD>U+2502</TD>
+    <TD>BOX DRAWINGS LIGHT VERTICAL</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>02/07</TD>
+    <TD>U+23A1</TD>
+    <TD>LEFT SQUARE BRACKET UPPER CORNER</TD>
+    <TD>Joins vertically to 02/06, 02/08. Doesn't join to its right.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/08</TD>
+    <TD>U+23A3</TD>
+    <TD>LEFT SQUARE BRACKET LOWER CORNER</TD>
+    <TD>Joins vertically to 02/06, 02/07. Doesn't join to its right.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/09</TD>
+    <TD>U+23A4</TD>
+    <TD>RIGHT SQUARE BRACKET UPPER CORNER</TD>
+    <TD>Joins vertically to 02/06, 02/10. Doesn't join to its left.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/10</TD>
+    <TD>U+23A6</TD>
+    <TD>RIGHT SQUARE BRACKET LOWER CORNER</TD>
+    <TD>Joins vertically to 02/06, 02/09. Doesn't join to its left.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/11</TD>
+    <TD>U+239B</TD>
+    <TD>LEFT PARENTHESIS UPPER HOOK</TD>
+    <TD>Joins vertically to 02/06, 02/12, 02/15. Doesn't join to its 
+  right.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/12</TD>
+    <TD>U+239D</TD>
+    <TD>LEFT PARENTHESIS LOWER HOOK</TD>
+    <TD>Joins vertically to 02/06, 02/11, 02/15. Doesn't join to its 
+  right.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/13</TD>
+    <TD>U+239E</TD>
+    <TD>RIGHT PARENTHESIS UPPER HOOK</TD>
+    <TD>Joins vertically to 02/06, 02/14, 03/00. Doesn't join to its 
+  left.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/14</TD>
+    <TD>U+23A0</TD>
+    <TD>RIGHT PARENTHESIS LOWER HOOK</TD>
+    <TD>Joins vertically to 02/06, 02/13, 03/00. Doesn't join to its 
+  left.</TD></TR>
+  <TR vAlign=top>
+    <TD>02/15</TD>
+    <TD>U+23A8</TD>
+    <TD>LEFT CURLY BRACKET MIDDLE PIECE</TD>
+    <TD>Joins vertically to 02/06, 02/11, 02/12.</TD></TR></TBODY></TABLE>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>03/00</TD>
+    <TD>U+23AC</TD>
+    <TD>RIGHT CURLY BRACKET MIDDLE PIECE</TD>
+    <TD>Joins vertically to 02/06, 02/13, 02/14.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/01</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Top Left Sigma. Joins to right with 02/03, 03/05. Joins diagonally 
+      below right with 03/03, 03/07.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/02</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Bottom Left Sigma. Joins to right with 02/03, 03/06. Joins diagonally 
+      above right with 03/04, 03/07.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/03</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Top Diagonal Sigma. Line for joining 03/01 to 03/04 or 03/07.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/04</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Bottom Diagonal Sigma. Line for joining 03/02 to 03/03 or 03/07.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/05</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Top Right Sigma. Joins to left with 02/03, 03/01.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/06</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Bottom Right Sigma. Joins to left with 02/03, 03/02.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/07</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Middle Sigma. Joins diagonally with 03/01, 03/02, 03/03, 03/04.</TD></TR>
+  <TR vAlign=top>
+    <TD>03/08</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>03/09</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>03/10</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>03/11</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>03/12</TD>
+    <TD>U+2264</TD>
+    <TD>LESS-THAN OR EQUAL TO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>03/13</TD>
+    <TD>U+2260</TD>
+    <TD>NOT EQUAL TO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>03/14</TD>
+    <TD>U+2265</TD>
+    <TD>GREATER-THAN OR EQUAL TO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>03/15</TD>
+    <TD>U+222B</TD>
+    <TD>INTEGRAL</TD>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>04/00</TD>
+    <TD>U+2234</TD>
+    <TD>THEREFORE</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/01</TD>
+    <TD>U+221D</TD>
+    <TD>PROPORTIONAL TO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/02</TD>
+    <TD>U+221E</TD>
+    <TD>INFINITY</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/03</TD>
+    <TD>U+00F7</TD>
+    <TD>DIVISION SIGN</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/04</TD>
+    <TD>U+039A</TD>
+    <TD>GREEK CAPITAL DELTA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/05</TD>
+    <TD>U+2207</TD>
+    <TD>NABLA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/06</TD>
+    <TD>U+03A6</TD>
+    <TD>GREEK CAPITAL LETTER PHI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/07</TD>
+    <TD>U+0393</TD>
+    <TD>GREEK CAPITAL LETTER GAMMA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/08</TD>
+    <TD>U+223C</TD>
+    <TD>TILDE OPERATOR</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/09</TD>
+    <TD>U+2243</TD>
+    <TD>ASYMPTOTICALLY EQUAL TO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/10</TD>
+    <TD>U+0398</TD>
+    <TD>GREEK CAPITAL LETTER THETA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/11</TD>
+    <TD>U+00D7</TD>
+    <TD>MULTIPLICATION SIGN</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/12</TD>
+    <TD>U+039B</TD>
+    <TD>GREEK CAPITAL LETTER LAMDA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/13</TD>
+    <TD>U+21D4</TD>
+    <TD>LEFT RIGHT DOUBLE ARROW</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/14</TD>
+    <TD>U+21D2</TD>
+    <TD>RIGHTWARDS DOUBLE ARROW</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>04/15</TD>
+    <TD>U+2261</TD>
+    <TD>IDENTICAL TO</TD>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>05/00</TD>
+    <TD>U+03A0</TD>
+    <TD>GREEK CAPITAL LETTER PI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/01</TD>
+    <TD>U+03A8</TD>
+    <TD>GREEK CAPITAL LETTER PSI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/02</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>05/03</TD>
+    <TD>U+03A3</TD>
+    <TD>GREEK CAPITAL LETTER SIGMA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/04</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>05/05</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>05/06</TD>
+    <TD>U+221A</TD>
+    <TD>SQUARE ROOT</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/07</TD>
+    <TD>U+03A9</TD>
+    <TD>GREEK CAPITAL LETTER OMEGA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/08</TD>
+    <TD>U+039E</TD>
+    <TD>GREEK CAPITAL LETTER XI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/09</TD>
+    <TD>U+03A5</TD>
+    <TD>GREEK CAPITAL LETTER UPSILON</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/10</TD>
+    <TD>U+2282</TD>
+    <TD>SUBSET OF</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/11</TD>
+    <TD>U+2283</TD>
+    <TD>SUPERSET OF</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/12</TD>
+    <TD>U+2229</TD>
+    <TD>INTERSECTION</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/13</TD>
+    <TD>U+222A</TD>
+    <TD>UNION</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/14</TD>
+    <TD>U+2227</TD>
+    <TD>LOGICAL AND</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>05/15</TD>
+    <TD>U+2228</TD>
+    <TD>LOGICAL OR</TD>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>06/00</TD>
+    <TD>U+00AC</TD>
+    <TD>NOT SIGN</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/01</TD>
+    <TD>U+03B1</TD>
+    <TD>GREEK SMALL LETTER ALPHA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/02</TD>
+    <TD>U+03B2</TD>
+    <TD>GREEK SMALL LETTER BETA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/03</TD>
+    <TD>U+03C7</TD>
+    <TD>GREEK SMALL LETTER CHI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/04</TD>
+    <TD>U+03B4</TD>
+    <TD>GREEK SMALL LETTER DELTA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/05</TD>
+    <TD>U+03B5</TD>
+    <TD>GREEK SMALL LETTER EPSILON</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/06</TD>
+    <TD>U+03C6</TD>
+    <TD>GREEK SMALL LETTER PHI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/07</TD>
+    <TD>U+03B3</TD>
+    <TD>GREEK SMALL LETTER GAMMA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/08</TD>
+    <TD>U+03B7</TD>
+    <TD>GREEK SMALL LETTER ETA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/09</TD>
+    <TD>U+03B9</TD>
+    <TD>GREEK SMALL LETTER IOTA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/10</TD>
+    <TD>U+03B8</TD>
+    <TD>GREEK SMALL LETTER THETA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/11</TD>
+    <TD>U+03BA</TD>
+    <TD>GREEK SMALL LETTER KAPPA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/12</TD>
+    <TD>U+03BB</TD>
+    <TD>GREEK SMALL LETTER LAMDA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/13</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>06/14</TD>
+    <TD>U+03BD</TD>
+    <TD>GREEK SMALL LETTER NU</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>06/15</TD>
+    <TD>U+2202</TD>
+    <TD>PARTIAL DIFFERENTIAL</TD>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE>
+  <COLGROUP>
+  <COL align=left>
+  <COL align=middle>
+  <COL span=2 align=left>
+  <THEAD>
+  <TR>
+    <TH>col/row</TH>
+    <TH>Unicode</TH>
+    <TH>Name</TH>
+    <TH>Description</TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>07/00</TD>
+    <TD>U+03C0</TD>
+    <TD>GREEK SMALL LETTER PI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/01</TD>
+    <TD>U+03C8 </TD>
+    <TD>GREEK SMALL LETTER PSI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/02</TD>
+    <TD>U+03C1</TD>
+    <TD>GREEK SMALL LETTER RHO</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/03</TD>
+    <TD>U+03C3</TD>
+    <TD>GREEK SMALL LETTER SIGMA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/04</TD>
+    <TD>U+03C4</TD>
+    <TD>GREEK SMALL LETTER TAU</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/05</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>undefined</TD></TR>
+  <TR vAlign=top>
+    <TD>07/06</TD>
+    <TD>U+0192</TD>
+    <TD>LATIN SMALL LETTER F WITH HOOK</TD>
+    <TD>Probably chosen for its meaning of "function"</TD></TR>
+  <TR vAlign=top>
+    <TD>07/07</TD>
+    <TD>U+03C9</TD>
+    <TD>GREEK SMALL LETTER OMEGA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/08</TD>
+    <TD>U+03BE</TD>
+    <TD>GREEK SMALL LETTER XI</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/09</TD>
+    <TD>U+03C5</TD>
+    <TD>GREEK SMALL LETTER UPSILON</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/10</TD>
+    <TD>U+03B6</TD>
+    <TD>GREEK SMALL LETTER ZETA</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/11</TD>
+    <TD>U+2190</TD>
+    <TD>LEFTWARDS ARROW</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/12</TD>
+    <TD>U+2191</TD>
+    <TD>UPWARDS ARROW</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/13</TD>
+    <TD>U+2192</TD>
+    <TD>RIGHTWARDS ARROW</TD>
+    <TD></TD></TR>
+  <TR vAlign=top>
+    <TD>07/14</TD>
+    <TD>U+2193</TD>
+    <TD>DOWNWARDS ARROW</TD>
+    <TD></TD></TR></TBODY></TABLE>
+<H2 id=MANUALS>Reading the manuals</H2>
+<P>This section names the manuals I've consulted in order to write this 
+document, and explains any differences between the manuals and this page.</P>
+<P>The diagram in EK-VT420-UU-002, <CITE>Installing and Using the VT420 Video 
+Terminal</CITE>, is particularly indistinct, and contains one mistake; it swaps 
+07/05 and 07/06. You might also get the impression that 03/05 and 06/00 are 
+identical, and that 05/09 is a 'T'. The VT420 itself shows 05/09 (capital 
+Upsilon) with a distinct hook, but I've concluded that this character is not 
+intended to be U+03D2 GREEK CAPITAL LETTER UPSILON HOOK because the VT520 
+displays a more straightforward 'Y' shape.</P>
+<P>The diagram in EK-VT3XX-HR-001, <CITE>VT330/VT340 Programmer Pocket 
+Guide</CITE>, is also small but accurate.</P>
+<P>The largest diagram I've seen is in EK-OLN03-RM-002, <CITE>LN03 Programmer 
+Reference Manual</CITE>.</P>
+<DIV class=navbot>
+<HR>
+Copyright 2000-2002 <A href="http://celigne.co.uk/paul/">Paul 
+Williams</A>.<BR>http://vt100.net/charsets/technical.html</DIV></BODY></HTML>

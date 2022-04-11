@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Array.cpp" />
+    <ClCompile Include="src\BackPropNeuralNetwork.cpp" />
+    <ClCompile Include="src\BigInteger.cpp" />
+    <ClCompile Include="src\BitMask.cpp" />
+    <ClCompile Include="src\cdebug.cpp" />
+    <ClCompile Include="src\CDes.cpp" />
+    <ClCompile Include="src\CLog.cpp" />
+    <ClCompile Include="src\CommandLine.cpp" />
+    <ClCompile Include="src\Compare.cpp" />
+    <ClCompile Include="src\ConfigurationSection.cpp" />
+    <ClCompile Include="src\ConfigurationSettings.cpp" />
+    <ClCompile Include="src\data\ColumnTypes.cpp" />
+    <ClCompile Include="src\data\CommandParameter.cpp" />
+    <ClCompile Include="src\data\Connection.cpp" />
+    <ClCompile Include="src\data\DataColumn.cpp" />
+    <ClCompile Include="src\data\DataRow.cpp" />
+    <ClCompile Include="src\data\DataTable.cpp" />
+    <ClCompile Include="src\data\RecordSet.cpp" />
+    <ClCompile Include="src\Dates.cpp" />
+    <ClCompile Include="src\Debug.cpp" />
+    <ClCompile Include="src\Decimal.cpp" />
+    <ClCompile Include="src\DelegateDispatch.cpp" />
+    <ClCompile Include="src\DelimitedFile.cpp" />
+    <ClCompile Include="src\DesStream.cpp" />
+    <ClCompile Include="src\Directory.cpp" />
+    <ClCompile Include="src\Environment.cpp" />
+    <ClCompile Include="src\Exception.cpp" />
+    <ClCompile Include="src\File.cpp" />
+    <ClCompile Include="src\FileStream.cpp" />
+    <ClCompile Include="src\GUID.cpp" />
+    <ClCompile Include="src\Hashtable.cpp" />
+    <ClCompile Include="src\IEnumerable.cpp" />
+    <ClCompile Include="src\Image.cpp" />
+    <ClCompile Include="src\InterlockCounter.cpp" />
+    <ClCompile Include="src\io\FileAppendService.cpp" />
+    <ClCompile Include="src\io\MemoryStream.cpp" />
+    <ClCompile Include="src\io\Pipe.cpp" />
+    <ClCompile Include="src\io\StringStream.cpp" />
+    <ClCompile Include="src\io\ThreadedLog.cpp" />
+    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\MemoryPool.cpp" />
+    <ClCompile Include="src\Mutex.cpp" />
+    <ClCompile Include="src\Null.cpp" />
+    <ClCompile Include="src\Numeric.cpp" />
+    <ClCompile Include="src\ObjectPool.cpp" />
+    <ClCompile Include="src\Packet.cpp" />
+    <ClCompile Include="src\Permissions.cpp" />
+    <ClCompile Include="src\PooledSocketSet.cpp" />
+    <ClCompile Include="src\PortListener.cpp" />
+    <ClCompile Include="src\Queue.cpp" />
+    <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\realfree.cpp" />
+    <ClCompile Include="src\Regex.cpp" />
+    <ClCompile Include="src\RSA.cpp" />
+    <ClCompile Include="src\Sample.cpp" />
+    <ClCompile Include="src\SampleTest.cpp" />
+    <ClCompile Include="src\Semaphore.cpp" />
+    <ClCompile Include="src\SimpleBlockCypher.cpp" />
+    <ClCompile Include="src\Socket.cpp" />
+    <ClCompile Include="src\SocketSet.cpp" />
+    <ClCompile Include="src\StateMachine.cpp" />
+    <ClCompile Include="src\String.cpp" />
+    <ClCompile Include="src\StringBuffer.cpp" />
+    <ClCompile Include="src\StringTable.cpp" />
+    <ClCompile Include="src\StringTokenizer.cpp" />
+    <ClCompile Include="src\Thread.cpp" />
+    <ClCompile Include="src\ThreadStart.cpp" />
+    <ClCompile Include="src\UdpServer.cpp" />
+    <ClCompile Include="src\UdpSocket.cpp" />
+    <ClCompile Include="src\Undefined.cpp" />
+    <ClCompile Include="src\Variant.cpp" />
+    <ClCompile Include="src\web\FileHandlerBase.cpp" />
+    <ClCompile Include="src\web\HttpCookie.cpp" />
+    <ClCompile Include="src\web\HttpHandler.cpp" />
+    <ClCompile Include="src\web\HttpHandlerFactory.cpp" />
+    <ClCompile Include="src\web\HttpHeader.cpp" />
+    <ClCompile Include="src\web\HttpInstance.cpp" />
+    <ClCompile Include="src\web\HttpRequest.cpp" />
+    <ClCompile Include="src\web\HttpRequestBody.cpp" />
+    <ClCompile Include="src\web\HttpResponse.cpp" />
+    <ClCompile Include="src\web\HttpServer.cpp" />
+    <ClCompile Include="src\web\HttpUtility.cpp" />
+    <ClCompile Include="src\web\Uri.cpp" />
+    <ClCompile Include="test\TestBigInteger.cpp" />
+    <ClCompile Include="test\TestBitMask.cpp" />
+    <ClCompile Include="test\TestCommand.cpp" />
+    <ClCompile Include="test\TestCommandLine.cpp" />
+    <ClCompile Include="test\TestConfigSettings.cpp" />
+    <ClCompile Include="test\TestDate.cpp" />
+    <ClCompile Include="test\TestDateTime.cpp" />
+    <ClCompile Include="test\TestDebug.cpp" />
+    <ClCompile Include="test\TestDecimal.cpp" />
+    <ClCompile Include="test\TestDelimitedFile.cpp" />
+    <ClCompile Include="test\TestDes.cpp" />
+    <ClCompile Include="test\TestDesStream.cpp" />
+    <ClCompile Include="test\TestEnv.cpp" />
+    <ClCompile Include="test\TestException.cpp" />
+    <ClCompile Include="test\TestFile.cpp" />
+    <ClCompile Include="test\TestHarness.cpp" />
+    <ClCompile Include="test\TestMath.cpp" />
+    <ClCompile Include="test\TestMemoryPool.cpp" />
+    <ClCompile Include="test\TestMutex.cpp" />
+    <ClCompile Include="test\TestNeuralNetwork.cpp" />
+    <ClCompile Include="test\TestNumeric.cpp" />
+    <ClCompile Include="test\TestObjPool.cpp" />
+    <ClCompile Include="test\TestPacket.cpp" />
+    <ClCompile Include="test\TestPipe.cpp" />
+    <ClCompile Include="test\TestRandom.cpp" />
+    <ClCompile Include="test\TestRbTree.cpp" />
+    <ClCompile Include="test\TestRecordSet.cpp" />
+    <ClCompile Include="test\testRefCountPtr.cpp" />
+    <ClCompile Include="test\TestRegex.cpp" />
+    <ClCompile Include="test\TestRSA.cpp" />
+    <ClCompile Include="test\TestSemaphore.cpp" />
+    <ClCompile Include="test\TestSharedLock.cpp" />
+    <ClCompile Include="test\TestSocketSet.cpp" />
+    <ClCompile Include="test\TestStateMachine.cpp" />
+    <ClCompile Include="test\TestStream.cpp" />
+    <ClCompile Include="test\TestStringBuffer.cpp" />
+    <ClCompile Include="test\TestStringTable.cpp" />
+    <ClCompile Include="test\TestStringTokenizer.cpp" />
+    <ClCompile Include="test\TestTHashTable.cpp" />
+    <ClCompile Include="test\TestThread.cpp" />
+    <ClCompile Include="test\TestTString.cpp" />
+    <ClCompile Include="test\TestTVector.cpp" />
+    <ClCompile Include="test\TestTypes.cpp" />
+    <ClCompile Include="test\TestUri.cpp" />
+    <ClCompile Include="test\TestVariant.cpp" />
+    <ClCompile Include="test\TTestList.cpp" />
+    <ClCompile Include="src\pcre\pcre_chartables.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_compile.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_config.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_dfa_exec.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_exec.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_fullinfo.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_get.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_globals.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_info.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_maketables.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_newline.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_ord2utf8.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_refcount.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_study.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_tables.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_try_flipped.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_ucd.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_valid_utf8.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_version.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcre_xclass.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pcre\pcreposix.c">
+      <Filter>PCRE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\term\Telnet.cpp">
+      <Filter>term\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\term\AnsiTerm.cpp">
+      <Filter>term\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\term\Color.cpp">
+      <Filter>term\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\term\TermCap.cpp">
+      <Filter>term\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\term\tparam.cpp">
+      <Filter>term\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\Stream.cpp" />
+    <ClCompile Include="src\io\StreamFd.cpp" />
+    <ClCompile Include="src\io\StreamReadPump.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="spl\BigInteger.h" />
+    <ClInclude Include="spl\Char.h" />
+    <ClInclude Include="spl\collection\Array.h" />
+    <ClInclude Include="spl\collection\Association.h" />
+    <ClInclude Include="spl\collection\CircularArray.h" />
+    <ClInclude Include="spl\collection\Hashtable.h" />
+    <ClInclude Include="spl\collection\IEnumerable.h" />
+    <ClInclude Include="spl\collection\List.h" />
+    <ClInclude Include="spl\collection\ListVolatile.h" />
+    <ClInclude Include="spl\collection\MemoryPool.h" />
+    <ClInclude Include="spl\collection\ObjectPool.h" />
+    <ClInclude Include="spl\collection\Queue.h" />
+    <ClInclude Include="spl\collection\RedBlackTree.h" />
+    <ClInclude Include="spl\collection\StringTable.h" />
+    <ClInclude Include="spl\collection\Vector.h" />
+    <ClInclude Include="spl\Compare.h" />
+    <ClInclude Include="spl\configuration\CommandLine.h" />
+    <ClInclude Include="spl\configuration\ConfigurationSection.h" />
+    <ClInclude Include="spl\configuration\ConfigurationSettings.h" />
+    <ClInclude Include="spl\configwin32.h" />
+    <ClInclude Include="spl\Convert.h" />
+    <ClInclude Include="spl\data\ColumnTypes.h" />
+    <ClInclude Include="spl\data\Command.h" />
+    <ClInclude Include="spl\data\CommandParameter.h" />
+    <ClInclude Include="spl\data\Connection.h" />
+    <ClInclude Include="spl\data\DataColumn.h" />
+    <ClInclude Include="spl\data\DataRow.h" />
+    <ClInclude Include="spl\data\DataTable.h" />
+    <ClInclude Include="spl\data\RecordSet.h" />
+    <ClInclude Include="spl\data\Transaction.h" />
+    <ClInclude Include="spl\Date.h" />
+    <ClInclude Include="spl\DateTime.h" />
+    <ClInclude Include="spl\Debug.h" />
+    <ClInclude Include="spl\Decimal.h" />
+    <ClInclude Include="spl\Delegate.h" />
+    <ClInclude Include="spl\DelegateDispatch.h" />
+    <ClInclude Include="spl\Des.h" />
+    <ClInclude Include="spl\Double.h" />
+    <ClInclude Include="spl\Environment.h" />
+    <ClInclude Include="spl\Exception.h" />
+    <ClInclude Include="spl\GUID.h" />
+    <ClInclude Include="spl\IConvertable.h" />
+    <ClInclude Include="spl\IIterator.h" />
+    <ClInclude Include="spl\Image.h" />
+    <ClInclude Include="spl\Int32.h" />
+    <ClInclude Include="spl\Int64.h" />
+    <ClInclude Include="spl\interp\OpCodes.h" />
+    <ClInclude Include="spl\io\BlockingStream.h" />
+    <ClInclude Include="spl\io\DelimitedFile.h" />
+    <ClInclude Include="spl\io\DesStream.h" />
+    <ClInclude Include="spl\io\Directory.h" />
+    <ClInclude Include="spl\io\DualChannelStream.h" />
+    <ClInclude Include="spl\io\File.h" />
+    <ClInclude Include="spl\io\FileStream.h" />
+    <ClInclude Include="spl\io\FlatRecord.h" />
+    <ClInclude Include="spl\io\FlatRecordFactory.h" />
+    <ClInclude Include="spl\io\ISerializable.h" />
+    <ClInclude Include="spl\io\IStream.h" />
+    <ClInclude Include="spl\io\log\FileAppendService.h" />
+    <ClInclude Include="spl\io\log\Log.h" />
+    <ClInclude Include="spl\io\log\ThreadedLog.h" />
+    <ClInclude Include="spl\io\MemoryStream.h" />
+    <ClInclude Include="spl\io\NullStream.h" />
+    <ClInclude Include="spl\io\Permissions.h" />
+    <ClInclude Include="spl\io\Pipe.h" />
+    <ClInclude Include="spl\io\SocketStream.h" />
+    <ClInclude Include="spl\io\Stream.h" />
+    <ClInclude Include="spl\io\StreamBuffer.h" />
+    <ClInclude Include="spl\io\StreamDelegateDispatch.h" />
+    <ClInclude Include="spl\io\StreamReadPump.h" />
+    <ClInclude Include="spl\io\StringStream.h" />
+    <ClInclude Include="spl\io\ThreadedPacketStream.h" />
+    <ClInclude Include="spl\io\ThreadSafeStream.h" />
+    <ClInclude Include="spl\io\WinPerm.h" />
+    <ClInclude Include="spl\IVariant.h" />
+    <ClInclude Include="spl\LazyLoadPtr.h" />
+    <ClInclude Include="spl\math\BitMask.h" />
+    <ClInclude Include="spl\math\Math.h" />
+    <ClInclude Include="spl\math\Matrix.h" />
+    <ClInclude Include="spl\math\NeuralNetwork.h" />
+    <ClInclude Include="spl\math\Point.h" />
+    <ClInclude Include="spl\math\Random.h" />
+    <ClInclude Include="spl\math\RSA.h" />
+    <ClInclude Include="spl\math\Sample.h" />
+    <ClInclude Include="spl\math\SampleTest.h" />
+    <ClInclude Include="spl\math\SimpleBlockCypher.h" />
+    <ClInclude Include="spl\math\StateMachine.h" />
+    <ClInclude Include="spl\math\Vector.h" />
+    <ClInclude Include="spl\Memory.h" />
+    <ClInclude Include="spl\net\Packet.h" />
+    <ClInclude Include="spl\net\PacketBuilder.h" />
+    <ClInclude Include="spl\net\PooledSocketSet.h" />
+    <ClInclude Include="spl\net\PortListener.h" />
+    <ClInclude Include="spl\net\ServerSocket.h" />
+    <ClInclude Include="spl\net\Socket.h" />
+    <ClInclude Include="spl\net\SocketSet.h" />
+    <ClInclude Include="spl\net\TcpSocket.h" />
+    <ClInclude Include="spl\net\UdpServer.h" />
+    <ClInclude Include="spl\net\UdpSocket.h" />
+    <ClInclude Include="spl\Null.h" />
+    <ClInclude Include="spl\Numeric.h" />
+    <ClInclude Include="spl\RefCountPtr.h" />
+    <ClInclude Include="spl\RefCountPtrCast.h" />
+    <ClInclude Include="spl\String.h" />
+    <ClInclude Include="spl\text\Regex.h" />
+    <ClInclude Include="spl\text\RegexOptions.h" />
+    <ClInclude Include="spl\text\StringBuffer.h" />
+    <ClInclude Include="spl\text\StringTokenizer.h" />
+    <ClInclude Include="spl\threading\Event.h" />
+    <ClInclude Include="spl\threading\InterlockCounter.h" />
+    <ClInclude Include="spl\threading\Mutex.h" />
+    <ClInclude Include="spl\threading\RWLock.h" />
+    <ClInclude Include="spl\threading\Semaphore.h" />
+    <ClInclude Include="spl\threading\Thread.h" />
+    <ClInclude Include="spl\threading\ThreadStartDelegate.h" />
+    <ClInclude Include="spl\threading\ThreadStartFunction.h" />
+    <ClInclude Include="spl\TriState.h" />
+    <ClInclude Include="spl\typeof.h" />
+    <ClInclude Include="spl\types.h" />
+    <ClInclude Include="spl\UInt32.h" />
+    <ClInclude Include="spl\UInt64.h" />
+    <ClInclude Include="spl\Undefined.h" />
+    <ClInclude Include="spl\UnitTest.h" />
+    <ClInclude Include="spl\Variant.h" />
+    <ClInclude Include="spl\WeakReference.h" />
+    <ClInclude Include="spl\web\HttpCookie.h" />
+    <ClInclude Include="spl\web\HttpHeader.h" />
+    <ClInclude Include="spl\web\HttpRequest.h" />
+    <ClInclude Include="spl\web\HttpRequestBody.h" />
+    <ClInclude Include="spl\web\HttpResponse.h" />
+    <ClInclude Include="spl\web\HttpUtility.h" />
+    <ClInclude Include="spl\web\server\HttpFileHandler.h" />
+    <ClInclude Include="spl\web\server\HttpHandler.h" />
+    <ClInclude Include="spl\web\server\HttpHandlerFactory.h" />
+    <ClInclude Include="spl\web\server\HttpInstance.h" />
+    <ClInclude Include="spl\web\server\HttpServer.h" />
+    <ClInclude Include="spl\web\Uri.h" />
+    <ClInclude Include="src\pcre\ucp.h" />
+    <ClInclude Include="src\pcre\pcre.h">
+      <Filter>PCRE</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pcre\pcre_internal.h">
+      <Filter>PCRE</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\text\pcreposix.h">
+      <Filter>PCRE</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\acs.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\ansicodes.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\AnsiTerm.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\Color.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\Telnet.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\term\TermCap.h">
+      <Filter>term</Filter>
+    </ClInclude>
+    <ClInclude Include="spl\cleanwindows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChangeLog" />
+    <None Include="docs\quickref.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="docs\database.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PCRE">
+      <UniqueIdentifier>{b7aa57fb-4768-4aa9-8f82-b42ca5414052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="term">
+      <UniqueIdentifier>{8d8d1848-32b0-4b3f-85f4-330fbd5aa2cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="term\src">
+      <UniqueIdentifier>{4cdac494-f692-4695-874f-9da3e6546b18}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

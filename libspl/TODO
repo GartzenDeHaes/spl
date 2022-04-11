@@ -1,0 +1,69 @@
+- Probabably should link to PCRE, or find a lighter alternative.
+
+- Add array capability to Variant
+
+- Thread::Sleep() doesn't seem to work on linux.
+
+- Create a JavaScript interpreter as an example project.
+
+- Environment::UserName() segfaults sometimes.
+
+- Need a timeout file stream that closes the file after a period of
+  inactivity and automaticly reopens it on next use.
+
+- RedBlackTree unit tests are commented out.
+
+- Maybe Socket, TcpSocket, and UdpSocket should have copy constructors?
+
+- XmlNode::SelectSingleNode processes all nodes -- need to stop afte
+  finding one.
+
+- String ToUTF16, ToUTF32; UTF handling in general.
+
+- ZIP or other compression support, link to zlib.
+
+- SMTP mail (?).
+
+- FTP client (?).
+
+- Use stringize "#" in ASSERT macro to print condition in debugAssert.
+
+- Change all calls to GetLastError and errno to use 
+  Environment::LastErrorMessage.
+
+- Implement BigInteger ToString and Parse.
+
+- Make tiny xml qname aware (seperate namespace from note name).
+
+- Int64 and UInt64 don't support hex for IsInt and Parse.
+
+- TinyXML doesn't like ^M (line feeds) in its XML files.  Technically, this
+is correct behavior.
+
+- Should probably disable recursive mutex on windows, to make behavior
+of Mutex consistant.  By default, recursion is on for windows, off for
+linux, and not available on tandem.
+
+- Modify Mutex so that windows mutexes are non-recurrsive.  Recursive
+  mutexes aren't supported on Tandem OSS -- OR create a recusive mutex
+  for Tandem.
+
+- Create a define for debug new that includes __FILE__ & __LINE__
+
+- String::Format needs to handle floating point %f %lf.
+
+- Fix NULL field handling by Recordset.
+
+- Smarten up List.ItemAt so that it doesn't scan the list to find the index.
+  Maybe not, Vector or Array should be used for indexed access?
+
+- Figure out how to get project level reports from gcov
+
+- Port my C# flat file support classes to C++?  The ".h" files are in
+  the project now, but they still contain c#.
+
+- Add heap size limit to debug.cpp -- allow testing of out-of-memory
+  conditions.
+
+- Create an HttpWebRequest class.
+

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xsql", "xsql.vcproj", "{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spl", "..\..\..\spl.vcproj", "{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug MFC|Win32 = Debug MFC|Win32
+		Debug|Win32 = Debug|Win32
+		Release MFC|Win32 = Release MFC|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Debug MFC|Win32.ActiveCfg = Debug|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Debug MFC|Win32.Build.0 = Debug|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Debug|Win32.Build.0 = Debug|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Release MFC|Win32.ActiveCfg = Release|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Release MFC|Win32.Build.0 = Release|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Release|Win32.ActiveCfg = Release|Win32
+		{5228FE99-DD1B-40E7-98F9-10F8E08DBE3C}.Release|Win32.Build.0 = Release|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug MFC|Win32.ActiveCfg = Debug MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug MFC|Win32.Build.0 = Debug MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug|Win32.ActiveCfg = Debug|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug|Win32.Build.0 = Debug|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release MFC|Win32.ActiveCfg = Release MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release MFC|Win32.Build.0 = Release MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release|Win32.ActiveCfg = Release|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

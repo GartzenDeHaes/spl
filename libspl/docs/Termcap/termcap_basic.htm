@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Basic -->
+<HTML><HEAD><TITLE>Info: (termcap) Basic</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Basic</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_basic_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_basic_files/up.gif" width=20 border=1> <EM>(termcap)</EM> 
+<STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Screen%2520Size"><IMG 
+height=22 src="termcap_basic_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Screen Size</STRONG> </A><PRE> 
+ Basic Characteristics
+ =====================
+ 
+ This section documents the capabilities that describe the basic and
+ nature of the terminal, and also those that are relevant to the output
+ of graphic characters.
+ 
+ `os'
+      Flag whose presence means that the terminal can overstrike.  This
+      means that outputting a graphic character does not erase whatever
+      was present in the same character position before.  The terminals
+      that can overstrike include printing terminals, storage tubes (all
+      obsolete nowadays), and many bit-map displays.
+ 
+ `eo'
+      Flag whose presence means that outputting a space erases a
+      character position even if the terminal supports overstriking.  If
+      this flag is not present and overstriking is supported, output of
+      a space has no effect except to move the cursor.
+ 
+      (On terminals that do not support overstriking, you can always
+      assume that outputting a space at a position erases whatever
+      character was previously displayed there.)
+ 
+ `gn'
+      Flag whose presence means that this terminal type is a generic type
+      which does not really describe any particular terminal.  Generic
+      types are intended for use as the default type assigned when the
+      user connects to the system, with the intention that the user
+      should specify what type he really has.  One example of a generic
+      type is the type `network'.
+ 
+      Since the generic type cannot say how to do anything interesting
+      with the terminal, termcap-using programs will always find that the
+      terminal is too weak to be supported if the user has failed to
+      specify a real terminal type in place of the generic one.  The
+      `gn' flag directs these programs to use a different error message:
+      "You have not specified your real terminal type", rather than
+      "Your terminal is not powerful enough to be used".
+ 
+ `hc'
+      Flag whose presence means this is a hardcopy terminal.
+ 
+ `rp'
+      String of commands to output a graphic character C, repeated N
+      times.  The first parameter value is the ASCII code for the desired
+      character, and the second parameter is the number of times to
+      repeat the character.  Often this command requires padding
+      proportional to the number of times the character is repeated.
+      This effect can be had by using parameter arithmetic with
+      `%'-sequences to compute the amount of padding, then generating
+      the result as a number at the front of the string so that `tputs'
+      will treat it as padding.
+ 
+ `hz'
+      Flag whose presence means that the ASCII character `~' cannot be
+      output on this terminal because it is used for display commands.
+ 
+      Programs handle this flag by checking all text to be output and
+      replacing each `~' with some other character(s).  If this is not
+      done, the screen will be thoroughly garbled.
+ 
+      The old Hazeltine terminals that required such treatment are
+      probably very rare today, so you might as well not bother to
+      support this flag.
+ 
+ `CC'
+      String whose presence means the terminal has a settable command
+      character.  The value of the string is the default command
+      character (which is usually &lt;ESC&gt;).
+ 
+      All the strings of commands in the terminal description should be
+      written to use the default command character.  If you are writing
+      an application program that changes the command character, use the
+      `CC' capability to figure out how to translate all the display
+      commands to work with the new command character.
+ 
+      Most programs have no reason to look at the `CC' capability.
+ 
+ `xb'
+      Flag whose presence identifies Superbee terminals which are unable
+      to transmit the characters &lt;ESC&gt; and `Control-C'.  Programs which
+      support this flag are supposed to check the input for the code
+      sequences sent by the &lt;F1&gt; and &lt;F2&gt; keys, and pretend that &lt;ESC&gt;
+      or `Control-C' (respectively) had been read.  But this flag is
+      obsolete, and not worth supporting.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_basic_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_basic_files/up.gif" width=20 border=1> <EM>(termcap)</EM> 
+<STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Screen%2520Size"><IMG 
+height=22 src="termcap_basic_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Screen Size</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

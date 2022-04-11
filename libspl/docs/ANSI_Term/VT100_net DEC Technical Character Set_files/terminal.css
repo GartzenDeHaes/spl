@@ -1,0 +1,72 @@
+BODY {
+	BACKGROUND: #fff; COLOR: #000
+}
+.footnote {
+	FONT-SIZE: x-small
+}
+.quotsec {
+	PADDING-RIGHT: 1em; PADDING-LEFT: 1em; BACKGROUND: #ddd; PADDING-BOTTOM: 1em; COLOR: #000; PADDING-TOP: 1em
+}
+.caveat {
+	BACKGROUND: #fff; COLOR: #800
+}
+HR {
+	MARGIN-TOP: 30px
+}
+A:link {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #00f
+}
+A:visited {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #909
+}
+A:active {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #f00
+}
+.button {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+H1 {
+	TEXT-ALIGN: center
+}
+.highlight {
+	BACKGROUND: #ff0; COLOR: #000
+}
+.warning {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #f00
+}
+DIV.navbot {
+	TEXT-ALIGN: right
+}
+SPAN.zwsp {
+	FONT-SIZE: 1px
+}
+SPAN.thinsp {
+	PADDING-RIGHT: 0.1em; PADDING-LEFT: 0.1em; PADDING-BOTTOM: 0.1em; PADDING-TOP: 0.1em
+}
+#CHANGELIST .date {
+	PADDING-RIGHT: 2em; WHITE-SPACE: nowrap; TEXT-ALIGN: left
+}
+#CHANGELIST .desc {
+	TEXT-ALIGN: left
+}
+TABLE.manxtermlist {
+	BORDER-TOP: #ccc thin solid; BORDER-BOTTOM: #ccc thin solid; BORDER-COLLAPSE: collapse
+}
+.manxtermlist THEAD TR {
+	BORDER-TOP: #ccc thin solid; BORDER-BOTTOM: #ccc thin solid; BACKGROUND-COLOR: #eee
+}
+.manxtermlist TR {
+	VERTICAL-ALIGN: top
+}
+.manxtermlist TD {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; TEXT-ALIGN: left
+}
+.manxtermlist TH {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; TEXT-ALIGN: left
+}
+.manxtermlist .odd TD {
+	BACKGROUND-COLOR: #f8f8f8
+}
+.manxtermlist .even TD {
+	BACKGROUND-COLOR: #ffffff
+}

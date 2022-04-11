@@ -1,0 +1,80 @@
+cc -O2 buildit.c -o buildit
+
+/* DEBUG */
+
+./buildit "-c=-pipe -fPIC -fasynchronous-unwind-tables -O0 -DDEBUG -g -I." "-l=-Wl,-soname,libspl.so -shared -export-dynamic -pthread -Wl,-z,defs -Wl,-z,now -Wl,-z,relro" -tlib libspl
+
+g++ -Wl,-rpath='$ORIGIN' -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -DDEBUG -g -L. -lspl -I. -o testit testit.cpp
+
+/* RELEASE */
+
+./buildit "-c=-pipe -fPIC -fasynchronous-unwind-tables -O2 -DNDEBUG -I." "-l=-Wl,-soname,libspl.so -shared -export-dynamic -pthread -Wl,-z,defs -Wl,-z,now -Wl,-z,relro" -tlib libspl
+
+/* DEBIAN */
+
+./buildit "-c=-pipe -fPIC -fasynchronous-unwind-tables -O2 -DNDEBUG -g -I." "-l=-Wl,-soname,libspl.so -shared -export-dynamic -pthread -Wl,-z,defs -Wl,-z,now -Wl,-z,relro" -tlib libspl
+
+g++ -Wl,-rpath='$ORIGIN' -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -DNDEBUG -g -L. -lspl -I. -o testit testit.cpp
+
+
+
+
+
+
+
+
+
+./buildit "-c=-fPIC -shared -pthread -g -DDEBUG" "-l=-shared -rdynamic -fPIC -g -pthread" -tlib libspl
+
+gcc -pthread -I. -L. -lspl -fPIC -g -DDEBUG -shared -rdynamic testit.cpp -o testit
+
+
+
+
+./buildit "-c=-pipe -fasynchronous-unwind-tables -fPIC -pthread -g -DDEBUG" "-l=-Wl,-soname,libspl.so -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -shared -rdynamic -fPIC -g -shared-libgcc -pthread -Wl,-rpath,." -tlib libspl
+
+
+g++ -fasynchronous-unwind-tables -lgcc_s -lspl -pthread -lpthread -lc -lm -ldl -I. -L. -fPIC -g -DDEBUG -shared -rdynamic -Wl,-z,defs -Wl,-z,now -Wl,-z,relro testit.cpp -o testit
+g++ -fasynchronous-unwind-tables -lspl -pthread -lpthread -lc -lm -ldl -I. -L. -fPIC -g -DDEBUG -shared -rdynamic -Wl,-z,defs -Wl,-z,now -Wl,-z,relro testit.cpp -o testit
+
+
+
+
+
+
+./buildit "-c=-pipe -fasynchronous-unwind-tables -fPIC -pthread -g -DDEBUG" "-l=-Wl,-soname,libspl.so -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -shared -rdynamic -fPIC -g -shared-libgcc -pthread -Wl,-rpath,." -tlib libtc
+
+
+g++ -fasynchronous-unwind-tables -ltc -pthread -lpthread -lc -lm -ldl -I. -L. -fPIC -g -DDEBUG -shared -rdynamic -Wl,-z,defs -Wl,-z,now -Wl,-z,relro test.cpp -o test
+
+
+g++ -fPIC -g -I. -c src/TestClass.cpp -o bin/TestClass.o
+
+ld -shared -call_shared --export-dynamic bin/TestClass.o -o libtc.so
+
+g++ -g -L. -ltc -I. -o test test.cpp
+
+
+
+drwxr-xr-x 2 john john  4096 Apr 21 12:46 bin
+-rwxr-xr-x 1 john john 22656 Apr 21 12:33 buildit
+-rw-r--r-- 1 john john 14014 Apr 20 18:31 buildit.c
+drwxr-xr-x 2 john john  4096 Apr 21 12:36 head
+-rwxr-xr-x 1 john john 18088 Apr 21 13:04 libtc.so
+drwxr-xr-x 2 john john  4096 Apr 21 12:30 src
+-rwxr-xr-x 1 john john 18016 Apr 21 13:04 test
+-rw-r--r-- 1 john john   119 Apr 21 12:33 test.cpp
+
+
+g++ -fPIC -fasynchronous-unwind-tables -DDEBUG -g -I. -c src/TestClass.cpp -o bin/TestClass.o
+//g++ -fPIC -rdynamic -g -I. -c src/TestClass.cpp -o bin/TestClass.o
+
+ld -shared -call_shared --export-dynamic bin/TestClass.o -o libtc.so
+
+//g++ -shared -export-dynamic -fPIC -o libtc.so bin/TestClass.o
+// --relocatable
+
+g++ -Wl,-rpath='$ORIGIN' -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -DDEBUG -g -L. -ltc -I. -o test test.cpp
+
+
+

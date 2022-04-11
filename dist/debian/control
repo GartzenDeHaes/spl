@@ -1,0 +1,13 @@
+Source: libspl
+Maintainer: John Garrison <john_garrison@yahoo.com>
+Section: library
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 9)
+
+Package: libspl
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The Standard Portable Library
+ A dotnet/Java style core framework for C++.  It uses reference count pointers to avoid deep copy constructors and has the expected types, collections, IO, network, thread, and other classes common in these frameworks.  Note: this library uses Pascal case, which some may dislike.  Includes PCRE for regular expressions.
+

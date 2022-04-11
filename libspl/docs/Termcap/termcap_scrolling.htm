@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling -->
+<HTML><HEAD><TITLE>Info: (termcap) Scrolling</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Scrolling</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_scrolling_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping"><IMG 
+height=22 src="termcap_scrolling_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Wrapping</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_scrolling_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Windows"><IMG 
+height=22 src="termcap_scrolling_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Windows</STRONG> </A><PRE> 
+ Scrolling
+ =========
+ 
+ "Scrolling" means moving the contents of the screen up or down one or
+ more lines.  Moving the contents up is "forward scrolling"; moving them
+ down is "reverse scrolling".
+ 
+    Scrolling happens after each line of output during ordinary output
+ on most display terminals.  But in an application program that uses
+ termcap for random-access output, scrolling happens only when
+ explicitly requested with the commands in this section.
+ 
+    Some terminals have a "scroll region" feature.  This lets you limit
+ the effect of scrolling to a specified range of lines.  Lines outside
+ the range are unaffected when scrolling happens.  The scroll region
+ feature is available if either `cs' or `cS' is present.
+ 
+ `sf'
+      String of commands to scroll the screen one line up, assuming it is
+      output with the cursor at the beginning of the bottom line.
+ 
+ `sr'
+      String of commands to scroll the screen one line down, assuming it
+      is output with the cursor at the beginning of the top line.
+ 
+ `do'
+      A few programs will try to use `do' to do the work of `sf'.  This
+      is not really correct--it is an attempt to compensate for the
+      absence of a `sf' command in some old terminal descriptions.
+ 
+      Since these terminal descriptions do define `sr', perhaps at one
+      time the definition of `do' was different and it could be used for
+      scrolling as well.  But it isn't desirable to combine these two
+      functions in one capability, since scrolling often requires more
+      padding than simply moving the cursor down.  Defining `sf' and
+      `do' separately allows you to specify the padding properly.  Also,
+      all sources agree that `do' should not be relied on to do
+      scrolling.
+ 
+      So the best approach is to add `sf' capabilities to the
+      descriptions of these terminals, copying the definition of `do' if
+      that does scroll.
+ 
+ `SF'
+      String of commands to scroll the screen N lines up, assuming it is
+      output with the cursor at the beginning of the bottom line.
+ 
+ `SR'
+      String of commands to scroll the screen N lines down, assuming it
+      is output with the cursor at the beginning of the top line.
+ 
+ `cs'
+      String of commands to set the scroll region.  This command takes
+      two parameters, START and END, which are the line numbers
+      (origin-zero) of the first line to include in the scroll region
+      and of the last line to include in it.  When a scroll region is
+      set, scrolling is limited to the specified range of lines; lines
+      outside the range are not affected by scroll commands.
+ 
+      Do not try to move the cursor outside the scroll region.  The
+      region remains set until explicitly removed.  To remove the scroll
+      region, use another `cs' command specifying the full height of the
+      screen.
+ 
+      The cursor position is undefined after the `cs' command is set, so
+      position the cursor with `cm' immediately afterward.
+ 
+ `cS'
+      String of commands to set the scroll region using parameters in
+      different form.  The effect is the same as if `cs' were used.
+      Four parameters are required:
+ 
+        1. Total number of lines on the screen.
+ 
+        2. Number of lines above desired scroll region.
+ 
+        3. Number of lines below (outside of) desired scroll region.
+ 
+        4. Total number of lines on the screen, the same as the first
+           parameter.
+ 
+      This capability is a GNU extension that was invented to allow the
+      Ann Arbor Ambassador's scroll-region command to be described; it
+      could also be done by putting non-Unix `%'-sequences into a `cs'
+      string, but that would have confused Unix programs that used the
+      `cs' capability with the Unix termcap.  Currently only GNU Emacs
+      uses the `cS' capability.
+ 
+ `ns'
+      Flag which means that the terminal does not normally scroll for
+      ordinary sequential output.  For modern terminals, this means that
+      outputting a newline in ordinary sequential output with the cursor
+      on the bottom line wraps to the top line.  For some obsolete
+      terminals, other things may happen.
+ 
+      The terminal may be able to scroll even if it does not normally do
+      so.  If the `sf' capability is provided, it can be used for
+      scrolling regardless of `ns'.
+ 
+ `da'
+      Flag whose presence means that lines scrolled up off the top of the
+      screen may come back if scrolling down is done subsequently.
+ 
+      The `da' and `db' flags do not, strictly speaking, affect how to
+      scroll.  But programs that scroll usually need to clear the lines
+      scrolled onto the screen, if these flags are present.
+ 
+ `db'
+      Flag whose presence means that lines scrolled down off the bottom
+      of the screen may come back if scrolling up is done subsequently.
+ 
+ `lm'
+      Numeric value, the number of lines of display memory that the
+      terminal has.  A value of zero means that the terminal has more
+      display memory than can fit on the screen, but no fixed number of
+      lines.  (The number of lines may depend on the amount of text in
+      each line.)
+ 
+    Any terminal description that defines `SF' should also define `sf';
+ likewise for `SR' and `sr'.  However, many terminals can only scroll by
+ one line at a time, so it is common to find `sf' and not `SF', or `sr'
+ without `SR'.
+ 
+    Therefore, all programs that use the scrolling facilities should be
+ prepared to work with `sf' in the case that `SF' is absent, and
+ likewise with `sr'.  On the other hand, an application program that
+ uses only `sf' and not `SF' is acceptable, though slow on some
+ terminals.
+ 
+    When outputting a scroll command with `tputs', the NLINES argument
+ should be the total number of lines in the portion of the screen being
+ scrolled.  Very often these commands require padding proportional to
+ this number of lines.  <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Padding"> Padding</A>.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_scrolling_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping"><IMG 
+height=22 src="termcap_scrolling_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Wrapping</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_scrolling_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Windows"><IMG 
+height=22 src="termcap_scrolling_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Windows</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

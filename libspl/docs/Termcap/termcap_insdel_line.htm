@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0072)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Line -->
+<HTML><HEAD><TITLE>Info: (termcap) Insdel Line</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Insdel Line</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_insdel_line_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Clearing"><IMG 
+height=22 src="termcap_insdel_line_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Clearing</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_insdel_line_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char"><IMG 
+height=22 src="termcap_insdel_line_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Char</STRONG> </A><PRE> 
+ Insert/Delete Line
+ ==================
+ 
+ "Inserting a line" means creating a blank line in the middle of the
+ screen, and pushing the existing lines of text apart.  In fact, the
+ lines above the insertion point do not change, while the lines below
+ move down, and one is normally lost at the bottom of the screen.
+ 
+    "Deleting a line" means causing the line to disappear from the
+ screen, closing up the gap by moving the lines below it upward.  A new
+ line appears at the bottom of the screen.  Usually this line is blank,
+ but on terminals with the `db' flag it may be a line previously moved
+ off the screen bottom by scrolling or line insertion.
+ 
+    Insertion and deletion of lines is useful in programs that maintain
+ an updating display some parts of which may get longer or shorter.
+ They are also useful in editors for scrolling parts of the screen, and
+ for redisplaying after lines of text are killed or inserted.
+ 
+    Many terminals provide commands to insert or delete a single line at
+ the cursor position.  Some provide the ability to insert or delete
+ several lines with one command, using the number of lines to insert or
+ delete as a parameter.  Always move the cursor to column zero before
+ using any of these commands.
+ 
+ `al'
+      String of commands to insert a blank line before the line the
+      cursor is on.  The existing line, and all lines below it, are
+      moved down.  The last line in the screen (or in the scroll region,
+      if one is set) disappears and in most circumstances is discarded.
+      It may not be discarded if the `db' is present (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling"> Scrolling</A>).
+ 
+      The cursor must be at the left margin before this command is used.
+      This command does not move the cursor.
+ 
+ `dl'
+      String of commands to delete the line the cursor is on.  The
+      following lines move up, and a blank line appears at the bottom of
+      the screen (or bottom of the scroll region).  If the terminal has
+      the `db' flag, a nonblank line previously pushed off the screen
+      bottom may reappear at the bottom.
+ 
+      The cursor must be at the left margin before this command is used.
+      This command does not move the cursor.
+ 
+ `AL'
+      String of commands to insert N blank lines before the line that
+      the cursor is on.  It is like `al' repeated N times, except that
+      it is as fast as one `al'.
+ 
+ `DL'
+      String of commands to delete N lines starting with the line that
+      the cursor is on.  It is like `dl' repeated N times, except that
+      it is as fast as one `dl'.
+ 
+    Any terminal description that defines `AL' should also define `al';
+ likewise for `DL' and `dl'.  However, many terminals can only insert or
+ delete one line at a time, so it is common to find `al' and not `AL',
+ or `dl' without `DL'.
+ 
+    Therefore, all programs that use the insert and delete facilities
+ should be prepared to work with `al' in the case that `AL' is absent,
+ and likewise with `dl'.  On the other hand, it is acceptable to write
+ an application that uses only `al' and `dl' and does not look for `AL'
+ or `DL' at all.
+ 
+    If a terminal does not support line insertion and deletion directly,
+ but does support a scroll region, the effect of insertion and deletion
+ can be obtained with scrolling.  However, it is up to the individual
+ user program to check for this possibility and use the scrolling
+ commands to get the desired result.  It is fairly important to implement
+ this alternate strategy, since it is the only way to get the effect of
+ line insertion and deletion on the popular VT100 terminal.
+ 
+    Insertion and deletion of lines is affected by the scroll region on
+ terminals that have a settable scroll region.  This is useful when it is
+ desirable to move any few consecutive lines up or down by a few lines.
+ <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling"> Scrolling</A>.
+ 
+    The line pushed off the bottom of the screen is not lost if the
+ terminal has the `db' flag capability; instead, it is pushed into
+ display memory that does not appear on the screen.  This is the same
+ thing that happens when scrolling pushes a line off the bottom of the
+ screen.  Either reverse scrolling or deletion of a line can bring the
+ apparently lost line back onto the bottom of the screen.  If the
+ terminal has the scroll region feature as well as `db', the pushed-out
+ line really is lost if a scroll region is in effect.
+ 
+    When outputting an insert or delete command with `tputs', the NLINES
+ argument should be the total number of lines from the cursor to the
+ bottom of the screen (or scroll region).  Very often these commands
+ require padding proportional to this number of lines.  <A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Padding"> Padding</A>.
+ 
+    For `AL' and `DL' the NLINES argument should _not_ depend on the
+ number of lines inserted or deleted; only the total number of lines
+ affected.  This is because it is just as fast to insert two or N lines
+ with `AL' as to insert one line with `al'.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_insdel_line_files/ball.red.gif" width=20 border=1> Info Catalog</A> 
+<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Clearing"><IMG 
+height=22 src="termcap_insdel_line_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Clearing</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_insdel_line_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Insdel%2520Char"><IMG 
+height=22 src="termcap_insdel_line_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Insdel Char</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug MFC|Win32">
+      <Configuration>Debug MFC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release MFC|Win32">
+      <Configuration>Release MFC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}</ProjectGuid>
+    <RootNamespace>spl</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\debug\</OutDir>
+    <IntDir>.\debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\release\</OutDir>
+    <IntDir>.\release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'">
+    <OutDir>.\release\</OutDir>
+    <IntDir>.\release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'">
+    <OutDir>.\debugMFC\</OutDir>
+    <IntDir>.\debugMFC\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(MSBuildProjectDirectoryNoRoot);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE__ABS64;_DEBUG;DEBUG;_WIN32;WIN32;_LIB;DBNTWIN32;HAVE_TIME_H;HAVE_STRING_H;HAVE_IO_H;HAVE_FCNTL_H;HAVE_ERRNO_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\debug/spl.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\debug/</AssemblerListingLocation>
+      <ObjectFileName>.\debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>debug\spld.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\debug/spl.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>\Sources\freetds-0.62.4\include;.;\Program Files\MySQL\MySQL Server 5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE__ABS64;NDEBUG;WIN32;_WIN32;_LIB;DBNTWIN32;HAVE_TIME_H;HAVE_STRING_H;HAVE_IO_H;HAVE_FCNTL_H;HAVE_ERRNO_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\release/spl.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\release/</AssemblerListingLocation>
+      <ObjectFileName>.\release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>.\release\spl.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\release/spl.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Sources\freetds-0.62.4\include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;STLIB;WIN32;_LIB;DBNTWIN32;HAVE_TIME_H;HAVE_STRING_H;HAVE_IO_H;HAVE_FCNTL_H;HAVE_ERRNO_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\release/spl.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\release/</AssemblerListingLocation>
+      <ObjectFileName>.\release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>releaseMFC\spl.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\release/spl.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Sources\freetds-0.62.4\include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;_WIN32;STLIB;WIN32;_LIB;DBNTWIN32;HAVE_TIME_H;HAVE_STRING_H;HAVE_IO_H;HAVE_FCNTL_H;HAVE_ERRNO_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\debugMFC/spl.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\debugMFC/</AssemblerListingLocation>
+      <ObjectFileName>.\debugMFC/</ObjectFileName>
+      <ProgramDataBaseFileName>.\debugMFC/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>debugMFC\spld.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\debugMFC/spl.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Array.cpp" />
+    <ClCompile Include="src\BackPropNeuralNetwork.cpp" />
+    <ClCompile Include="src\BigInteger.cpp" />
+    <ClCompile Include="src\BitMask.cpp" />
+    <ClCompile Include="src\cdebug.cpp" />
+    <ClCompile Include="src\CDes.cpp" />
+    <ClCompile Include="src\CLog.cpp" />
+    <ClCompile Include="src\CommandLine.cpp" />
+    <ClCompile Include="src\Compare.cpp" />
+    <ClCompile Include="src\ConfigurationSection.cpp" />
+    <ClCompile Include="src\ConfigurationSettings.cpp" />
+    <ClCompile Include="src\data\ColumnTypes.cpp" />
+    <ClCompile Include="src\data\CommandParameter.cpp" />
+    <ClCompile Include="src\data\Connection.cpp" />
+    <ClCompile Include="src\data\DataColumn.cpp" />
+    <ClCompile Include="src\data\DataRow.cpp" />
+    <ClCompile Include="src\data\DataTable.cpp" />
+    <ClCompile Include="src\data\RecordSet.cpp" />
+    <ClCompile Include="src\Dates.cpp" />
+    <ClCompile Include="src\Debug.cpp" />
+    <ClCompile Include="src\Decimal.cpp" />
+    <ClCompile Include="src\DelegateDispatch.cpp" />
+    <ClCompile Include="src\DelimitedFile.cpp" />
+    <ClCompile Include="src\DesStream.cpp" />
+    <ClCompile Include="src\Directory.cpp" />
+    <ClCompile Include="src\Environment.cpp" />
+    <ClCompile Include="src\Exception.cpp" />
+    <ClCompile Include="src\File.cpp" />
+    <ClCompile Include="src\FileStream.cpp" />
+    <ClCompile Include="src\GUID.cpp" />
+    <ClCompile Include="src\Hashtable.cpp" />
+    <ClCompile Include="src\IEnumerable.cpp" />
+    <ClCompile Include="src\Image.cpp" />
+    <ClCompile Include="src\InterlockCounter.cpp" />
+    <ClCompile Include="src\io\FileAppendService.cpp" />
+    <ClCompile Include="src\io\MemoryStream.cpp" />
+    <ClCompile Include="src\io\Pipe.cpp" />
+    <ClCompile Include="src\io\Stream.cpp" />
+    <ClCompile Include="src\io\StreamFd.cpp" />
+    <ClCompile Include="src\io\StreamReadPump.cpp" />
+    <ClCompile Include="src\io\StringStream.cpp" />
+    <ClCompile Include="src\io\ThreadedLog.cpp" />
+    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\MemoryPool.cpp" />
+    <ClCompile Include="src\Mutex.cpp" />
+    <ClCompile Include="src\Null.cpp" />
+    <ClCompile Include="src\Numeric.cpp" />
+    <ClCompile Include="src\ObjectPool.cpp" />
+    <ClCompile Include="src\Packet.cpp" />
+    <ClCompile Include="src\pcre\pcreposix.c" />
+    <ClCompile Include="src\pcre\pcre_chartables.c" />
+    <ClCompile Include="src\pcre\pcre_compile.c" />
+    <ClCompile Include="src\pcre\pcre_config.c" />
+    <ClCompile Include="src\pcre\pcre_dfa_exec.c" />
+    <ClCompile Include="src\pcre\pcre_exec.c" />
+    <ClCompile Include="src\pcre\pcre_fullinfo.c" />
+    <ClCompile Include="src\pcre\pcre_get.c" />
+    <ClCompile Include="src\pcre\pcre_globals.c" />
+    <ClCompile Include="src\pcre\pcre_info.c" />
+    <ClCompile Include="src\pcre\pcre_maketables.c" />
+    <ClCompile Include="src\pcre\pcre_newline.c" />
+    <ClCompile Include="src\pcre\pcre_ord2utf8.c" />
+    <ClCompile Include="src\pcre\pcre_refcount.c" />
+    <ClCompile Include="src\pcre\pcre_study.c" />
+    <ClCompile Include="src\pcre\pcre_tables.c" />
+    <ClCompile Include="src\pcre\pcre_try_flipped.c" />
+    <ClCompile Include="src\pcre\pcre_ucd.c" />
+    <ClCompile Include="src\pcre\pcre_valid_utf8.c" />
+    <ClCompile Include="src\pcre\pcre_version.c" />
+    <ClCompile Include="src\pcre\pcre_xclass.c" />
+    <ClCompile Include="src\Permissions.cpp" />
+    <ClCompile Include="src\PooledSocketSet.cpp" />
+    <ClCompile Include="src\PortListener.cpp" />
+    <ClCompile Include="src\Queue.cpp" />
+    <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\realfree.cpp" />
+    <ClCompile Include="src\Regex.cpp" />
+    <ClCompile Include="src\RSA.cpp" />
+    <ClCompile Include="src\Sample.cpp" />
+    <ClCompile Include="src\SampleTest.cpp" />
+    <ClCompile Include="src\Semaphore.cpp" />
+    <ClCompile Include="src\SimpleBlockCypher.cpp" />
+    <ClCompile Include="src\Socket.cpp" />
+    <ClCompile Include="src\SocketSet.cpp" />
+    <ClCompile Include="src\StateMachine.cpp" />
+    <ClCompile Include="src\String.cpp" />
+    <ClCompile Include="src\StringBuffer.cpp" />
+    <ClCompile Include="src\StringTable.cpp" />
+    <ClCompile Include="src\StringTokenizer.cpp" />
+    <ClCompile Include="src\term\AnsiTerm.cpp" />
+    <ClCompile Include="src\term\Color.cpp" />
+    <ClCompile Include="src\term\Telnet.cpp" />
+    <ClCompile Include="src\term\TermCap.cpp" />
+    <ClCompile Include="src\term\tparam.cpp" />
+    <ClCompile Include="src\Thread.cpp" />
+    <ClCompile Include="src\ThreadStart.cpp" />
+    <ClCompile Include="src\UdpServer.cpp" />
+    <ClCompile Include="src\UdpSocket.cpp" />
+    <ClCompile Include="src\Undefined.cpp" />
+    <ClCompile Include="src\Variant.cpp" />
+    <ClCompile Include="src\web\FileHandlerBase.cpp" />
+    <ClCompile Include="src\web\HttpCookie.cpp" />
+    <ClCompile Include="src\web\HttpHandler.cpp" />
+    <ClCompile Include="src\web\HttpHandlerFactory.cpp" />
+    <ClCompile Include="src\web\HttpHeader.cpp" />
+    <ClCompile Include="src\web\HttpInstance.cpp" />
+    <ClCompile Include="src\web\HttpRequest.cpp" />
+    <ClCompile Include="src\web\HttpRequestBody.cpp" />
+    <ClCompile Include="src\web\HttpResponse.cpp" />
+    <ClCompile Include="src\web\HttpServer.cpp" />
+    <ClCompile Include="src\web\HttpUtility.cpp" />
+    <ClCompile Include="src\web\Uri.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="test\TestBigInteger.cpp" />
+    <ClCompile Include="test\TestBitMask.cpp" />
+    <ClCompile Include="test\TestCommand.cpp" />
+    <ClCompile Include="test\TestCommandLine.cpp" />
+    <ClCompile Include="test\TestConfigSettings.cpp" />
+    <ClCompile Include="test\TestDate.cpp" />
+    <ClCompile Include="test\TestDateTime.cpp" />
+    <ClCompile Include="test\TestDebug.cpp" />
+    <ClCompile Include="test\TestDecimal.cpp" />
+    <ClCompile Include="test\TestDelimitedFile.cpp" />
+    <ClCompile Include="test\TestDes.cpp" />
+    <ClCompile Include="test\TestDesStream.cpp" />
+    <ClCompile Include="test\TestEnv.cpp" />
+    <ClCompile Include="test\TestException.cpp" />
+    <ClCompile Include="test\TestFile.cpp" />
+    <ClCompile Include="test\TestHarness.cpp" />
+    <ClCompile Include="test\TestMath.cpp" />
+    <ClCompile Include="test\TestMemoryPool.cpp" />
+    <ClCompile Include="test\TestMutex.cpp" />
+    <ClCompile Include="test\TestNeuralNetwork.cpp" />
+    <ClCompile Include="test\TestNumeric.cpp" />
+    <ClCompile Include="test\TestObjPool.cpp" />
+    <ClCompile Include="test\TestPacket.cpp" />
+    <ClCompile Include="test\TestPipe.cpp" />
+    <ClCompile Include="test\TestRandom.cpp" />
+    <ClCompile Include="test\TestRbTree.cpp" />
+    <ClCompile Include="test\TestRecordSet.cpp" />
+    <ClCompile Include="test\testRefCountPtr.cpp" />
+    <ClCompile Include="test\TestRegex.cpp" />
+    <ClCompile Include="test\TestRSA.cpp" />
+    <ClCompile Include="test\TestSemaphore.cpp" />
+    <ClCompile Include="test\TestSharedLock.cpp" />
+    <ClCompile Include="test\TestSocketSet.cpp" />
+    <ClCompile Include="test\TestStateMachine.cpp" />
+    <ClCompile Include="test\TestStream.cpp" />
+    <ClCompile Include="test\TestStringBuffer.cpp" />
+    <ClCompile Include="test\TestStringTable.cpp" />
+    <ClCompile Include="test\TestStringTokenizer.cpp" />
+    <ClCompile Include="test\TestTHashTable.cpp" />
+    <ClCompile Include="test\TestThread.cpp" />
+    <ClCompile Include="test\TestTString.cpp" />
+    <ClCompile Include="test\TestTVector.cpp" />
+    <ClCompile Include="test\TestTypes.cpp" />
+    <ClCompile Include="test\TestUri.cpp" />
+    <ClCompile Include="test\TestVariant.cpp" />
+    <ClCompile Include="test\TTestList.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="spl\BigInteger.h" />
+    <ClInclude Include="spl\Char.h" />
+    <ClInclude Include="spl\cleanwindows.h" />
+    <ClInclude Include="spl\collection\Array.h" />
+    <ClInclude Include="spl\collection\Association.h" />
+    <ClInclude Include="spl\collection\CircularArray.h" />
+    <ClInclude Include="spl\collection\Hashtable.h" />
+    <ClInclude Include="spl\collection\IEnumerable.h" />
+    <ClInclude Include="spl\collection\List.h" />
+    <ClInclude Include="spl\collection\ListVolatile.h" />
+    <ClInclude Include="spl\collection\MemoryPool.h" />
+    <ClInclude Include="spl\collection\ObjectPool.h" />
+    <ClInclude Include="spl\collection\Queue.h" />
+    <ClInclude Include="spl\collection\RedBlackTree.h" />
+    <ClInclude Include="spl\collection\StringTable.h" />
+    <ClInclude Include="spl\collection\Vector.h" />
+    <ClInclude Include="spl\Compare.h" />
+    <ClInclude Include="spl\configuration\CommandLine.h" />
+    <ClInclude Include="spl\configuration\ConfigurationSection.h" />
+    <ClInclude Include="spl\configuration\ConfigurationSettings.h" />
+    <ClInclude Include="spl\configwin32.h" />
+    <ClInclude Include="spl\Convert.h" />
+    <ClInclude Include="spl\data\ColumnTypes.h" />
+    <ClInclude Include="spl\data\Command.h" />
+    <ClInclude Include="spl\data\CommandParameter.h" />
+    <ClInclude Include="spl\data\Connection.h" />
+    <ClInclude Include="spl\data\DataColumn.h" />
+    <ClInclude Include="spl\data\DataRow.h" />
+    <ClInclude Include="spl\data\DataTable.h" />
+    <ClInclude Include="spl\data\RecordSet.h" />
+    <ClInclude Include="spl\data\Transaction.h" />
+    <ClInclude Include="spl\Date.h" />
+    <ClInclude Include="spl\DateTime.h" />
+    <ClInclude Include="spl\Debug.h" />
+    <ClInclude Include="spl\Decimal.h" />
+    <ClInclude Include="spl\Delegate.h" />
+    <ClInclude Include="spl\DelegateDispatch.h" />
+    <ClInclude Include="spl\Des.h" />
+    <ClInclude Include="spl\Double.h" />
+    <ClInclude Include="spl\Environment.h" />
+    <ClInclude Include="spl\Exception.h" />
+    <ClInclude Include="spl\GUID.h" />
+    <ClInclude Include="spl\IConvertable.h" />
+    <ClInclude Include="spl\IIterator.h" />
+    <ClInclude Include="spl\Image.h" />
+    <ClInclude Include="spl\Int32.h" />
+    <ClInclude Include="spl\Int64.h" />
+    <ClInclude Include="spl\interp\OpCodes.h" />
+    <ClInclude Include="spl\io\BlockingStream.h" />
+    <ClInclude Include="spl\io\DelimitedFile.h" />
+    <ClInclude Include="spl\io\DesStream.h" />
+    <ClInclude Include="spl\io\Directory.h" />
+    <ClInclude Include="spl\io\DualChannelStream.h" />
+    <ClInclude Include="spl\io\File.h" />
+    <ClInclude Include="spl\io\FileStream.h" />
+    <ClInclude Include="spl\io\FlatRecord.h" />
+    <ClInclude Include="spl\io\FlatRecordFactory.h" />
+    <ClInclude Include="spl\io\ISerializable.h" />
+    <ClInclude Include="spl\io\IStream.h" />
+    <ClInclude Include="spl\io\log\FileAppendService.h" />
+    <ClInclude Include="spl\io\log\Log.h" />
+    <ClInclude Include="spl\io\log\ThreadedLog.h" />
+    <ClInclude Include="spl\io\MemoryStream.h" />
+    <ClInclude Include="spl\io\NullStream.h" />
+    <ClInclude Include="spl\io\Permissions.h" />
+    <ClInclude Include="spl\io\Pipe.h" />
+    <ClInclude Include="spl\io\SocketStream.h" />
+    <ClInclude Include="spl\io\Stream.h" />
+    <ClInclude Include="spl\io\StreamBuffer.h" />
+    <ClInclude Include="spl\io\StreamDelegateDispatch.h" />
+    <ClInclude Include="spl\io\StreamReadPump.h" />
+    <ClInclude Include="spl\io\StringStream.h" />
+    <ClInclude Include="spl\io\ThreadedPacketStream.h" />
+    <ClInclude Include="spl\io\ThreadSafeStream.h" />
+    <ClInclude Include="spl\io\WinPerm.h" />
+    <ClInclude Include="spl\IVariant.h" />
+    <ClInclude Include="spl\LazyLoadPtr.h" />
+    <ClInclude Include="spl\math\BitMask.h" />
+    <ClInclude Include="spl\math\Math.h" />
+    <ClInclude Include="spl\math\Matrix.h" />
+    <ClInclude Include="spl\math\NeuralNetwork.h" />
+    <ClInclude Include="spl\math\Point.h" />
+    <ClInclude Include="spl\math\Random.h" />
+    <ClInclude Include="spl\math\RSA.h" />
+    <ClInclude Include="spl\math\Sample.h" />
+    <ClInclude Include="spl\math\SampleTest.h" />
+    <ClInclude Include="spl\math\SimpleBlockCypher.h" />
+    <ClInclude Include="spl\math\StateMachine.h" />
+    <ClInclude Include="spl\math\Vector.h" />
+    <ClInclude Include="spl\Memory.h" />
+    <ClInclude Include="spl\net\Packet.h" />
+    <ClInclude Include="spl\net\PacketBuilder.h" />
+    <ClInclude Include="spl\net\PooledSocketSet.h" />
+    <ClInclude Include="spl\net\PortListener.h" />
+    <ClInclude Include="spl\net\ServerSocket.h" />
+    <ClInclude Include="spl\net\Socket.h" />
+    <ClInclude Include="spl\net\SocketSet.h" />
+    <ClInclude Include="spl\net\TcpSocket.h" />
+    <ClInclude Include="spl\net\UdpServer.h" />
+    <ClInclude Include="spl\net\UdpSocket.h" />
+    <ClInclude Include="spl\Null.h" />
+    <ClInclude Include="spl\Numeric.h" />
+    <ClInclude Include="spl\RefCountPtr.h" />
+    <ClInclude Include="spl\RefCountPtrCast.h" />
+    <ClInclude Include="spl\String.h" />
+    <ClInclude Include="spl\term\acs.h" />
+    <ClInclude Include="spl\term\ansicodes.h" />
+    <ClInclude Include="spl\term\AnsiTerm.h" />
+    <ClInclude Include="spl\term\Color.h" />
+    <ClInclude Include="spl\term\Telnet.h" />
+    <ClInclude Include="spl\term\TermCap.h" />
+    <ClInclude Include="spl\text\pcreposix.h" />
+    <ClInclude Include="spl\text\Regex.h" />
+    <ClInclude Include="spl\text\RegexOptions.h" />
+    <ClInclude Include="spl\text\StringBuffer.h" />
+    <ClInclude Include="spl\text\StringTokenizer.h" />
+    <ClInclude Include="spl\threading\Event.h" />
+    <ClInclude Include="spl\threading\InterlockCounter.h" />
+    <ClInclude Include="spl\threading\Mutex.h" />
+    <ClInclude Include="spl\threading\RWLock.h" />
+    <ClInclude Include="spl\threading\Semaphore.h" />
+    <ClInclude Include="spl\threading\Thread.h" />
+    <ClInclude Include="spl\threading\ThreadStartDelegate.h" />
+    <ClInclude Include="spl\threading\ThreadStartFunction.h" />
+    <ClInclude Include="spl\TriState.h" />
+    <ClInclude Include="spl\typeof.h" />
+    <ClInclude Include="spl\types.h" />
+    <ClInclude Include="spl\UInt32.h" />
+    <ClInclude Include="spl\UInt64.h" />
+    <ClInclude Include="spl\Undefined.h" />
+    <ClInclude Include="spl\UnitTest.h" />
+    <ClInclude Include="spl\Variant.h" />
+    <ClInclude Include="spl\WeakReference.h" />
+    <ClInclude Include="spl\web\HttpCookie.h" />
+    <ClInclude Include="spl\web\HttpHeader.h" />
+    <ClInclude Include="spl\web\HttpRequest.h" />
+    <ClInclude Include="spl\web\HttpRequestBody.h" />
+    <ClInclude Include="spl\web\HttpResponse.h" />
+    <ClInclude Include="spl\web\HttpUtility.h" />
+    <ClInclude Include="spl\web\server\HttpFileHandler.h" />
+    <ClInclude Include="spl\web\server\HttpHandler.h" />
+    <ClInclude Include="spl\web\server\HttpHandlerFactory.h" />
+    <ClInclude Include="spl\web\server\HttpInstance.h" />
+    <ClInclude Include="spl\web\server\HttpServer.h" />
+    <ClInclude Include="spl\web\Uri.h" />
+    <ClInclude Include="src\pcre\pcre.h" />
+    <ClInclude Include="src\pcre\pcre_internal.h" />
+    <ClInclude Include="src\pcre\ucp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChangeLog" />
+    <None Include="docs\quickref.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="docs\database.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

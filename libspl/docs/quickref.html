@@ -1,0 +1,61 @@
+<html>
+<body>
+<p><a href='#EXC1'>1.  Hello World Console Mode</a></p>
+<p>&nbsp;</p>
+<hr>
+<p><a name='#EXC1'>1.  Hello World Console Mode (with network support)</a></p>
+<blockquote>
+<code>
+#include &lt;spl/Debug.h&gt;<br>
+#include &lt;spl/Exception.h&gt;<br>
+#include &lt;spl/net/Socket.h&gt;<br>
+#include &lt;spl/UnitTest.h&gt;<br>
+&nbsp;<br>
+int main(int argc, char **argv)<br>
+{
+<blockquote>
+	try<br>
+	{<br>
+	<blockquote>
+	CommandLine args(argc, argv);<br>
+	&nbsp;<br>
+	// use args.HasSwitch("argname") and args.GetSwtich("argname") to get the arguments<br>
+	if ( args.HasSwitch("test") )<br>
+	{<br>
+	<blockquote>
+		// this will run spl's unit tests
+		TestHarness::RunTests();<br>
+		Log::WriteEndOfRunTotal();<br>
+		return 0;
+	</blockquote>
+	}<br>
+	&nbsp;<br>
+	// Set logging to go to a file (prints on the console by default)<br>
+	Log::Init("logfile.txt", CLOG_INFO);<br>
+	&nbsp;<br>
+	// Main program code here<br>
+	</blockquote>
+	}<br>
+	catch ( Exception *ex )<br>
+	{<br>
+	<blockquote>
+		Log::WriteError( ex );<br>
+		delete ex;
+	</blockquote>
+	}<br>
+	catch ( OutOfMemoryException mex )<br>
+	{<br>
+	<blockquote>
+		Log::WriteError( &ex );
+	</blockquote>
+	}<br>
+	DEBUG_DUMP_MEM_LEAKS();<br>
+	DEBUG_TEAR_DOWN(true);<br>
+	Socket::ShutdownService();<br>
+	return 0;<br>
+</blockquote>
+}<br>
+</code>
+</blockquote>
+</body>
+</html>

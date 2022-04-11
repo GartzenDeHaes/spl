@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Thu, 16 Apr 2020 15:10:55 -0700
+Source: libspl
+Binary: libspl libspl-dbgsym
+Architecture: source amd64
+Version: 0.5.0-1
+Distribution: UNRELEASED
+Urgency: low
+Maintainer: John Garrison <john_garrison@yahoo.com>
+Changed-By: john <john_garrison@yahoo.com>
+Description:
+ libspl     - The Standard Portable Library
+Changes:
+ libspl (0.5.0-1) UNRELEASED; urgency=low
+ .
+   * Initial release.
+Checksums-Sha1:
+ 5f0cbf839bba921b2d9606e809f1526815dc7270 766 libspl_0.5.0-1.dsc
+ a3e40d2d885c492067b920176e0860d1d36159bf 912464 libspl_0.5.0.orig.tar.gz
+ 2e60e991ffa0bd47edffc6f1cc71d4deebbfe556 804 libspl_0.5.0-1.debian.tar.xz
+ 259f9fc9d9cc2008df9b44f3f867bfaf75923828 9655692 libspl-dbgsym_0.5.0-1_amd64.deb
+ 54ab239d47ac9c57ec77e5ce45c8a7492551960c 11801 libspl_0.5.0-1_amd64.buildinfo
+ 68cab26ccca1f6130c062b8564cb7641677b8fd6 1462028 libspl_0.5.0-1_amd64.deb
+Checksums-Sha256:
+ e3c1533c944a929f6d44a80960d00cc2becd6cd333a5d9cdc4eee2fe0727bcc1 766 libspl_0.5.0-1.dsc
+ c4e04d972348530bc6b358e6d3a8b235438517d4236ed9056ab40d85db7159ca 912464 libspl_0.5.0.orig.tar.gz
+ 1537a557d99d956ab3ac058631e4279c0982b72819f119a54a06211320ff5f0c 804 libspl_0.5.0-1.debian.tar.xz
+ 43a61d11264a9187b83c9928cdfbef2d2cf9e254f754208fc4182f8909dfb1aa 9655692 libspl-dbgsym_0.5.0-1_amd64.deb
+ b948a75b4153f8acc4853e6b752360bb426f4ba32bfdd69f387dc00e050c780a 11801 libspl_0.5.0-1_amd64.buildinfo
+ 79f0de8a43e5b7ac8c5a995235d616f5de6e0e132b0a286be955200d885e1587 1462028 libspl_0.5.0-1_amd64.deb
+Files:
+ e029901f1847601dfcb102c1ccba846e 766 library optional libspl_0.5.0-1.dsc
+ 06706f6fdd08f19089c35e1810cda5b8 912464 library optional libspl_0.5.0.orig.tar.gz
+ 8c42a3479eb71ef927ef86ca212f05d9 804 library optional libspl_0.5.0-1.debian.tar.xz
+ 8e7d12d6e668638e7495e4a497204ebe 9655692 debug optional libspl-dbgsym_0.5.0-1_amd64.deb
+ 0e74293f82aa55da6e961bdbe66e5258 11801 library optional libspl_0.5.0-1_amd64.buildinfo
+ 80e6acf9828019fb84f6015e9e246613 1462028 library optional libspl_0.5.0-1_amd64.deb

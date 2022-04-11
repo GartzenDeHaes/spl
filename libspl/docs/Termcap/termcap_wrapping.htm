@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Wrapping -->
+<HTML><HEAD><TITLE>Info: (termcap) Wrapping</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY>
+<H1><EM>(termcap)</EM> Wrapping</H1><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_wrapping_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Motion"><IMG 
+height=22 src="termcap_wrapping_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Cursor Motion</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_wrapping_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling"><IMG 
+height=22 src="termcap_wrapping_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Scrolling</STRONG> </A><PRE> 
+ Wrapping
+ ========
+ 
+ "Wrapping" means moving the cursor from the right margin to the left
+ margin of the following line.  Some terminals wrap automatically when a
+ graphic character is output in the last column, while others do not.
+ Most application programs that use termcap need to know whether the
+ terminal wraps.  There are two special flag capabilities to describe
+ what the terminal does when a graphic character is output in the last
+ column.
+ 
+ `am'
+      Flag whose presence means that writing a character in the last
+      column causes the cursor to wrap to the beginning of the next line.
+ 
+      If `am' is not present, writing in the last column leaves the
+      cursor at the place where the character was written.
+ 
+      Writing in the last column of the last line should be avoided on
+      terminals with `am', as it may or may not cause scrolling to occur
+      (<A href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling"> Scrolling</A>).  Scrolling is surely not what you would
+      intend.
+ 
+      If your program needs to check the `am' flag, then it also needs
+      to check the `xn' flag which indicates that wrapping happens in a
+      strange way.  Many common terminals have the `xn' flag.
+ 
+ `xn'
+      Flag whose presence means that the cursor wraps in a strange way.
+      At least two distinct kinds of strange behavior are known; the
+      termcap data base does not contain anything to distinguish the two.
+ 
+      On Concept-100 terminals, output in the last column wraps the
+      cursor almost like an ordinary `am' terminal.  But if the next
+      thing output is a newline, it is ignored.
+ 
+      DEC VT-100 terminals (when the wrap switch is on) do a different
+      strange thing: the cursor wraps only if the next thing output is
+      another graphic character.  In fact, the wrap occurs when the
+      following graphic character is received by the terminal, before the
+      character is placed on the screen.
+ 
+      On both of these terminals, after writing in the last column a
+      following graphic character will be displayed in the first column
+      of the following line.  But the effect of relative cursor motion
+      characters such as newline or backspace at such a time depends on
+      the terminal.  The effect of erase or scrolling commands also
+      depends on the terminal.  You can't assume anything about what
+      they will do on a terminal that has `xn'.  So, to be safe, you
+      should never do these things at such a time on such a terminal.
+ 
+      To be sure of reliable results on a terminal which has the `xn'
+      flag, output a `cm' absolute positioning command after writing in
+      the last column.  Another safe thing to do is to output
+      carriage-return newline, which will leave the cursor at the
+      beginning of the following line.
+ 
+ `LP'
+      Flag whose presence means that it is safe to write in the last
+      column of the last line without worrying about undesired
+      scrolling.  `LP' indicates the DEC flavor of `xn' strangeness.
+ 
+</PRE><A href="http://docs.biostat.wustl.edu/cgi-bin/infocat"><IMG height=22 
+src="termcap_wrapping_files/ball.red.gif" width=20 border=1> Info Catalog</A> <A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Cursor%2520Motion"><IMG 
+height=22 src="termcap_wrapping_files/left.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Cursor Motion</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Capabilities"><IMG 
+height=22 src="termcap_wrapping_files/up.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Capabilities</STRONG> </A><A 
+href="http://docs.biostat.wustl.edu/cgi-bin/info2html?(termcap)Scrolling"><IMG 
+height=22 src="termcap_wrapping_files/right.gif" width=20 border=1> 
+<EM>(termcap)</EM> <STRONG>Scrolling</STRONG> </A>
+<HR>
+<EM>automatically generated by </EM><A 
+href="http://www.cs.dartmouth.edu/~jonh/info2html/"><B>info2html</B></A> 
+</BODY></HTML>
