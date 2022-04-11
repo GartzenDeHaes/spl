@@ -61,6 +61,9 @@ inline void TypeValidate( const Undefined *u ) {}
 inline void TypeCheckMem( const Undefined& u ) {}
 inline void TypeCheckMem( const Undefined *u ) {}
 
+
+REGISTER_TYPEOF( 580, Undefined );
+
 /** @} */
 }
 #endif

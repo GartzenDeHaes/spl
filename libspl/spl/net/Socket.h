@@ -36,7 +36,7 @@
 #if defined(_WINDOWS)
 //#define FD_SETSIZE 512
 #define _WINSOCKAPI_
-//#include <spl/cleanwindows.h>
+#include <spl/cleanwindows.h>
 #include <winsock2.h>
 #include <spl/configwin32.h>
 #endif
@@ -114,6 +114,9 @@ namespace spl
 class Socket;
 typedef RefCountPtr<Socket> SocketPtr;
 typedef WeakReference<Socket, SocketPtr> SocketRef;
+
+REGISTER_TYPEOF(48, SocketPtr);
+REGISTER_TYPEOF( 474, SocketRef );
 
 /** @brief Base socket type, you probably want to use TcpSocket or ServerSocket instead.
  *	@ref TcpSocket
@@ -206,6 +209,8 @@ public:
 	void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(50, Socket);
 
 /** @} */
 /** @} */

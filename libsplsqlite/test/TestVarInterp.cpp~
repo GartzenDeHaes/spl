@@ -1,0 +1,480 @@
+#include <spl/Debug.h>
+#include <spl/Log.h>
+#include <spl/interp/VarInterp.h>
+
+#ifdef DEBUG
+
+using namespace spl;
+
+static void _TestVarInterpStackFrame()
+{
+	Log::WriteCheck( "StackFrame" );
+
+	StackFrame frm(RefCountPtr<IJsObject>(new JsObject()), 0);
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	frm.CheckMem();
+	UNIT_ASSERT_MEM_NOTED("StackFrame 1");
+
+	*frm.FindProperty("prop") = "sot";
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	frm.CheckMem();
+	UNIT_ASSERT_MEM_NOTED("StackFrame 2");
+
+	VariantPtr v1 = frm.FindProperty("prop");
+	StringPtr s = v1->ToString();	
+	UNIT_ASSERT("sot", *s == "sot");
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	frm.CheckMem();
+	s.CheckMem();
+	v1.CheckMem();
+	UNIT_ASSERT_MEM_NOTED("StackFrame 3");
+
+	*v1 = "bye";
+	s = v1->ToString();	
+	UNIT_ASSERT("bye", *s == "bye");
+
+	VariantPtr v2 = frm.FindProperty("prop");
+	*v2 = "hi";
+	s = v2->ToString();	
+	UNIT_ASSERT("hi", *s == "hi");
+
+	s = v1->ToString();	
+	UNIT_ASSERT("hi", *s == "hi");
+	
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	frm.CheckMem();
+	s.CheckMem();
+	v1.CheckMem();
+	v2.CheckMem();
+	UNIT_ASSERT_MEM_NOTED("StackFrame 0");
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpNull()
+{
+	Log::WriteCheck( "VarInterp null" );
+
+	VarInterp *vi = new VarInterp();
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_NOTE_MEM( vi );
+	vi->CheckMem();
+	DEBUG_DUMP_MEM_LEAKS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp 1.0");
+
+	delete vi;
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp 1.1");
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpNoOp()
+{
+	Log::WriteCheck( "VarInterp NOP" );
+
+	Program p;
+	p.AppendCode(JSOP_NOP, JSOPARG_NONE, 0);
+	VariantPtr method(new Variant(RefCountPtr<IJsObject>(new JsMethod(p))));
+	Vector<VariantPtr> args;
+	VarInterp vi;
+	
+	bool ret = vi.Execute(method, args, false);
+	UNIT_ASSERT("eof", !ret);
+
+	UNIT_ASSERT("stack not empty", vi.StackCount() == 0);
+	UNIT_ASSERT("undefined", vi.ReturnValue()->ToString()->Equals("undefined"));
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpPush()
+{
+	Log::WriteCheck( "VarInterp PUSH" );
+
+	Program p;
+	p.AppendCode(JSOP_PUSH, JSOPARG_IMM, 1);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+	
+	int pos = p.AddToTable(1);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 2);
+
+	pos = p.AddToTable("hi");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 3);
+
+	pos = p.AddToTable(1.2);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 4);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	vi.CheckMem();
+	p.CheckMem();
+	method.CheckMem();
+	args.CheckMem();
+	DEBUG_DUMP_MEM_LEAKS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp PUSH 1");
+	
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	UNIT_ASSERT("IM value", vi.StackPeek()->ToInt32() == 1);
+
+	ret = vi.Execute(method, args, true);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	vi.CheckMem();
+	p.CheckMem();
+	method.CheckMem();
+	args.CheckMem();
+	DEBUG_DUMP_MEM_LEAKS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp PUSH 2");
+	
+	UNIT_ASSERT("stack 2", vi.StackCount() == 3);
+	UNIT_ASSERT("line 2", vi.StackPeek()->ToInt32() == 2);
+	vi.PopStack();
+	UNIT_ASSERT("INT TAB value", vi.StackPeek()->ToInt32() == 1);
+
+	ret = vi.Execute(method, args, true);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	vi.CheckMem();
+	p.CheckMem();
+	method.CheckMem();
+	args.CheckMem();
+	DEBUG_DUMP_MEM_LEAKS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp PUSH 3");
+	
+	UNIT_ASSERT("stack 2", vi.StackCount() == 4);
+	UNIT_ASSERT("line 3", vi.StackPeek()->ToInt32() == 3);
+	vi.PopStack();
+	UNIT_ASSERT("STRING TAB value", vi.StackPeek()->ToString()->Equals("hi"));
+
+	vi.ValidateMem();
+	ret = vi.Execute(method, args, true);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	vi.CheckMem();
+	p.CheckMem();
+	method.CheckMem();
+	args.CheckMem();
+	DEBUG_DUMP_MEM_LEAKS();
+	UNIT_ASSERT_MEM_NOTED("VarInterp PUSH 4");
+	
+	UNIT_ASSERT("stack 2", vi.StackCount() == 5);
+	UNIT_ASSERT("line 4", vi.StackPeek()->ToInt32() == 4);
+	vi.PopStack();
+	UNIT_ASSERT("FLOAT TAB value", vi.StackPeek()->ToString()->Equals("1.2"));
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpAdd()
+{
+	Log::WriteCheck( "VarInterp ADD" );
+
+	Program p;
+	p.AppendCode(JSOP_PUSH, JSOPARG_IMM, 1);
+	p.AppendCode(JSOP_PUSH, JSOPARG_IMM, 1);
+	p.AppendCode(JSOP_ADD, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+
+	int pos = p.AddToTable(1.2);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_ADD, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 2);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	UNIT_ASSERT("2+2", vi.StackPeek()->ToInt32() == 2);
+
+	ret = vi.Execute(method, args, true);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 2", vi.StackPeek()->ToInt32() == 2);
+	vi.PopStack();
+	UNIT_ASSERT("2+1.2", vi.StackPeek()->ToString()->Equals("3.2"));
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpThis()
+{
+	Log::WriteCheck( "VarInterp THIS" );
+
+	Program p;
+	p.AppendCode(JSOP_THIS, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	UNIT_ASSERT("this", vi.StackPeek()->IsObject());
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpFindProp()
+{
+	Log::WriteCheck( "VarInterp FINDPROP" );
+
+	Program p;
+	int pos = p.AddToTable("prop1");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	
+	VariantPtr v = vi.StackPeek();
+	StringPtr s = v->ToString();
+	UNIT_ASSERT("this", StrCmp(v->TypeNameInner(), "undefined", 20) == 0);
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpAssign()
+{
+	Log::WriteCheck( "VarInterp ASSIGN" );
+
+	Program p;
+	int posProp1 = p.AddToTable("prop1");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	int posHi = p.AddToTable("hi");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posHi);
+	p.AppendCode(JSOP_ASSIGN, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	vi.ValidateMem();
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	
+	VariantPtr v = vi.StackPeek();
+	StringPtr s = v->ToString();
+	UNIT_ASSERT("this", 0 == StrCmp(v->TypeNameInner(), "String", 20));
+	UNIT_ASSERT("this", *s == "hi");
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpDeref()
+{
+	Log::WriteCheck( "VarInterp DEREF" );
+
+	Program p;
+	int posProp1 = p.AddToTable("prop1");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	
+	int pos = p.AddToTable("Object");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, pos);
+	p.AppendCode(JSOP_NEW, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_ASSIGN, JSOPARG_NONE, 0);
+	
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	
+	int posInnerProp = p.AddToTable("innerprop");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posInnerProp);
+	p.AppendCode(JSOP_DEREF, JSOPARG_NONE, 0);
+	int posHi = p.AddToTable("hi");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posHi);
+
+	p.AppendCode(JSOP_ASSIGN, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posInnerProp);
+	p.AppendCode(JSOP_DEREF, JSOPARG_NONE, 0);
+
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+	Vector<VariantPtr> args;
+	bool ret = vi.Execute(method, args, false);
+	vi.ValidateMem();
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	
+	VariantPtr v = vi.StackPeek();
+	StringPtr s = v->ToString();
+	UNIT_ASSERT("this", 0 == StrCmp(v->TypeNameInner(), "String", 20));
+	UNIT_ASSERT("this", *s == "hi");
+
+	Log::WriteOkFail(  );
+}
+
+static void _TestVarInterpEnterLeave()
+{
+	Log::WriteCheck( "VarInterp ENTER/LEAVE" );
+
+	Program p;
+	int posProp1 = p.AddToTable("prop1");
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, p.AddToTable("hi"));
+	p.AppendCode(JSOP_ASSIGN, JSOPARG_NONE, 0);
+	
+	p.AppendCode(JSOP_ENTER, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_DEFPROP, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, p.AddToTable("hiher"));
+	p.AppendCode(JSOP_ASSIGN, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 1);
+	
+	p.AppendCode(JSOP_LEAVE, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_PUSH, JSOPARG_TAB, posProp1);
+	p.AppendCode(JSOP_FINDPROP, JSOPARG_NONE, 0);
+	p.AppendCode(JSOP_LINE, JSOPARG_IMM, 2);
+
+	VariantPtr method(new Variant(VarInterp::CreateDefaultContext(p)));
+	Vector<VariantPtr> args;
+	
+	VarInterp vi;
+
+	bool ret = vi.Execute(method, args, false);
+	vi.ValidateMem();
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("2 frames", vi.FrameCount() == 2);
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	UNIT_ASSERT("line 1", vi.StackPeek()->ToInt32() == 1);
+	vi.PopStack();
+	
+	VariantPtr v = vi.StackPeek();
+	StringPtr s = v->ToString();
+	UNIT_ASSERT("this", 0 == StrCmp(v->TypeNameInner(), "String", 20));
+	UNIT_ASSERT("this", *s == "hiher");
+	vi.PopStack();
+
+	ret = vi.Execute(method, args, true);
+	vi.ValidateMem();
+	UNIT_ASSERT("continue LINE", ret);
+
+	UNIT_ASSERT("2 frames", vi.FrameCount() == 1);
+	UNIT_ASSERT("stack 2", vi.StackCount() == 2);
+	int line = vi.StackPeek()->ToInt32();
+	UNIT_ASSERT("line 2", line == 2);
+	vi.PopStack();
+	
+	v = vi.StackPeek();
+	s = v->ToString();
+	UNIT_ASSERT("this", 0 == StrCmp(v->TypeNameInner(), "String", 20));
+	UNIT_ASSERT("this", *s == "hi");
+
+	Log::WriteOkFail(  );
+}
+
+void _TestVarInterp()
+{
+	_TestVarInterpStackFrame();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpNull();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpNoOp();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+	
+	_TestVarInterpPush();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpAdd();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpThis();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpFindProp();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpAssign();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+
+	_TestVarInterpDeref();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+	
+	_TestVarInterpEnterLeave();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+}
+
+#endif

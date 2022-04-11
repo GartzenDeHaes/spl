@@ -203,12 +203,12 @@ static void _THashTest6()
 	ht.Set("0", 0);
 	int count = 0;
 	
-	//foreach(v,ht)
-	//{
-	//	count++;
-	//	UNIT_ASSERT("hashtable foreach", v.Current() == 0);
-	//}
-	//UNIT_ASSERT("foreach count", count == 1);
+	foreach(v,ht)
+	{
+		count++;
+		UNIT_ASSERT("hashtable foreach", v.Current() == 0);
+	}
+	UNIT_ASSERT("foreach count", count == 1);
 	
 	ht.Set("1", 1);
 	count = 0;
@@ -229,15 +229,15 @@ static void _THashTest6()
 		UNIT_ASSERT("foreach count", count == 2);
 	}
 
-	//{
-	//	count = 0;
-	//	foreach(v2,ht)
-	//	{
-	//		count++;
-	//		UNIT_ASSERT("hashtable foreach 2", v2.Current() == 0 || v2.Current() == 1);
-	//	}
-	//	UNIT_ASSERT("foreach count", count == 2);
-	//}
+	{
+		count = 0;
+		foreach(v2,ht)
+		{
+			count++;
+			UNIT_ASSERT("hashtable foreach 2", v2.Current() == 0 || v2.Current() == 1);
+		}
+		UNIT_ASSERT("foreach count", count == 2);
+	}
 	
 	ht.Clear();
 	UNIT_ASSERT("THash cleared", ht.Count() == 0);

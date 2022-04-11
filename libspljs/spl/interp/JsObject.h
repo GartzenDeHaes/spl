@@ -75,4 +75,3 @@ namespace spl
 	REGISTER_TYPEOF2(699,Hashtable<String, VariantPtr>);
 }
 #endif
-

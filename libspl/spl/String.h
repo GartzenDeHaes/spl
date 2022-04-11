@@ -64,6 +64,9 @@ class String;
 typedef RefCountPtr<String> StringPtr;
 typedef WeakReference<String, StringPtr> StringRef;
 
+REGISTER_TYPEOF( 572, StringPtr );
+REGISTER_TYPEOF( 574, StringRef );
+
 /** @brief Your friend, the string.
  *
  */
@@ -357,6 +360,10 @@ inline bool operator ==(const char *cp, const String& str)
 {
 	return str == cp;
 }
+
+REGISTER_TYPEOF( 570, String );
+REGISTER_TYPEOF( 588, Vector<String> );
+REGISTER_TYPEOF( 589, Array<String> );
 
 /** @} */
 }

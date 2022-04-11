@@ -26,7 +26,7 @@
 #include <spl/String.h>
 #include <spl/io/Stream.h>
 #include <spl/text/StringBuffer.h>
-#include <spl/io/TextReader.h>
+#include <spl/io/TextStream.h>
 
 namespace spl
 {
@@ -38,6 +38,8 @@ namespace spl
 
 class DelimitedFile;
 typedef RefCountPtr<DelimitedFile> DelimitedFilePtr;
+
+REGISTER_TYPEOF(76, DelimitedFilePtr);
 
 /** @brief Loads delimited file into memory.
  *	@ref DataTable
@@ -75,6 +77,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(78, DelimitedFile);
 
 /** @} */
 }

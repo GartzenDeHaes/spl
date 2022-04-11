@@ -31,6 +31,9 @@ class BlockingStream;
 typedef RefCountPtrCast<BlockingStream, spl::IStream, spl::IStreamPtr> BlockingStreamPtr;
 typedef WeakReference<BlockingStream, spl::IStreamPtr> BlockingStreamRef;
 
+REGISTER_TYPEOF(72, BlockingStreamPtr);
+REGISTER_TYPEOF( 448, BlockingStreamRef );
+
 /// @brief BlockingStream uses a mutex and an event to enforce blocking I/O.
 class BlockingStream : public spl::IStream
 {
@@ -65,6 +68,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(74, BlockingStream);
 
 /** @} */
 }

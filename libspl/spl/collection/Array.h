@@ -462,6 +462,17 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 151, Array<char> );
+REGISTER_TYPEOF( 152, Array<byte> );
+REGISTER_TYPEOF( 156, Array<int16> );
+REGISTER_TYPEOF( 157, Array<uint16> );
+REGISTER_TYPEOF( 160, Array<int32> );
+REGISTER_TYPEOF( 161, Array<uint32> );
+REGISTER_TYPEOF( 162, Array<int64> );
+REGISTER_TYPEOF( 163, Array<uint64> );
+REGISTER_TYPEOF( 164, Array<float32> );
+REGISTER_TYPEOF( 165, Array<float64> );
+
 /** @} */
 }
 #endif

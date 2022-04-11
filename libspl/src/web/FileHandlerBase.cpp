@@ -16,8 +16,7 @@
  */
 #include <spl/io/File.h>
 #include <spl/Int32.h>
-#include <spl/io/TextReader.h>
-#include <spl/io/TextWriter.h>
+#include <spl/io/TextStream.h>
 #include <spl/web/server/HttpFileHandler.h>
 
 using namespace spl;

@@ -489,14 +489,14 @@ static int scanFiles(const char *basePath)
 				_srcTable[_srcTablePos].isCs = 1;
 				_csLink = 1;
 			}
-			//else if (doesStringEndWith(basePath, ".l"))
-			//{
-			//	_srcTable[_srcTablePos].isLex = 1;
-			//}
-			//else if (doesStringEndWith(basePath, ".y"))
-			//{
-			//	_srcTable[_srcTablePos].isYacc = 1;
-			//}
+			else if (doesStringEndWith(basePath, ".l"))
+			{
+				_srcTable[_srcTablePos].isLex = 1;
+			}
+			else if (doesStringEndWith(basePath, ".y"))
+			{
+				_srcTable[_srcTablePos].isYacc = 1;
+			}
 			else
 			{
 				return 0;
@@ -555,7 +555,7 @@ static int ensureBinDir()
 		return 0;
 	}
 
-	if (0 != mkdir(_outputPath, 0777))
+	if (0 != mkdir("bin", 0777))
 	{
 		printf("Error %d creating output %s dir\n", errno, _outputPath);
 		return errno;
@@ -613,9 +613,6 @@ static void parseArgs(const int argc, char **argv)
 				case 'y':
 					strcpy(_yyflags, cp);
 					break;
-				case 'p':
-					strcpy(_outputPath, cp);
-					break;
 				case 't':
 					if (cp[0] == 'l')
 					{
@@ -644,9 +641,8 @@ static void parseArgs(const int argc, char **argv)
 
 	if (showhelp)
 	{
-		//printf("buildit -h -? -cCOMPILEARGS -lLINKARGS -tOUTTYPE -v0.0.0 outputname\n");
-		printf("buildit -h -? -pOBJPATH -cCOMPILEARGS -lLINKARGS -xLEXARGS -yYACCARGS -tOUTTYPE outputname\n");
-		printf("# OBJPATH defaults to -pbi\n");
+		//printf("buildit -h -? -cCOMPILEARGS -lLINKARGS -xLEXARGS -yYACCARGS -tOUTTYPE -v0.0.0 outputname\n");
+		printf("buildit -h -? -cCOMPILEARGS -lLINKARGS -xLEXARGS -yYACCARGS -tOUTTYPE outputname\n");
 		printf("# OUTTYPE is either lib or exe, exe is the default.\n");
 		printf("# Object files will be built in ./bin.\n");
 		printf("# No files in the root directory will be compiled or checked as a dependency.\n");

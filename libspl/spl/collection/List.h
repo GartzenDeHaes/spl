@@ -384,6 +384,32 @@ public:
 	}
 };
 
+REGISTER_TYPEOF( 300, List<char> );
+REGISTER_TYPEOF( 301, List<byte> );
+REGISTER_TYPEOF( 302, List<int16> );
+REGISTER_TYPEOF( 303, List<uint16> );
+REGISTER_TYPEOF( 304, List<int32> );
+REGISTER_TYPEOF( 305, List<uint32> );
+REGISTER_TYPEOF( 306, List<int64> );
+REGISTER_TYPEOF( 307, List<uint64> );
+REGISTER_TYPEOF( 308, List<float32> );
+REGISTER_TYPEOF( 309, List<float64> );
+
+REGISTER_TYPEOF( 310, List<BigInteger> );
+REGISTER_TYPEOF( 311, List<Char> );
+REGISTER_TYPEOF( 312, List<Date> );
+REGISTER_TYPEOF( 313, List<DateTime> );
+REGISTER_TYPEOF( 314, List<Decimal> );
+REGISTER_TYPEOF( 315, List<Double> );
+REGISTER_TYPEOF( 316, List<Int32> );
+REGISTER_TYPEOF( 317, List<Int64> );
+REGISTER_TYPEOF( 318, List<Null> );
+REGISTER_TYPEOF( 319, List<String> );
+REGISTER_TYPEOF( 320, List<StringPtr> );
+REGISTER_TYPEOF( 321, List<UInt32> );
+REGISTER_TYPEOF( 322, List<UInt64> );
+REGISTER_TYPEOF( 323, List<Undefined> );
+
 /** @} */
 }
 #endif

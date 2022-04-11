@@ -513,6 +513,17 @@ protected:
 	}
 };
 
+REGISTER_TYPEOF( 170, Vector<char> );
+REGISTER_TYPEOF( 171, Vector<byte> );
+REGISTER_TYPEOF( 172, Vector<int16> );
+REGISTER_TYPEOF( 173, Vector<uint16> );
+REGISTER_TYPEOF( 174, Vector<int32> );
+REGISTER_TYPEOF( 175, Vector<uint32> );
+REGISTER_TYPEOF( 176, Vector<int64> );
+REGISTER_TYPEOF( 177, Vector<uint64> );
+REGISTER_TYPEOF( 178, Vector<float32> );
+REGISTER_TYPEOF( 179, Vector<float64> );
+
 /** @} */
 }
 #endif

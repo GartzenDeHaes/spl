@@ -115,7 +115,7 @@ int main(int argc, char **argv)
  *	@section windoze Windows Development
  *		If you're doing windozes development, be sure to include stdafx, windows top level
  *		headers, and &#35;import's prior to including SPL headers.  SPL uses an abrievated set
- *		of windows headers to get networking to work (removed).  If you susequently include &lt;windows.h&gt;,
+ *		of windows headers to get networking to work.  If you susequently include &lt;windows.h&gt;,
  *		you'll get a lot of errors.
  *
  *	@section smptr Smart Pointers
@@ -389,7 +389,6 @@ public:
 	virtual int Compare( const IComparable& a ) const = 0;
 
 	///@brief Class instances with the same majic number are of the same type (can be casted).
-	/// This is used for sanity checks in Equals and Compare.
 	/// Majic numbers above 0xFFFF are available for user applications.
 	virtual int32 MajicNumber() const = 0;
 	virtual uint32 HashCode() const = 0;
@@ -403,5 +402,7 @@ public:
 /** @} */
 /** @} */
 }
+
+#include <spl/typeof.h>
 
 #endif

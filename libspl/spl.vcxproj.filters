@@ -62,6 +62,9 @@
     <ClCompile Include="src\Socket.cpp" />
     <ClCompile Include="src\SocketSet.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
+    <ClCompile Include="src\Stream.cpp" />
+    <ClCompile Include="src\StreamFd.cpp" />
+    <ClCompile Include="src\StreamReadPump.cpp" />
     <ClCompile Include="src\String.cpp" />
     <ClCompile Include="src\StringBuffer.cpp" />
     <ClCompile Include="src\StringTable.cpp" />
@@ -208,9 +211,6 @@
     <ClCompile Include="src\term\tparam.cpp">
       <Filter>term\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\io\Stream.cpp" />
-    <ClCompile Include="src\io\StreamFd.cpp" />
-    <ClCompile Include="src\io\StreamReadPump.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="spl\BigInteger.h" />
@@ -284,6 +284,7 @@
     <ClInclude Include="spl\io\StreamDelegateDispatch.h" />
     <ClInclude Include="spl\io\StreamReadPump.h" />
     <ClInclude Include="spl\io\StringStream.h" />
+    <ClInclude Include="spl\io\TextStream.h" />
     <ClInclude Include="spl\io\ThreadedPacketStream.h" />
     <ClInclude Include="spl\io\ThreadSafeStream.h" />
     <ClInclude Include="spl\io\WinPerm.h" />
@@ -378,7 +379,6 @@
     <ClInclude Include="spl\term\TermCap.h">
       <Filter>term</Filter>
     </ClInclude>
-    <ClInclude Include="spl\cleanwindows.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ChangeLog" />

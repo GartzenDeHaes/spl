@@ -66,6 +66,8 @@ inline void TypeValidate( const Null *u ) {}
 inline void TypeCheckMem( const Null& u ) {}
 inline void TypeCheckMem( const Null *u ) {}
 
+REGISTER_TYPEOF( 571, Null );
+
 /** @} */
 }
 #endif

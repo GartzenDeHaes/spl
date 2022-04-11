@@ -36,6 +36,9 @@ class MemoryStream;
 typedef RefCountPtrCast<MemoryStream, IStream, IStreamPtr> MemoryStreamPtr;
 typedef WeakReference<MemoryStream, IStreamPtr> MemoryStreamRef;
 
+REGISTER_TYPEOF(110, MemoryStreamPtr);
+REGISTER_TYPEOF( 459, MemoryStreamRef );
+
 /** @brief A stream for operating on memory buffers.
  *
  */
@@ -87,6 +90,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(112, MemoryStream);
 
 /** @} */
 }

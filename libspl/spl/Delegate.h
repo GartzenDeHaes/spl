@@ -52,9 +52,6 @@ private:
 	T* m_object;
 	void (T::*m_member)();
 
-	inline Delegate() {}
-	inline void operator =(const Delegate& d) {}
-
 public:
 	inline Delegate(T *object, void (T::* func)())
 	: m_object(object), m_member(func)

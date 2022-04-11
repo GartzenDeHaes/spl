@@ -73,6 +73,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 406, StringTable );
+
 /** @} */
 }
 #endif

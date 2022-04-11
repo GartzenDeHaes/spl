@@ -17,8 +17,8 @@
 #ifndef _RGB_H
 #define _RGB_H
 
-//#include <stdio.h>
-//#include <string.h>
+#include <stdio.h>
+#include <string.h>
 #include <spl/types.h>
 #include <spl/Debug.h>
 #include <spl/term/AnsiTerm.h>

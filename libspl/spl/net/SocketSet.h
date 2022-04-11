@@ -101,6 +101,8 @@ inline void TypeCheckMem( SocketListenerPair *slp )
 class SocketSet;
 typedef RefCountPtrCast<SocketSet, ISocketService, ISocketServicePtr> SocketSetPtr;
 
+REGISTER_TYPEOF(56, SocketSetPtr);
+
 ///@brief A threaded select() IO dispatcher.
 class SocketSet : public ISocketService, public Thread
 {
@@ -146,8 +148,12 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(58, SocketSet);
+
 class IServerConnectionFactory;
 typedef RefCountPtr<IServerConnectionFactory> IServerConnectionFactoryPtr;
+
+REGISTER_TYPEOF(60, IServerConnectionFactoryPtr);
 
 ///@breif When SocketSetServer accepts a connection, it uses
 /// IServerConnectionFactory to allow the application to create an
@@ -159,8 +165,12 @@ public:
 	virtual IStreamReadListenerPtr Create(TcpSocketPtr sock) = 0;
 };
 
+REGISTER_TYPEOF(62, IServerConnectionFactory);
+
 class SocketSetServer;
 typedef RefCountPtr<SocketSetServer> SocketSetServerPtr;
+
+REGISTER_TYPEOF(64, SocketSetServerPtr);
 
 ///@breif Accepts connections at a port and automatically adds them to the SocketSet.
 class SocketSetServer : public ISocketService, public IPortListenerListener
@@ -191,6 +201,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(66, SocketSetServer);
 
 /** @} */
 }

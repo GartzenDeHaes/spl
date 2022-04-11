@@ -38,6 +38,9 @@ class Regex;
 typedef RefCountPtr<Regex> RegexPtr;
 typedef WeakReference<Regex, RegexPtr> RegexRef;
 
+REGISTER_TYPEOF( 480, RegexPtr );
+REGISTER_TYPEOF( 482, RegexRef );
+
 /** @brief Regular expression using PCRE.
  *	Expressions are compiled when the class is constructed.
  */
@@ -76,6 +79,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF( 484, Regex );
 
 /** @} */
 }

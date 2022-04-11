@@ -37,6 +37,9 @@ class BigInteger;
 typedef RefCountPtr<BigInteger> BigIntegerPtr;
 typedef WeakReference<BigInteger, BigIntegerPtr> BigIntegerRef;
 
+REGISTER_TYPEOF( 550, BigIntegerPtr );
+REGISTER_TYPEOF( 552, BigIntegerRef );
+
 ///@brief Ported from http://www.bouncycastle.org/csharp/index.html
 class BigInteger : public IComparable, public IMemoryValidate
 {
@@ -428,6 +431,8 @@ public:
 	static void DebugClearStatics();
 #endif
 };
+
+REGISTER_TYPEOF( 554, BigInteger );
 
 /** @} */
 }

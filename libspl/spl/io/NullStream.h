@@ -31,6 +31,9 @@ class NullStream;
 typedef RefCountPtrCast<NullStream, spl::IStream, spl::IStreamPtr> NullStreamPtr;
 typedef WeakReference<NullStream, spl::IStreamPtr> NullStreamRef;
 
+REGISTER_TYPEOF(114, NullStreamPtr);
+REGISTER_TYPEOF( 461, NullStreamRef );
+
 /** @brief A stream that drops its input and reads 0 bytes.
   */
 class NullStream : public spl::IStream
@@ -58,6 +61,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(116, NullStream);
 
 /** @} */
 }

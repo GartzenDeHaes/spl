@@ -65,5 +65,6 @@ inline void TypeCheckMem(ThreadStartFunction *t)
 	}
 }
 
+REGISTER_TYPEOF( 486, ThreadStartFunction );
 }
 #endif

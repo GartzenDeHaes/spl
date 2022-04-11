@@ -31,6 +31,9 @@ class RWLock;
 typedef RefCountPtr<RWLock> RWLockPtr;
 typedef WeakReference<RWLock, RWLockPtr> RWLockRef;
 
+REGISTER_TYPEOF( 466, RWLockPtr );
+REGISTER_TYPEOF( 468, RWLockRef );
+
 ///@brief A multiple reader single writer lock.  Readers cannot upgrade their lock to
 /// writer.  LockRead/UnlockRead and LockWrite/UnlockWrite must alway be called in pairs
 /// and cannot be interleved.
@@ -76,6 +79,8 @@ inline void TypeValidate(const RWLock& rw)
 inline void TypeCheckMem(const RWLock& rw)
 {
 }
+
+REGISTER_TYPEOF( 470, RWLock );
 
 /** @} */
 }

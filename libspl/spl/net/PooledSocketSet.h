@@ -72,6 +72,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(34, PooledSocketSet);
+
 class PooledSocketServer;
 typedef RefCountPtrCast<PooledSocketServer, ISocketService, ISocketServicePtr> PooledSocketServerPtr;
 
@@ -114,6 +116,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(36, PooledSocketServer);
 
 /** @} */
 }

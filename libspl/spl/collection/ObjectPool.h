@@ -101,6 +101,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 404, ObjectPool );
+
 /** @} */
 }
 #endif

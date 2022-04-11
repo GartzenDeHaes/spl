@@ -1,0 +1,358 @@
+
+	:	Fixed critical bug in StrCpyLen.
+	:	Fixed Windows releated bugs in Environment.
+
+Version 0.4.9
+	:	Improved hash function
+	:	Changed hash functions to unsigned.
+	:	String::Split(), return empty vector if empty string.
+	:	CommandLine: use Parse instead of constructor.
+	:	Added spl namespace to all classes.  Clients must use 
+		"using namespace spl;".
+	:	Fixed infinite loop in Vector::RemoveElementAt(0) if only one element
+		in the Vector.
+	:	Fix seg fault in Environment::UserName in linux auto-logon.
+	:	Removed class ListVolatile.
+	:	Removed inappropiate use of volatile keyword.
+	:	Changed teh sync primative for Thread::Join from Mutext to
+		Event.
+	:	Added Environment::FreeMemory().
+
+Version 0.4.8
+	:	Converted Sample and SampleTest to use Array instead of
+		a malloced array.
+	:	Improved sanity checks in the debug heap.  Corrected
+		possible issues on Linux.
+	:	Added a Pipe class wrapping pipe().
+	:	Fixed semaphore unit test failure on cygwin.
+	:	Fixed faulty assert in String::Split when the string is 
+		terminated by the split string.
+	:	Fixed bug with GUID forth element.
+	:	Added HttpCookie, fixed bugs in HttpRequest, Response.
+
+Version 0.4.7
+	:	Fixed GCC 4.4.3 build.
+	:	Fixed linux build.
+
+Version 0.4.6
+	:	Fixed bug in Int32::ToString for number with more that 2
+		digits.
+	:	Added an example program sendlog to send messages to a syslog
+		server.
+	:	Log'ing to syslog servers now works.
+	:	Fixed some bug with UdpSocket in client mode.
+	:	Fixed compile error with type_of Thread.
+	:	Fixed runtime error in ConfigurationSettings registery
+		support.
+
+Version 0.4.5
+	:	Added ConfigurationSettings ToIniString and ToXmlString.
+	:	Refactored ConfigurationSettings to support duplicate keys.
+	:	Added Environmnet::NewLine().
+	:	Fixed VS release build.
+	:	Date will now parse YYYY-MM-DD format.
+	:	Pointers can now be directly assinged to RefCountPtr's.
+	:	Unhandled Exceptions from Thread's are now logged.
+		(That's exception and thread class).
+	:	Refactored Log to use syslog format and output to file,
+		console, or syslog server.
+	:	Added ISO 8601 DateTime ToString format.
+	:	Added Environment::ProcessName().
+	:	Added UdpSocket.
+	:	Added UdpServer.
+
+Version 0.4.4
+	:	Simple XPath, SelectNodes, and SelectSingleNode complete.
+	:	Fixed bug in List::PeekRef() and Peek().
+	:	Added XPath /, //, nodename, @, and attribute name support.
+
+Version 0.4.2
+	:	Fixed bug in XmlNode::ChildNodes.
+	:	Fixed compile error in List::= and copy constructor.
+	:	Hashtable now dynamically increases its table size.
+	:	Added foreach support for Hashtable and RedBlackTree.
+
+Version 0.4.1
+	:	Used Compare class to remove specialized sub types of the red
+		black tree.
+	:	Add limited typeof support for platforms wihout this
+		operator.
+	:	Add STL style foreach operator.
+	:	Added many additional weak reference typedefs.
+
+Version 0.4
+
+		:	SPL mostly converted to use smart pointers (RefCountPtr).
+		:	WeakReference added to prevent circular smart pointer
+			references.
+		:	RefCountPtrCast template can be used for polymorpic pointer
+			casts.
+		:	List changed to use an iterator (ListIterator<T>).
+
+Version 0.3.3
+
+9/17/2009:	Chagned DES string methods to use base 64 encoding.
+9/16/2009:	Fixed crash bug in ObjectPool::GetObject().
+9/16/2009:	Fixed(?) problem in SocketSet with .net sockets not closing
+			properly.  I suspect there's unread OOB data, but I'm just
+			closing the socket if read is set and no bytes are available.
+6/3/2009:	Fixed cygwin build.
+6/2/2009:	Added unit tests for Semaphore, InterlockCounter, and
+		ThreadStartDelegate.
+6/2/2009:	Added ThreadStartDelegate and ThreadStartFunction.
+6/1/2009:	Added unit tests for Int32 and friends.  Fixed bugs with
+		Parse, IsInt, and ToString.
+6/1/2009:	Fixed bug with Int32::ToString not working with negative
+numbers.
+6/1/2009:	Fixed bug with XmlDocument::Load not closing the file.
+5/28/2009:	Added Semaphore.
+
+Version 0.3.2
+
+5/21/2009:	Added splw3, a simple multithreaded web server example project.
+5/21/2009:	Optimized DateTime and added completed the API.  Fixed 
+			incorrect assumption about time_t.
+5/20/2009:	Added File::GetCreationTime, File::GetLastAccessTime, and
+			File::GetLastWriteTime.
+5/19/2009:	Added check in TcpSocket::Accept to not throw an exception if
+			the socket is closed.
+5/19/2009:	Fixed Mutex on windows so timeout of zero is infinte.  Problem
+			effected Thread::Join().
+5/18/2009:	Fixed deadlock in PooledSocketSet Join.
+5/2009:		Added DateTime::Now().
+
+Version 0.2.14
+
+5/2009:		Made String more, but not completely, inmutable.
+5/2009:		Moved StringBuffer to text directory.
+5/2009:		Added Numeric, Int32, Int64, and Double classes.  Moved numeric
+			parsing and formating from String to these classes.
+
+3/15/2009:  Fixed memory leak in Image.
+
+Version 0.2.11
+
+7/13/2008:  Defined copy constructor and operator = symantics for all
+			classes.
+7/13/2008:  Fixed bug in Hashtable::Keys().
+7/12/2008:	Linux: fixed deadlock in SocketSet.
+7/12/2008:  Linux: fixed broken Event class.
+7/12/2008:  Linux: added more error handling to Mutex.
+7/12/2008:  Added SocketSetServer.
+7/12/2008:  Optimized StringBuffer, TextReader, and Decimal.
+7/10/2008:  Added copy constructor '=' operator for StringBuffer.
+7/10/2008:  StreamBuffer now buffers reads as well as writes.
+7/10/2008:	Completed Uri class with unit tests.
+7/7/2008:  Changed Socket::GetRemoteIp to return a String.
+7/7/2008:  Changed SocketSet to delete socket and listener on close/error.
+
+6/30/2008:  Added major optimization to the memory debug code.  This
+			had previously been removed due to issues with some platforms,
+			but the new solution falls back to a scan in these cases.
+6/29/2008:  Fixed some bugs in TextReader.
+6/29/2008:  Added spl/collection/MemoryPool.
+6/29/2008:	Removed memory allocations for empty String's.  Fixed leak
+			in String::UnIntern().
+
+Version 0.2.10
+
+6/24/2008:	Added missing files to distribution cleanwindows.h.
+
+Version 0.2.9
+
+6/23/2008:	Added missing files to distribution configwin.h.
+6/22/2008:	Added ConfigurationSettings class.  Can be initialized with
+			a dot net style .config or a .ini.
+
+Version 0.2.5
+
+6/18/2008:  Fixed Vector with copy construced types.
+6/17/2008:	Constified IMemoryValidate.
+6/17/2008:  Constified some operators in Decimal.
+6/10/2008:	Added comparision operators to String.
+6/10/2008:	Added ElementAtRef to Vector (returns T&).
+6/10/2008:	Added assignment operators to Decimal.
+6/8/2008:	Corrected bug in Vector copy constructor.
+6/8/2008:	Added equals operator to Vector and Hashtable.
+6/9/2008:	Added GetRef to hashtable that returns T&.
+6/6/2008:	Added AddMonths and AddYears to Date.
+6/6/2008:	Made File String friendly.
+6/6/2008:	Added copy constructor to Vector.
+6/4/2008:	Added Association class.
+
+Version 0.2.4
+
+4/12/2008:  Removed overly large inline's from String.
+4/2/2008:	Added back prop neural net from another project.
+3/17/2008:  Added double support to String::Format from java2s.com.
+3/15/2008:	StateMachine complete.
+
+Version 0.2.2
+
+3/15/2008:	Exception handling corrected so that this will catch all errors
+			thrown by the framework
+
+				try { ... }
+				catch ( Exception *ex ) {}
+				catch ( OutOfMemoryException oex ) {}
+
+Version 0.2.1
+
+3/14/2008:  TinyXML unit tests pass now.
+3/14/2008:  Optimized debug build.
+3/13/2008:  Further progress on TinyXML unit tests.  Various optimizations
+			made.
+3/11/2008:	Removed fixed buffer size from String::Format, Log::WriteX, 
+			and TextWriter.
+3/6/2008:	Gave Hashtable a copy constructor.
+3/5/2008:	Using const and references to improve effeciency of collection
+		    classes.
+3/5/2008:	Starting on StateMachine class.
+3/5/2008:	Added extra unit tests for Vector to diagnose Add(String())
+			failure on Tandem.
+
+Version 0.2.0
+
+2/29/2008:  Added DesStream class and unit test.
+2/29/2008:  Added Vector unit test for copy constructor String.
+2/28/2008:  Cleaned up gcc 4.2 warnings.
+
+Version 0.1.8
+
+2/23/2008:  make check will now work even if freetds and mysql client
+			are not installed.
+2/23/2008:  New statistics packackage complete.
+2/17/2008:	Plain old C (POC) API removed.
+2/17/2008:	Fixed bug in random range, was only [0,.5).
+2/15/2008:	Date difference bugs fixed in DateTime.
+2/15/2008:  Random class added.
+
+Version 0.1.7
+
+11/2/2007:  The debug heap now correctly handles padding for arrays on
+	    certain platforms.  Specifically, unit tests now pass on x64.
+
+10/31/2007: Hashtable and list now copy constructor friendly.
+
+10/28/2007: Fixed hang-bug in un*x thread start.  Cleaned up the Thread
+	    class.
+
+10/26/2007: RWLock complete.
+
+10/20/2007: MSSQL and MYSQL code complete, but untested.  On windows,
+	    chnage spl/configwin32.h to enable mysql.
+	    
+	    Moved Date.h to DateTime.h, which includes both Date and
+	    DateTime
+
+10/14/2007: Added String::Trim().
+	    Fixed MySql build.  
+	    SQL_TYPE_FLOAT8 changed to SQL_TYPE_FLOAT32.
+
+Version 0.1.6
+
+10/14/2007: Bugs in Packet and CommandLine tests fixed.  
+	     
+	    Un*x build fixed.
+
+6/19/2007: Math.h System.Math compat API complete.
+
+6/11/2007: Packet is fixed.  C++ RecordSet is working.
+
+6/8/2007:  Added C++ DES class.  Changed Date and DateTime to be binary 
+	   copyable.  So, function(DateTime dt) will work (without a copy
+	   constructor).  Math.h started.
+
+	   FreeTDS is now off by default for win32.  Change
+	   spl/configwin32.h to enable it.
+
+6/7/2007:  GUID class added (ParseHex incomplete).
+		GUID class name changed to Guid to prevent conflict with windows
+		headers.
+		
+6/6/2007:  Split ThreadedPacketStream to create PacketBuilder for use with
+           SocketSet IO.
+           
+6/5/2007:  SocketSet is now thread safe.
+
+6/4/2007:  CommandLine default value added for GetSwitch.  PortListener
+	   changed to use listener instead of inheritance.
+
+3/18/2007:  Increased socket read buffer size to 1024.  In SocketSet, the
+	    read buffer is now dynamically allocated instead of using the
+	    stack.
+
+3/17/2007:  Added String::IndexOfAny.
+
+Version 0.1.5
+
+3/15/2007:  The avl tree used by the debug heap was getting corrupted on
+	    buffer overflows.  Switched to a linked list and increased the
+	    trailing pad on memory allocations to 32 bits.  The increased
+	    padding prevents corruption on off-by-one buffer overflows.
+
+Version 0.1.4
+
+3/11/2007:  Stream implementation complete; Connection and friends removed.
+	    Additional unit tests are still needed.
+
+3/10/2007:  Busy loop bug fixed in SocketSet.  SocketSet now cannot be used
+	    from a polling loop, it only running in its own thread.
+
+Version 0.1.2
+
+2/17/2007:  Fixed a hang condition in short-lived threads.
+2/16/2007:  Changed floating point settings on tandem build to tandem
+	    native.  This allows linking with -Wsql programs.
+2/15/2007:  Started a quick reference (docs/quickref.html).
+2/15/2007:  Fixed Packet on big endian systems.
+2/15/2007:  Changed all throws, except for OutOfMemoryExceptions, to use
+			pointers.  This allows catch(Exception *ex) to catch Exception
+			sub-classes.
+
+Version 0.1.1
+
+2/10/2007:  Continued moving headers.
+
+Version 0.1.0
+
+2/08/2007:  Moved all networking headers to spl/net.
+2/08/2007:  Moved terminal headers to spl/term.
+
+Version 0.0.7
+
+2/07/2007:  make check was failing if spl wasn't installed.
+
+Version 0.0.6
+
+2/03/2007:  Packet.h fixed/debugged.
+2/02/2007:  Changed StringBuffer::IsNumeric to recognise floating point.
+1/29/2007:  Fixed StringBuffer::Insert to perform as implied.  Added unit
+            tests for StringBuffer.
+
+Version 0.0.5
+
+1/26/2007:  Fixed pthread Thread implementation.
+1/26/2007:  Changed Win32AnsiConsole to display a grey background for
+		    underlined cells.
+1/26/2007:  Fixed Telnet bug introduced on 0.0.3.
+1/26/2007:  Refactored Connection classes.
+1/25/2007:  Created CommandLine class for parsing commandline args.
+1/25/2007:  Created unit tests for CommandLine.
+
+Version 0.0.4
+
+1/22/2007:  Fixed buffer overflow in strbuf (darray) append.
+1/22/2007:  Fixed byte -> char sign extension bug introduced in 0.0.2.
+
+Version 0.0.3
+
+1/18/2007:  Merged c and c++ libraries.
+1/18/2007:  Fixed Tandem OSS and cygwin compile (undefined symbols).
+1/18/2007:  Added guards to Vector and doxygen comments.
+1/16/2007:  Changed Thread.cpp to compile on Tandem OSS.
+1/16/2007:  Changed c++ library packages to libsplcpp.
+
+Version 0.0.2
+
+7/20/2006:  Autotools implemented.

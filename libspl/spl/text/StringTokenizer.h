@@ -32,6 +32,9 @@ class StringTokenizer;
 typedef RefCountPtr<StringTokenizer> StringTokenizerPtr;
 typedef WeakReference<StringTokenizer, StringTokenizerPtr> StringTokenizerRef;
 
+REGISTER_TYPEOF( 492, StringTokenizerPtr );
+REGISTER_TYPEOF( 494, StringTokenizerRef );
+
 /** @brief Port of GNU Classpath StringTokenizer.
  *
  */
@@ -112,6 +115,8 @@ private:
     // These are not implemented...
 	inline bool	operator ==(const StringTokenizer&) const { return false; }
 };
+
+REGISTER_TYPEOF( 496, StringTokenizer );
 
 /** @} */
 }

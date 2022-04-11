@@ -21,13 +21,13 @@
 
 namespace spl
 {
-	class TestHarness
-	{
-	public:
-		static void RunTests();
-	};
+class TestHarness
+{
+public:
+	static void RunTests();
+};
 
-	void testtypes();
-	void runSupportUnitTests();
+void testtypes();
+void runSupportUnitTests();
 }
 #endif

@@ -536,6 +536,14 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF2( 182, Hashtable<String,String> );
+REGISTER_TYPEOF2( 183, Hashtable<String,StringPtr> );
+REGISTER_TYPEOF2( 184, Hashtable<String,Vector<String> > );
+REGISTER_TYPEOF2( 185, Hashtable<String,Vector<StringPtr> > );
+REGISTER_TYPEOF2( 186, Hashtable<String,List<String> > );
+REGISTER_TYPEOF2( 187, Hashtable<String,List<StringPtr> > );
+REGISTER_TYPEOF2( 188, Hashtable<String,int> );
+
 /** @} */
 }
 #endif

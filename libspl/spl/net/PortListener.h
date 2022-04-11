@@ -40,6 +40,8 @@ public:
 	virtual void IPortListener_OnStop() = 0;
 };
 
+REGISTER_TYPEOF(38, IPortListenerListener);
+
 /** @brief Delegate dispatcher for socket accept events. */
 class PortListenerDelegateDispatch : public IMemoryValidate
 {
@@ -69,6 +71,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(40, PortListenerDelegateDispatch);
 
 class PortListener;
 typedef RefCountPtr<PortListener> PortListenerPtr;
@@ -102,6 +106,8 @@ public:
 	void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(42, PortListener);
 
 /** @} */
 }

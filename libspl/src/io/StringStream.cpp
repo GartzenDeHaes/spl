@@ -20,20 +20,9 @@ using namespace spl;
 
 StringStream::StringStream(const String& str)
 {
-	//Write(str.ToByteArray());
-	Write(str);
+	Write(str.ToByteArray());
 }
 
 StringStream::~StringStream()
 {
-}
-
-void StringStream::Write(const String& data)
-{
-	int len = data.Length();
-
-	for ( int x = 0; x < len; x++)
-	{
-		m_buf.Add( (byte)data[x] );
-	}
 }

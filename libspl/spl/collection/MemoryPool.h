@@ -125,6 +125,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 400, MemoryPool );
+
 /** @} */
 }
 

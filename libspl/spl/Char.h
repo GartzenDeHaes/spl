@@ -91,6 +91,8 @@ public:
 	inline static int MinValue() { return 0; }
 };
 
+REGISTER_TYPEOF( 556, Char );
+
 /** @} */
 }
 #endif

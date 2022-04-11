@@ -33,6 +33,8 @@ namespace spl
 class StreamBuffer;
 typedef RefCountPtrCast<StreamBuffer, spl::IStream, spl::IStreamPtr> StreamBufferPtr;
 
+REGISTER_TYPEOF(126, StreamBufferPtr);
+
 /// @brief Buffers reads and writes -- call Flush to force I/O on short packets.
 class StreamBuffer : public spl::IStream
 {
@@ -80,6 +82,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(128, StreamBuffer);
 
 /** @} */
 }

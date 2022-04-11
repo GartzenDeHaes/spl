@@ -31,6 +31,8 @@ namespace spl
 class PacketBuilder;
 typedef RefCountPtrCast<PacketBuilder, IStreamReadListener, IStreamReadListenerPtr> PacketBuilderPtr;
 
+REGISTER_TYPEOF(30, PacketBuilderPtr);
+
 /** @brief Allows automatic construction of packets from a stream.
  */
 class PacketBuilder : public IStreamReadListener
@@ -80,6 +82,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(32, PacketBuilder);
 
 /** @} */
 }

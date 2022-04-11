@@ -93,6 +93,8 @@ public:
 	inline static uint32 MinValue() { return 0; }
 };
 
+REGISTER_TYPEOF( 576, UInt32 );
+
 /** @} */
 }
 #endif

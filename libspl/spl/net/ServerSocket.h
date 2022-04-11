@@ -30,6 +30,8 @@ namespace spl
 class ServerSocket;
 typedef RefCountPtr<ServerSocket> ServerSocketPtr;
 
+REGISTER_TYPEOF(44, ServerSocketPtr);
+
 /** @brief Specialized socket for accepting connections.
  *	@ref Socket
  *	@ref TcpSocket
@@ -60,6 +62,8 @@ public:
 	virtual void ValidateMem() const {m_sock.ValidateMem();}
 #endif
 };
+
+REGISTER_TYPEOF(46, ServerSocket);
 
 /** @} */
 }

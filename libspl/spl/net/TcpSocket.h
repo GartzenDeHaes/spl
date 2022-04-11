@@ -33,6 +33,9 @@ class TcpSocket;
 typedef RefCountPtr<TcpSocket> TcpSocketPtr;
 typedef WeakReference<TcpSocket, TcpSocketPtr> TcpSocketRef;
 
+REGISTER_TYPEOF(68, TcpSocketPtr);
+REGISTER_TYPEOF( 476, TcpSocketRef );
+
 /** @brief Ordinary connection oriented socket.
  *
  */
@@ -92,6 +95,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(70, TcpSocket);
 
 /** @} */
 }

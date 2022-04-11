@@ -224,6 +224,8 @@ public:
 	}
 };
 
+REGISTER_TYPEOF( 562, Double );
+
 /** @} */
 }
 #endif

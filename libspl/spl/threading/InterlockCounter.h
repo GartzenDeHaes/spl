@@ -148,6 +148,8 @@ inline void TypeCheckMem(const InterlockCounter& i)
 {
 }
 
+REGISTER_TYPEOF( 458, InterlockCounter );
+
 /** @} */
 }
 #endif

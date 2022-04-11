@@ -35,6 +35,9 @@ class DesStream;
 typedef RefCountPtrCast<DesStream, spl::IStream, spl::IStreamPtr> DesStreamPtr;
 typedef WeakReference<DesStream, spl::IStreamPtr> DesStreamRef;
 
+REGISTER_TYPEOF(80, DesStreamPtr);
+REGISTER_TYPEOF( 448, DesStreamRef );
+
 /** @brief Applies DES on data written and read.
  *
  */
@@ -70,6 +73,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(82, DesStream);
 
 /** @} */
 }

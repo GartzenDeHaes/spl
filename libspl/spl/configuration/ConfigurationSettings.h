@@ -86,6 +86,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 410, ConfigurationSettings );
+
 /** @} */
 }
 #endif

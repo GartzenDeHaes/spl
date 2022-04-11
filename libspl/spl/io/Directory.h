@@ -98,6 +98,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(84, Directory);
+
 /** @} */
 }
 #endif

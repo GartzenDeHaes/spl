@@ -31,6 +31,9 @@ class DualChannelStream;
 typedef RefCountPtrCast<DualChannelStream, spl::IStream, spl::IStreamPtr> DualChannelStreamPtr;
 typedef WeakReference<DualChannelStream, spl::IStreamPtr> DualChannelStreamRef;
 
+REGISTER_TYPEOF(86, DualChannelStreamPtr);
+REGISTER_TYPEOF( 451, DualChannelStreamRef );
+
 /** @brief Uses two different streams for input and output.
  *
  */
@@ -64,6 +67,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(88, DualChannelStream);
 
 /** @} */
 }

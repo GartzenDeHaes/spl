@@ -26,8 +26,7 @@
 #include <spl/io/Permissions.h>
 #include <spl/RefCountPtr.h>
 #include <spl/String.h>
-#include <spl/io/TextReader.h>
-#include <spl/io/TextWriter.h>
+#include <spl/io/TextStream.h>
 
 namespace spl
 {
@@ -100,6 +99,8 @@ public:
 	static Permissions GetPermissions(const String& filename);
 	static void SetPermissions(const String& filename, const Permissions& perms);
 };
+
+REGISTER_TYPEOF(90, File);
 
 /** @} */
 }

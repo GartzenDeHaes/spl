@@ -134,6 +134,8 @@ public:
 	inline static int MinValue() { return INT_MIN; }
 };
 
+REGISTER_TYPEOF( 566, Int32 );
+
 /** @} */
 }
 #endif

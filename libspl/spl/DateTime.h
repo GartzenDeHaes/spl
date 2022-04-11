@@ -252,6 +252,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 559, DateTime );
+
 /** @} */
 }
 #endif

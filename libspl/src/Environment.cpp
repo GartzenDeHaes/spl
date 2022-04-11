@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 #if defined(_WIN32) || defined(_WIN64)
-#include <winsock2.h>
+#include <spl/cleanwindows.h>
 #endif
 
 #include <spl/types.h>

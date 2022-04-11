@@ -1,20 +1,40 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C++ Express 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spl", "spl\spl.vcproj", "{5D14D913-A161-417B-90F7-020AB5AEFAEA}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spl", "libspl\spl.vcxproj", "{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "splUnitTests", "libspl\splUnitTests.vcxproj", "{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
+		Debug MFC|x86 = Debug MFC|x86
+		Debug|x86 = Debug|x86
+		Release MFC|x86 = Release MFC|x86
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5D14D913-A161-417B-90F7-020AB5AEFAEA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5D14D913-A161-417B-90F7-020AB5AEFAEA}.Debug|Win32.Build.0 = Debug|Win32
-		{5D14D913-A161-417B-90F7-020AB5AEFAEA}.Release|Win32.ActiveCfg = Release|Win32
-		{5D14D913-A161-417B-90F7-020AB5AEFAEA}.Release|Win32.Build.0 = Release|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug MFC|x86.ActiveCfg = Debug MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug MFC|x86.Build.0 = Debug MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug|x86.ActiveCfg = Debug|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Debug|x86.Build.0 = Debug|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release MFC|x86.ActiveCfg = Release MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release MFC|x86.Build.0 = Release MFC|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release|x86.ActiveCfg = Release|Win32
+		{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}.Release|x86.Build.0 = Release|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Debug MFC|x86.ActiveCfg = Debug|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Debug MFC|x86.Build.0 = Debug|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Debug|x86.Build.0 = Debug|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Release MFC|x86.ActiveCfg = Release|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Release MFC|x86.Build.0 = Release|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Release|x86.ActiveCfg = Release|Win32
+		{C4DF3D07-4CB6-4C5A-B009-7C0CDC186EDA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FDC8DB8-02EF-4065-8553-A8DF8A0BC84E}
 	EndGlobalSection
 EndGlobal

@@ -78,6 +78,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 408, CommandLine );
+
 /** @} */
 }
 #endif

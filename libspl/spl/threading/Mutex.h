@@ -23,8 +23,8 @@
 #include <spl/RefCountPtr.h>
 
 #ifdef _WINDOWS
-//#define _WINSOCKAPI_
-#include "spl/cleanwindows.h"
+#define _WINSOCKAPI_
+#include <spl/cleanwindows.h>
 #endif
 
 #ifdef HAVE_SPTHREAD_H
@@ -63,6 +63,9 @@ namespace spl
 class Mutex;
 typedef RefCountPtr<Mutex> MutexPtr;
 typedef WeakReference<Mutex, MutexPtr> MutexRef;
+
+REGISTER_TYPEOF( 460, MutexPtr );
+REGISTER_TYPEOF( 462, MutexRef );
 
 /** @brief Mutually exclusive locking mechnism. */
 class Mutex
@@ -123,6 +126,8 @@ inline void TypeCheckMem(const Mutex *mtx)
 		DEBUG_NOTE_MEM(mtx);
 	}
 }
+
+REGISTER_TYPEOF( 464, Mutex );
 
 /** @} */
 }

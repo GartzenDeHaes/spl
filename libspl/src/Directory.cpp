@@ -15,7 +15,7 @@
  *   along with SPL.  If not, see <http://www.gnu.org/licenses/>.
  */
 #if defined(_WIN32) || defined(_WIN64)
-#include <winsock2.h>
+#include <spl/cleanwindows.h>
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
@@ -58,7 +58,7 @@ using namespace spl;
 
 #ifdef WIN32
 char Directory::m_seperator = '\\';
-//#include <spl/cleanwindows.h>
+#include <spl/cleanwindows.h>
 #else
 char Directory::m_seperator = '/';
 #endif

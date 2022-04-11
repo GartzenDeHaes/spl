@@ -1,0 +1,115 @@
+#include <spl/Debug.h>
+#include <spl/Log.h>
+#include <spl/threading/Event.h>
+#include <spl/Int32.h>
+#include <spl/threading/InterlockCounter.h>
+#include <spl/threading/Mutex.h>
+#include <spl/threading/Semaphore.h>
+#include <spl/threading/ThreadStartDelegate.h>
+
+#ifdef DEBUG
+
+class SemaphoreTester
+{
+private:
+	volatile bool m_running;
+	Event m_waitForIt;
+	InterlockCounter m_count;
+	Semaphore m_semaphore;
+
+	ThreadStartDelegate<SemaphoreTester> m_thread1;
+	ThreadStartDelegate<SemaphoreTester> m_thread2;
+	ThreadStartDelegate<SemaphoreTester> m_thread3;
+	ThreadStartDelegate<SemaphoreTester> m_thread4;
+
+public:
+	inline SemaphoreTester()
+	:	m_thread1(),
+		m_thread2(),
+		m_thread3(),
+		m_thread4(),
+		m_count(),
+		m_countLock(),
+		m_waitForIt(),
+		m_semaphore("TST", 3),
+		m_running(true)
+	{
+		m_thread1.Set(this, &SemaphoreTester::RunMe);
+		m_thread2.Set(this, &SemaphoreTester::RunMe);
+		m_thread3.Set(this, &SemaphoreTester::RunMe);
+		m_thread4.Set(this, &SemaphoreTester::RunMe);
+
+		m_thread1.Start();
+		m_thread2.Start();
+		m_thread3.Start();
+		m_thread4.Start();
+	}
+
+	inline ~SemaphoreTester()
+	{
+	}
+
+	inline int32 Count()
+	{
+		return m_count.Get();
+	}
+
+	inline void Stop()
+	{
+		m_running = false;
+		m_waitForIt.Notify();
+
+		m_thread1.Join(3000);
+		m_thread2.Join(3000);
+		m_thread3.Join(3000);
+		m_thread4.Join(5000);
+	}
+
+private:
+	void RunMe()
+	{
+		m_semaphore.Lock();
+
+		m_count += 1;
+
+		if (m_running)
+		{
+			m_waitForIt.Wait();
+		}
+
+		m_semaphore.Unlock();
+	}
+};
+
+static void _TestSemaphore1()
+{
+	Log::WriteCheck( "Semaphore test" );
+
+	DateTime now = DateTime::Now();
+
+	SemaphoreTester tst;
+
+	while (tst.Count() < 3 && now.AddSeconds(40) < DateTime::Now())
+	{
+		Thread::Sleep(1000);
+	}
+
+	StringPtr msg = String("Should be three threads running ").Cat(Int32::ToString(tst.Count())); 
+	UNIT_ASSERT(msg->GetChars(), tst.Count() == 3);
+
+	tst.Stop();
+
+	UNIT_ASSERT("Should be four threads ran", tst.Count() == 4);
+
+	Log::WriteOkFail(  );
+}
+
+void _TestSemaphore()
+{
+	_TestSemaphore1();
+	DEBUG_CLEAR_MEM_CHECK_POINTS();
+	DEBUG_DUMP_MEM_LEAKS();
+}
+
+#endif
+

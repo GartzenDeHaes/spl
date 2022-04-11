@@ -1,0 +1,137 @@
+/*
+ *   This file is part of the Standard Portable Library (SPL).
+ *
+ *   SPL is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   SPL is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with SPL.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#ifndef _interp_program_h
+#define _interp_program_h
+
+#include <spl/types.h>
+#include <spl/Debug.h>
+#include <spl/Memory.h>
+#include <spl/interp/OpCodes.h>
+#include <spl/RefCountPtr.h>
+#include <spl/collection/StringTable.h>
+#include <spl/Variant.h>
+#include <spl/collection/Vector.h>
+
+struct Instruction
+{
+	uint32 opCode : 8;
+	uint32 argSrc : 4;
+	uint32 argIdx : 24;
+};
+
+inline void ValidateType(const struct Instruction& i)
+{
+}
+
+class Program;
+typedef RefCountPtr<Program> ProgramPtr;
+
+class Program : public IMemoryValidate
+{
+private:
+	Vector<VariantPtr> m_cdata;
+	Vector<Instruction> m_code;
+	Instruction m_exitInstr;
+	int m_argCount;				//< This many items should be on the stack when program is ran.
+	
+public:
+	Program();
+	Program(const Program& program);
+	Program& operator =(const Program& program);
+	virtual ~Program();
+
+	void Clear();
+
+	inline void NoteArgument() { m_argCount++; }
+	inline int& ArgumentCount() { return m_argCount; }
+
+	int AddToTable(const String& s);
+	int AddToTable(const int32 i);
+	int AddToTable(const float64 f);
+	int AddToTable(const Date& dt);
+	int AddToTable(const DateTime& dtm);
+	
+	inline int AddToTable(VariantPtr v) { m_cdata.Add(v); return m_cdata.Count() - 1; }
+	inline void SetTable(const Vector<VariantPtr>& cdata) { m_cdata.Clear(); m_cdata = cdata; }
+	inline const Vector<VariantPtr>& GetTable() const { return m_cdata; }
+
+	int AppendCode(enum JsOpCode i, JsOpCodeArgSrc s, int32 idx);
+	inline int AppendCode(enum JsOpCode c) { return AppendCode(c, JSOPARG_NONE, 0); }
+	inline int AppendCode(Instruction i) { return AppendCode((JsOpCode)i.opCode, (JsOpCodeArgSrc)i.argSrc, i.argIdx); }
+	
+	inline int Position() const { return m_code.Count()-1; }
+	
+	inline void Program::FixupCode(int pos, int32 idx)
+	{
+		m_code.ElementAtRef(pos).argIdx = idx;
+	}
+	
+	inline void Program::FixupCode(int pos)
+	{
+		m_code.ElementAtRef(pos).argIdx = Position() - pos;
+	}
+	
+	inline bool CanContinue(int pc) const
+	{
+		return pc >= 0 && pc < m_code.Count();
+	}
+		
+	inline Instruction InstructionAt(int pc) const 
+	{ 
+		if (0 > pc || pc >= m_code.Count())
+		{
+			return m_exitInstr;
+		}
+		return m_code.ElementAt(pc);
+	}
+	
+	inline VariantPtr GetArg(Instruction i, Vector<VariantPtr>& stk) const
+	{
+		if (JSOPARG_IMM == i.argSrc)
+		{
+			return VariantPtr(new Variant((int32)i.argIdx));
+		}
+		if (JSOPARG_TAB == i.argSrc)
+		{
+			return m_cdata.ElementAt(i.argIdx);
+		}
+		if (JSOPARG_STK == i.argSrc)
+		{
+			return stk.ElementAt(i.argIdx);
+		}
+		throw new Exception("Invalid argument source in Program::GetArg");
+	}
+	
+	StringPtr ToString();
+
+#if defined(DEBUG) || defined(_DEBUG)
+	void CheckMem() const;
+	void ValidateMem() const;
+#endif
+};
+
+inline void ValidateType(const Program* p)
+{
+	DEBUG_NOTE_MEM(p);
+	p->ValidateMem();
+	p->CheckMem();
+}
+
+extern String _JsOpCodeToString(enum JsOpCode c);
+extern String _JsOpArgSrcToString(enum JsOpCodeArgSrc a);
+
+#endif

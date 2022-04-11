@@ -29,40 +29,40 @@ namespace spl
  * @{
  */
 
-class SqliteTransaction;
-typedef RefCountPtrCast<SqliteTransaction, Transaction, TransactionPtr> SqliteTransactionPtr;
-typedef WeakReference<SqliteTransaction, SqliteTransactionPtr> SqliteTransactionRef;
+class SqlLiteTransaction;
+typedef RefCountPtrCast<SqlLiteTransaction, Transaction, TransactionPtr> SqlLiteTransactionPtr;
+typedef WeakReference<SqlLiteTransaction, SqlLiteTransactionPtr> SqlLiteTransactionRef;
 
-class SqliteTransaction : public Transaction
+class SqlLiteTransaction : public Transaction
 {
 protected:
 	void *m_db;
 
-	inline SqliteTransaction(const SqlLiteTransaction&) {}
-	inline SqliteTransaction& operator =(const SqlLiteTransaction&) {}
+	inline SqlLiteTransaction(const SqlLiteTransaction&) {}
+	inline SqlLiteTransaction& operator =(const SqlLiteTransaction&) {}
 
 public:
-	SqliteTransaction(void *db);
-	~SqliteTransaction();
+	SqlLiteTransaction(void *db);
+	~SqlLiteTransaction();
 
 	virtual void Commit();
 	virtual void Rollback();
 };
 
 
-inline void TypeValidate( const SqliteTransaction& prm )
+inline void TypeValidate( const SqlLiteTransaction& prm )
 {
 }
 
-inline void TypeValidate( SqliteTransaction* prm )
+inline void TypeValidate( SqlLiteTransaction* prm )
 {
 }
 
-inline void TypeCheckMem( const SqliteTransaction& prm )
+inline void TypeCheckMem( const SqlLiteTransaction& prm )
 {
 }
 
-inline void TypeCheckMem( SqliteTransaction* prm )
+inline void TypeCheckMem( SqlLiteTransaction* prm )
 {
 }
 

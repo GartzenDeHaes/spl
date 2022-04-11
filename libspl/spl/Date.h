@@ -259,6 +259,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 558, Date );
+
 /** @} */
 }
 #endif

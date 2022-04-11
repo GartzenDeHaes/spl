@@ -20,6 +20,7 @@
 #include <spl/Memory.h>
 #include <spl/collection/Queue.h>
 #include <spl/String.h>
+#include <spl/io/TextStream.h>
 #include <spl/threading/ThreadStartDelegate.h>
 
 namespace spl

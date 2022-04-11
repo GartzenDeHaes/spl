@@ -281,6 +281,11 @@ class Variant;
 typedef RefCountPtr<Variant> VariantPtr;
 typedef WeakReference<Variant, VariantPtr> VariantRef;
 
+REGISTER_TYPEOF( 584, VariantPtr );
+REGISTER_TYPEOF( 586, VariantRef );
+REGISTER_TYPEOF( 606, Array<VariantPtr> );
+REGISTER_TYPEOF( 610, Vector<VariantPtr> );
+
 /** @brief A variant type mostly for use in interpreters for variant languages.
  *
  */
@@ -451,6 +456,11 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 582, Variant );
+REGISTER_TYPEOF( 600, Array<Variant> );
+REGISTER_TYPEOF( 604, Vector<Variant> );
+
 /** @} */
 }
 #endif
+

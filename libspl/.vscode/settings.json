@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "dirent.h": "c",
+        "configwin32.h": "c",
+        "types.h": "c"
+    }
+}

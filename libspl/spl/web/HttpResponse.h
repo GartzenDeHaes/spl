@@ -25,6 +25,7 @@
 #include <spl/io/MemoryStream.h>
 #include <spl/String.h>
 #include <spl/text/StringBuffer.h>
+#include <spl/io/TextStream.h>
 
 namespace spl
 {

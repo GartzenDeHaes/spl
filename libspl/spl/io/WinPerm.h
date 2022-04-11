@@ -24,7 +24,7 @@
 
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
 
-#include "spl/cleanwindows.h"
+#include <spl/cleanwindows.h>
 
 /** 
  * @defgroup file File System

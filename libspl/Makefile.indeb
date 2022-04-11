@@ -4,8 +4,8 @@ all:
 	./buildit "-c=-pipe -fPIC -fasynchronous-unwind-tables -O2 -DNDEBUG -g -I." "-l=-Wl,-soname,libspl.so -shared -export-dynamic -pthread -Wl,-z,defs -Wl,-z,now -Wl,-z,relro" -tlib libspl
 
 check:
-	g++ -Wl,-rpath='$ORIGIN':. -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -DNDEBUG -g -L. -lspl -I. -o testdeb testdeb.cpp
-	./testdeb
+	g++ -Wl,-rpath='$ORIGIN' -Wl,-z,defs -Wl,-z,now -Wl,-z,relro -DNDEBUG -g -L. -lspl -I. -o testdeb testdeb.cpp
+	testdeb
 
 clean:
 	rm bin/*

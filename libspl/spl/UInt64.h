@@ -101,6 +101,8 @@ public:
 	inline static uint64 MinValue() { return 0; }
 };
 
+REGISTER_TYPEOF( 578, UInt64 );
+
 /** @} */
 }
 #endif

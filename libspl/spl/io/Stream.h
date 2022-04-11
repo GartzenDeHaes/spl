@@ -61,6 +61,8 @@ public:
 	virtual void OnEnter(IStreamState *oldState) = 0;
 };
 
+REGISTER_TYPEOF(124, IStreamState);
+
 /** @} */
 /** @} */
 }

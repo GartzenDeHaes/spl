@@ -1,0 +1,26 @@
+Standard Portable Library
+
+spl is a pointer friendly C/C++ STL replacement.  It uses an API similar to 
+java or .net and includes network and database support.  The principles of
+the debug version were reused from Steve Maguire's book, "Writing Solid
+Code".
+
+Bugs & Issues
+
+	- See the TODO file.
+
+Optional Requirments
+
+	- None: support for freetds and mysql have been removed.
+
+Installation
+
+	./configure
+	make
+	make check
+	make install
+
+Quickstart
+
+	See docs/quickstart.html
+

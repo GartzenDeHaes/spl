@@ -163,14 +163,13 @@ static void _TVecTest6()
 	vec.ValidateMem();
 	UNIT_ASSERT( "Vector count", vec.Count() == 100 );
 
-	// TODO iter
-	//int fecount = 0;
-	//for (s, vec)
-	//{
-	//	fecount++;
-	//	UNIT_ASSERT("String val", Int32::IsInt(s.CurrentRef()));
-	//}
-	//UNIT_ASSERT("foreach count", fecount == 100);
+	int fecount = 0;
+	foreach(s, vec)
+	{
+		fecount++;
+		UNIT_ASSERT("String val", Int32::IsInt(s.CurrentRef()));
+	}
+	UNIT_ASSERT("foreach count", fecount == 100);
 
 	DEBUG_CLEAR_MEM_CHECK_POINTS();
 	vec.CheckMem();

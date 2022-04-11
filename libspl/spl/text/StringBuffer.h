@@ -39,6 +39,9 @@ class StringBuffer;
 typedef RefCountPtr<StringBuffer> StringBufferPtr;	//< StringBuffer smart pointer.
 typedef WeakReference<StringBuffer, StringBufferPtr> StringBufferRef;
 
+REGISTER_TYPEOF( 486, StringBufferPtr );
+REGISTER_TYPEOF( 488, StringBufferRef );
+
 /** 
  *	@brief Dynamically resizing string. 
  */
@@ -259,6 +262,8 @@ private:
 
 	void Extend();
 };
+
+REGISTER_TYPEOF( 490, StringBuffer );
 
 /** @} */
 }

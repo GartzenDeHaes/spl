@@ -47,6 +47,9 @@ class ThreadSafeStream;
 typedef RefCountPtrCast<ThreadSafeStream, spl::IStream, spl::IStreamPtr> ThreadSafeStreamPtr;
 typedef WeakReference<ThreadSafeStream, spl::IStreamPtr> ThreadSafeStreamRef;
 
+REGISTER_TYPEOF(148, ThreadSafeStreamPtr);
+REGISTER_TYPEOF( 470, ThreadSafeStreamRef );
+
 /// @brief Serializes access to a stream.
 class ThreadSafeStream : public spl::IStream
 {
@@ -81,6 +84,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(150, ThreadSafeStream);
 
 /** @} */
 /** @} */

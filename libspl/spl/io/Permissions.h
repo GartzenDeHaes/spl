@@ -276,6 +276,8 @@ public:
 	static const Permissions DefaultDirPerms;
 };
 
+REGISTER_TYPEOF(118, Permissions);
+
 inline uint32 operator|(const Permissions& perm, const uint32 rhs) throw()
 { return(perm.GetMask() | (rhs & Permissions::ALLBITS)); }
 

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="xsql" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="xsql" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug Win32" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Option parameters="--test" />
+				<Compiler>
+					<Add option="-Winit-self" />
+					<Add option="-Wcast-align" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-O0" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add directory=".." />
+					<Add directory="../../../" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory=".." />
+					<Add directory="/sources/spl" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="spld" />
+					<Add library="l" />
+					<Add library="m" />
+					<Add library="c" />
+					<Add library="dl" />
+					<Add library="pthread" />
+					<Add directory="../../../debug" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="xsql" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release Win32" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-W" />
+					<Add option="-O2" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="../src/ICommand.cpp" />
+		<Unit filename="../src/XSqlMessage.cpp" />
+		<Unit filename="../src/XSqlMessageListener.cpp" />
+		<Unit filename="../src/XSqlServer.cpp" />
+		<Unit filename="../src/XSqlUnitTests.cpp" />
+		<Unit filename="../src/sql/ColumnName.cpp" />
+		<Unit filename="../src/sql/IDML.cpp" />
+		<Unit filename="../src/sql/ISelector.cpp" />
+		<Unit filename="../src/sql/ISelectorAggregate.cpp" />
+		<Unit filename="../src/sql/ISqlLex.cpp" />
+		<Unit filename="../src/sql/SelectorAvg.cpp" />
+		<Unit filename="../src/sql/SelectorColumn.cpp" />
+		<Unit filename="../src/sql/SelectorCount.cpp" />
+		<Unit filename="../src/sql/SelectorExpr.cpp" />
+		<Unit filename="../src/sql/SelectorFunction.cpp" />
+		<Unit filename="../src/sql/SelectorLiteral.cpp" />
+		<Unit filename="../src/sql/SelectorNum.cpp" />
+		<Unit filename="../src/sql/SelectorSum.cpp" />
+		<Unit filename="../src/sql/SqlCreateProc.cpp" />
+		<Unit filename="../src/sql/SqlCreateTable.cpp" />
+		<Unit filename="../src/sql/SqlExpr.cpp" />
+		<Unit filename="../src/sql/SqlFactory.cpp" />
+		<Unit filename="../src/sql/SqlLex.cpp" />
+		<Unit filename="../src/sql/SqlOperator.cpp" />
+		<Unit filename="../src/sql/SqlSelect.cpp" />
+		<Unit filename="../src/sql/SqlStmt.cpp" />
+		<Unit filename="../src/sql/SqlSyntaxException.cpp" />
+		<Unit filename="../src/test/TestSqlLex.cpp" />
+		<Unit filename="../src/test/TestXSql.cpp" />
+		<Unit filename="../src/xsqlmain.cpp" />
+		<Unit filename="../xsql/ICommand.h" />
+		<Unit filename="../xsql/XSqlMessage.h" />
+		<Unit filename="../xsql/XSqlMessageListener.h" />
+		<Unit filename="../xsql/XSqlServer.h" />
+		<Unit filename="../xsql/sql/ColumnName.h" />
+		<Unit filename="../xsql/sql/IDML.h" />
+		<Unit filename="../xsql/sql/ISqlLex.h" />
+		<Unit filename="../xsql/sql/SqlCreateProc.h" />
+		<Unit filename="../xsql/sql/SqlCreateTable.h" />
+		<Unit filename="../xsql/sql/SqlFactory.h" />
+		<Unit filename="../xsql/sql/SqlLex.h" />
+		<Unit filename="../xsql/sql/SqlSelect.h" />
+		<Unit filename="../xsql/sql/SqlSyntaxException.h" />
+		<Unit filename="../xsql/sql/SqlToken.h" />
+		<Unit filename="../xsql/sql/dom/ISelector.h" />
+		<Unit filename="../xsql/sql/dom/ISelectorAggregate.h" />
+		<Unit filename="../xsql/sql/dom/SelectorAvg.h" />
+		<Unit filename="../xsql/sql/dom/SelectorColumn.h" />
+		<Unit filename="../xsql/sql/dom/SelectorCount.h" />
+		<Unit filename="../xsql/sql/dom/SelectorExpr.h" />
+		<Unit filename="../xsql/sql/dom/SelectorFunction.h" />
+		<Unit filename="../xsql/sql/dom/SelectorLiteral.h" />
+		<Unit filename="../xsql/sql/dom/SelectorNum.h" />
+		<Unit filename="../xsql/sql/dom/SelectorSum.h" />
+		<Unit filename="../xsql/sql/dom/SqlExpr.h" />
+		<Unit filename="../xsql/sql/dom/SqlOperator.h" />
+		<Unit filename="../xsql/sql/dom/SqlStmt.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -28,7 +28,7 @@ using namespace spl;
 
 #ifdef _WINDOWS
 
-#include <winsock2.h>
+#include <spl/cleanwindows.h>
 
 static inline int32 atomic_increment(int32 *ptr)
 {

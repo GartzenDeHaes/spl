@@ -96,6 +96,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(71, UdpSocket);
+
 /** @} */
 }
 #endif

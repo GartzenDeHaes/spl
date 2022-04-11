@@ -22,32 +22,32 @@
     <ProjectGuid>{05B2192E-62A8-4ABC-AF75-A81CD9E5A683}</ProjectGuid>
     <RootNamespace>spl</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug MFC|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -91,7 +91,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(MSBuildProjectDirectoryNoRoot);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>HAVE__ABS64;_DEBUG;DEBUG;_WIN32;WIN32;_LIB;DBNTWIN32;HAVE_TIME_H;HAVE_STRING_H;HAVE_IO_H;HAVE_FCNTL_H;HAVE_ERRNO_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -247,9 +247,6 @@
     <ClCompile Include="src\io\FileAppendService.cpp" />
     <ClCompile Include="src\io\MemoryStream.cpp" />
     <ClCompile Include="src\io\Pipe.cpp" />
-    <ClCompile Include="src\io\Stream.cpp" />
-    <ClCompile Include="src\io\StreamFd.cpp" />
-    <ClCompile Include="src\io\StreamReadPump.cpp" />
     <ClCompile Include="src\io\StringStream.cpp" />
     <ClCompile Include="src\io\ThreadedLog.cpp" />
     <ClCompile Include="src\Math.cpp" />
@@ -295,6 +292,9 @@
     <ClCompile Include="src\Socket.cpp" />
     <ClCompile Include="src\SocketSet.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
+    <ClCompile Include="src\Stream.cpp" />
+    <ClCompile Include="src\StreamFd.cpp" />
+    <ClCompile Include="src\StreamReadPump.cpp" />
     <ClCompile Include="src\String.cpp" />
     <ClCompile Include="src\StringBuffer.cpp" />
     <ClCompile Include="src\StringTable.cpp" />
@@ -381,7 +381,6 @@
   <ItemGroup>
     <ClInclude Include="spl\BigInteger.h" />
     <ClInclude Include="spl\Char.h" />
-    <ClInclude Include="spl\cleanwindows.h" />
     <ClInclude Include="spl\collection\Array.h" />
     <ClInclude Include="spl\collection\Association.h" />
     <ClInclude Include="spl\collection\CircularArray.h" />
@@ -451,6 +450,7 @@
     <ClInclude Include="spl\io\StreamDelegateDispatch.h" />
     <ClInclude Include="spl\io\StreamReadPump.h" />
     <ClInclude Include="spl\io\StringStream.h" />
+    <ClInclude Include="spl\io\TextStream.h" />
     <ClInclude Include="spl\io\ThreadedPacketStream.h" />
     <ClInclude Include="spl\io\ThreadSafeStream.h" />
     <ClInclude Include="spl\io\WinPerm.h" />

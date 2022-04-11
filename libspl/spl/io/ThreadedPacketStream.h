@@ -31,6 +31,8 @@ namespace spl
 class ThreadedPacketStream;
 typedef RefCountPtr<ThreadedPacketStream> ThreadedPacketStreamPtr;
 
+REGISTER_TYPEOF(144, ThreadedPacketStreamPtr);
+
 /** @brief ThreadedPacketStream creates a thread to read from a stream and pumps the bytes to a PacketBuilder.
  *	@ref PacketBuilder
  *	@ref StreamReadPump
@@ -50,6 +52,8 @@ public:
 	virtual void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(146, ThreadedPacketStream);
 
 /** @} */
 }

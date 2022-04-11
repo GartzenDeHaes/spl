@@ -37,6 +37,9 @@ class FdStream;
 typedef RefCountPtrCast<FdStream, IStream, IStreamPtr> FdStreamPtr;
 typedef WeakReference<FdStream, IStreamPtr> FdStreamRef;
 
+REGISTER_TYPEOF(92, FdStreamPtr);
+REGISTER_TYPEOF( 453, FdStreamRef );
+
 /** @brief Low level file access using open, read, write
   *
   */
@@ -79,9 +82,14 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(94, FdStream);
+
 class FileStream;
 typedef RefCountPtrCast<FileStream, IStream, IStreamPtr> FileStreamPtr;
 typedef WeakReference<FileStream, IStreamPtr> FileStreamRef;
+
+REGISTER_TYPEOF(96, FileStreamPtr);
+REGISTER_TYPEOF( 454, FileStreamRef );
 
 /** STDIO file stream.
  *
@@ -128,6 +136,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(98, FileStream);
 
 /** @} */
 }

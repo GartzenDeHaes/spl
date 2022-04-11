@@ -33,6 +33,9 @@ class Event;
 typedef RefCountPtr<Event> EventPtr;
 typedef WeakReference<Event, EventPtr> EventRef;
 
+REGISTER_TYPEOF( 498, EventPtr );
+REGISTER_TYPEOF( 450, EventRef );
+
 /** @brief Implements wait/notify (uses Event on windoze and a condition on posix. */
 class Event
 {
@@ -83,6 +86,8 @@ inline void TypeCheckMem(const Event *e)
 		DEBUG_NOTE_MEM(e);
 	}
 }
+
+REGISTER_TYPEOF( 452, Event );
 
 /** @} */
 }

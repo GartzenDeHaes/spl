@@ -34,6 +34,9 @@ class StringStream;
 typedef RefCountPtrCast<StringStream, IStream, IStreamPtr> StringStreamPtr;
 typedef WeakReference<StringStream, IStreamPtr> StringStreamRef;
 
+REGISTER_TYPEOF(134, StringStreamPtr);
+REGISTER_TYPEOF( 466, StringStreamRef );
+
 /** @brief A MemoryStream that initializes from a string.
  *	@ref String
  */
@@ -51,9 +54,9 @@ public:
 		m_ptr = ms.m_ptr;
 		return *this;
 	}
-
-	void Write(const String& data);
 };
+
+REGISTER_TYPEOF(136, StringStream);
 
 /** @} */
 }

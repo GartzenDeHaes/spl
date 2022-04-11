@@ -71,6 +71,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(132, StreamReadPump);
+
 /** @} */
 }
 #endif

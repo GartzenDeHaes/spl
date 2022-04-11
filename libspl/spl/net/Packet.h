@@ -43,6 +43,8 @@ namespace spl
 class Packet;
 typedef RefCountPtr<Packet> PacketPtr;
 
+REGISTER_TYPEOF(20, PacketPtr);
+
 /** @brief Endian aware network packet interface.
   *
   */
@@ -117,8 +119,12 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(22, Packet);
+
 class IPacketListener;
 typedef RefCountPtr<IPacketListener> IPacketListenerPtr;
+
+REGISTER_TYPEOF(24, IPacketListenerPtr);
 
 class IPacketListener
 {
@@ -140,6 +146,8 @@ public:
 	virtual void IStreamRead_OnError(const String& msg) = 0;
 	virtual void IStreamRead_OnClose() = 0;
 };
+
+REGISTER_TYPEOF(26, IPacketListener);
 
 class PacketListenerDelegateDispatch : public IMemoryValidate
 {
@@ -198,6 +206,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(28, PacketListenerDelegateDispatch);
 
 /** @} */
 }

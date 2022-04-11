@@ -1057,6 +1057,10 @@ protected:
 	}
 };
 
+REGISTER_TYPEOF2( 350, RedBlackTree<int,int> );
+REGISTER_TYPEOF2( 351, RedBlackTree<String,String> );
+REGISTER_TYPEOF2( 590, RedBlackTree<int,Int32> );
+
 /** @} */
 }
 #endif

@@ -74,6 +74,8 @@ inline void TypeCheck ( Guid *guid )
 	DEBUG_NOTE_MEM(guid);
 }
 
+REGISTER_TYPEOF( 564, Guid );
+
 /** @} */
 }
 #endif

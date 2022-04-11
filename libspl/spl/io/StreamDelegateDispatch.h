@@ -70,6 +70,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF(130, StreamDelegateDispatch);
+
 /** @} */
 }
 #endif

@@ -43,6 +43,8 @@ public:
 	virtual void SerializationTextUniqueKey(String& buf) = 0;
 };
 
+REGISTER_TYPEOF(100, ISerializable);
+
 /** @} */
 }
 #endif

@@ -116,6 +116,8 @@ public:
 #endif
 };
 
+REGISTER_TYPEOF( 560, Decimal );
+
 /** @} */
 }
 #endif

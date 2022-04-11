@@ -22,7 +22,7 @@
 #include <spl/Memory.h>
 #include <spl/String.h>
 #include <spl/text/StringBuffer.h>
-#include <spl/io/TextWriter.h>
+#include <spl/io/TextStream.h>
 #include <spl/collection/Vector.h>
 
 namespace spl

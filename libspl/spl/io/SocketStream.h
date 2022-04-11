@@ -32,6 +32,9 @@ class SocketStream;
 typedef RefCountPtrCast<SocketStream, spl::IStream, spl::IStreamPtr> SocketStreamPtr;
 typedef WeakReference<SocketStream, spl::IStreamPtr> SocketStreamRef;
 
+REGISTER_TYPEOF(120, SocketStreamPtr);
+REGISTER_TYPEOF( 463, SocketStreamRef );
+
 /** @brief Stream for a socket, returned from TcpSocket::GetStream().
  *	@ref TcpSocket
  */
@@ -70,6 +73,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF(122, SocketStream);
 
 /** @} */
 }

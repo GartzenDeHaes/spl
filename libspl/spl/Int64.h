@@ -106,6 +106,8 @@ public:
 	}
 };
 
+REGISTER_TYPEOF( 568, Int64 );
+
 /** @} */
 }
 #endif

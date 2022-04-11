@@ -1,0 +1,480 @@
+VPATH = .
+LIB_NAME = spl
+GFLAGS = -I. -I.. -I../spl/autoconf -DDEBUG -DHAVE_CONFIG_H -g -O0 -Wall -shared -shared-libgcc -fPIC
+#GFLAGS = -DNDEBUG-O2 -Wall -shared -shared-libgcc -fPIC
+
+#LFLAGS = -Llib -l$(LIB_NAME) -Wl,-rpath,\$$ORIGIN/../lib
+
+COMMON_DEPS = spl/Debug.h spl/types.h
+
+SRC_FILES = $(wildcard src/*.cpp) \
+	$(wildcard src/data/*.cpp) \
+	$(wildcard src/io/*.cpp) \
+	$(wildcard src/pcre/*.c) \
+	$(wildcard src/term/*.cpp) \
+	$(wildcard src/web/*.cpp)
+
+OTMP1 = $(subst .cpp, .o, $(SRC_FILES))
+OTMP2 = $(subst src/, bin/, $(OTMP1))
+OTMP3 = $(subst src/data/, bin/, $(OTMP2))
+OTMP4 = $(subst src/io/, bin/, $(OTMP3))
+OTMP5 = $(subst src/pcre/, bin/, $(OTMP4))
+OTMP6 = $(subst src/term/, bin/, $(OTMP5))
+OTMP7 = $(subst src/web/, bin/, $(OTMP6))
+
+OBJS = $(OTMP7)
+
+all: testspl bin/lib$(LIB_NAME).so
+
+bin/lib$(LIB_NAME).so: $(OBJS) $(SRC_FILES)
+	g++ $< -shared -Wl,-soname,lib$(LIB_NAME).so -o $@
+
+testspl: testspl.o
+	g++ $(GFLAGS) -o $@ testspl.o $(OBJS)
+
+testspl.o: testspl.cpp $(OBJS) $(SRC_FILES)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestTypes.o: test/TestTypes.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDebug.o: test/TestDebug.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Debug.o: src/Debug.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/realfree.o: src/realfree.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Array.o: src/Array.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/BitMask.o: src/BitMask.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/BigInteger.o: src/BigInteger.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DataColumn.o: src/data/DataColumn.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DataTable.o: src/data/DataTable.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DataRow.o: src/data/DataRow.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/CDes.o: src/CDes.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DesStream.o: src/DesStream.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/cdebug.o: src/cdebug.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/CommandLine.o: src/CommandLine.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Compare.o: src/Compare.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/File.o: src/File.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DelegateDispatch.o: src/DelegateDispatch.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Directory.o: src/Directory.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Dates.o: src/Dates.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/DelimitedFile.o: src/DelimitedFile.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Decimal.o: src/Decimal.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Environment.o: src/Environment.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Exception.o: src/Exception.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/GUID.o: src/GUID.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/FileAppendService.o: src/io/FileAppendService.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Hashtable.o: src/Hashtable.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpCookie.o: src/web/HttpCookie.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpHeader.o: src/web/HttpHeader.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpResponse.o: src/web/HttpResponse.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+
+bin/HttpRequest.o: src/web/HttpRequest.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpRequestBody.o: src/web/HttpRequestBody.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpUtility.o: src/web/HttpUtility.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/FileHandlerBase.o: src/web/FileHandlerBase.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpHandler.o: src/web/HttpHandler.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpHandlerFactory.o: src/web/HttpHandlerFactory.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpInstance.o: src/web/HttpInstance.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/HttpServer.o: src/web/HttpServer.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/FileStream.o: src/FileStream.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Image.o: src/Image.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/InterlockCounter.o: src/InterlockCounter.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/CLog.o: src/CLog.ccp $(COMMON_DEPS)       
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Mutex.o: src/Mutex.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Math.o: src/Math.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/BackPropNeuralNetwork.o: src/BackPropNeuralNetwork.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/MemoryPool.o: src/MemoryPool.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/MemoryStream.o: src/io/MemoryStream.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Numeric.o: src/Numeric.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Null.o: src/Null.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/ObjectPool.o: src/ObjectPool.ccp $(COMMON_DEPS) 
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Packet.o: src/Packet.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Permissions.o: src/Permissions.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Pipe.o: src/io/Pipe.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/PooledSocketSet.o: src/PooledSocketSet.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/PortListener.o: src/PortListener.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Queue.o: src/Queue.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Random.o: src/Random.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Regex.o: src/Regex.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/RSA.o: src/RSA.ccp $(COMMON_DEPS)			
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Semaphore.o: src/Semaphore.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Socket.o: src/Socket.ccp $(COMMON_DEPS)     
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StringBuffer.o: src/StringBuffer.ccp $(COMMON_DEPS) 
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StringStream.o: src/io/StringStream.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StringTable.o: src/StringTable.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StringTokenizer.o: src/StringTokenizer.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/SampleTest.o: src/SampleTest.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Sample.o: src/Sample.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Stream.o: src/Stream.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StreamFd.o: src/StreamFd.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StreamReadPump.o: src/StreamReadPump.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/SocketSet.o: src/SocketSet.ccp $(COMMON_DEPS)   
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestHarness.o: test/TestHarness.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/ThreadedLog.o: src/io/ThreadedLog.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/ThreadStart.o: src/ThreadStart.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/StateMachine.o: src/StateMachine.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/String.o: src/String.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Thread.o: src/Thread.ccp $(COMMON_DEPS) 
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Undefined.o: src/Undefined.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Uri.o: src/web/Uri.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Variant.o: src/Variant.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/ColumnTypes.o: src/data/ColumnTypes.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/Connection.o: src/data/Connection.ccp $(COMMON_DEPS) 
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/RecordSet.o: src/data/RecordSet.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/CommandParameter.o: src/data/CommandParameter.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/UdpSocket.o: src/UdpSocket.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_chartables.o: src/pcre/pcre_chartables.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_compile.o: src/pcre/pcre_compile.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_config.o: src/pcre/pcre_config.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_dfa_exec.o: src/pcre/pcre_dfa_exec.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_exec.o: src/pcre/pcre_exec.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_fullinfo.o: src/pcre/pcre_fullinfo.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_get.o: src/pcre/pcre_get.c	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_globals.o: src/pcre/pcre_globals.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_info.o: src/pcre/pcre_info.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_maketables.o: src/pcre/pcre_maketables.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_newline.o: src/pcre/pcre_newline.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_ord2utf8.o: src/pcre/pcre_ord2utf8.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_refcount.o: src/pcre/pcre_refcount.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_study.o: src/pcre/pcre_study.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_tables.o: src/pcre/pcre_tables.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_try_flipped.o: src/pcre/pcre_try_flipped.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_ucd.o: src/pcre/pcre_ucd.c	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_valid_utf8.o: src/pcre/pcre_valid_utf8.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_version.o: src/pcre/pcre_version.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcre_xclass.o: src/pcre/pcre_xclass.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/pcreposix.o: src/pcre/pcreposix.c
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestBigInteger.o: test/TestBigInteger.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestBitMask.o: test/TestBitMask.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestCommandLine.o: test/TestCommandLine.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestCommand.o: test/TestCommand.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDate.o: test/TestDate.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDateTime.o: test/TestDateTime.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDecimal.o: test/TestDecimal.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDelimitedFile.o: test/TestDelimitedFile.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDes.o: test/TestDes.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestDesStream.o: test/TestDesStream.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestEnv.o: test/TestEnv.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestException.o: test/TestException.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestFile.o: test/TestFile.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TTestList.o: test/TTestList.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestMutex.o: test/TestMutex.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestMath.o: test/TestMath.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestMemoryPool.o: test/TestMemoryPool.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestNeuralNetwork.o: test/TestNeuralNetwork.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestNumeric.o: test/TestNumeric.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestObjPool.o: test/TestObjPool.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestPacket.o: test/TestPacket.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestPipe.o: test/TestPipe.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestRandom.o: test/TestRandom.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestRbTree.o: test/TestRbTree.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestRecordSet.o: test/TestRecordSet.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestRegex.o: test/TestRegex.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/testRefCountPtr.o: test/testRefCountPtr.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestRSA.o: test/TestRSA.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestSemaphore.o: test/TestSemaphore.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestSharedLock.o: test/TestSharedLock.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestSocketSet.o: test/TestSocketSet.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestStateMachine.o: test/TestStateMachine.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestStringTable.o: test/TestStringTable.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestStringTokenizer.o: test/TestStringTokenizer.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestStream.o: test/TestStream.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestStringBuffer.o: test/TestStringBuffer.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestTHashTable.o: test/TestTHashTable.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestTString.o: test/TestTString.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestThread.o: test/TestThread.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestUri.o: test/TestUri.ccp $(COMMON_DEPS)		
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestVariant.o: test/TestVariant.ccp $(COMMON_DEPS)	
+	g++ $(GFLAGS) -c $< -o $@
+
+bin/TestTVector.o: test/TestTVector.ccp $(COMMON_DEPS)
+	g++ $(GFLAGS) -c $< -o $@
+		
+

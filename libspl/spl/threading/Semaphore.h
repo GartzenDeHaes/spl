@@ -51,6 +51,9 @@ class Semaphore;
 typedef RefCountPtr<Semaphore> SemaphorePtr;
 typedef WeakReference<Semaphore, SemaphorePtr> SemaphoreRef;
 
+REGISTER_TYPEOF( 472, SemaphorePtr );
+REGISTER_TYPEOF( 475, SemaphoreRef );
+
 /**@brief  A counting semaphore -- a synchronization primitive that allows
 * multiple processes to coordinate access to a shared resource. A
 * Semaphore has an initial value, which represents the quantity of
@@ -123,6 +126,8 @@ public:
 	virtual void CheckMem() const;
 #endif
 };
+
+REGISTER_TYPEOF( 476, Semaphore );
 
 /** @} */
 }

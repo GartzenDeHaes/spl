@@ -24,8 +24,8 @@
 #include <spl/RefCountPtr.h>
 
 #ifdef _WINDOWS
-//#define _WINSOCKAPI_
-#include "spl/cleanwindows.h"
+#define _WINSOCKAPI_
+#include <spl/cleanwindows.h>
 #endif
 #if defined(HAVE_SPTHREAD_H) || defined(_TANDEM)
 #include <sys/types.h>
@@ -71,6 +71,9 @@ extern void*TheThread(void *);
 class Thread;
 typedef RefCountPtr<Thread> ThreadPtr;
 typedef WeakReference<Thread, ThreadPtr> ThreadRef;
+
+REGISTER_TYPEOF( 478, ThreadPtr );
+REGISTER_TYPEOF( 479, ThreadRef );
 
 /** @brief Execution thread.  To start a thread, inherit this class or use on of the delegates.
  *	@ref ThreadStartDelegate
@@ -132,6 +135,8 @@ public:
 	void ValidateMem() const;
 #endif
 };
+
+REGISTER_TYPEOF( 481, Thread );
 
 /** @} */
 /** @} */

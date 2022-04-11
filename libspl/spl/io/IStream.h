@@ -32,6 +32,8 @@
  * @{
  */
 
+/** @brief The spl name space is used for some of the stream classes to prevent conflicts with windoze.  Perhaps
+ *	it should be used for the entire library, maybe. */
 namespace spl
 {
 	class IStream;
@@ -83,8 +85,13 @@ namespace spl
 	#endif
 	};
 
+	REGISTER_TYPEOF(102, IStreamPtr);
+	REGISTER_TYPEOF(104, IStream);
+
 	class IStreamReadListener;
 	typedef RefCountPtr<IStreamReadListener> IStreamReadListenerPtr;
+
+	REGISTER_TYPEOF(106, IStreamReadListenerPtr);
 
 	/** Callback interface for stream events.  Usually, delegates can be used instead of implementing this interface. */
 	class IStreamReadListener : public IMemoryValidate
@@ -95,6 +102,8 @@ namespace spl
 		virtual void IStreamRead_OnRead(const Array<byte>& buf, int len) = 0;
 		virtual void IStreamRead_OnError( const String& msg ) = 0;
 	};
+
+	REGISTER_TYPEOF(108, IStreamReadListener);
 
 /** @} */
 }
